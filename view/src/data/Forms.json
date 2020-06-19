@@ -1,4 +1,613 @@
 {
+  "updatePayment": {
+    "formId": "updatePayment",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "user",
+        "action": "updatePayment",
+        "version": "0.1.0",
+        "title": "Update Payment",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      },
+      {
+        "host": "lightapi.net",
+        "service": "user",
+        "action": "deletePayment",
+        "version": "0.1.0",
+        "title": "Delete Payment",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Payment Methods Setup",
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "Merchant Email"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "method": {
+                "type": "string",
+                "title": "Payment Method",
+                "enum": [
+                  "OnPickup",
+                  "OnDelivery",
+                  "Braintree",
+                  "Taiji",
+                  "TaijiToken",
+                  "Bitcoin",
+                  "Ethereum"
+                ]
+              },
+              "sandbox": {
+                "type": "boolean",
+                "title": "Test Sandbox?"
+              },
+              "merchantId": {
+                "type": "string",
+                "title": "Merchant Id"
+              },
+              "privateKey": {
+                "type": "string",
+                "title": "Private Key"
+              },
+              "publicKey": {
+                "type": "string",
+                "title": "Public Key"
+              },
+              "address": {
+                "type": "string",
+                "title": "Crypto Address"
+              },
+              "tokenName": {
+                "type": "string",
+                "title": "Token Name"
+              },
+              "acceptMethods": {
+                "type": "string",
+                "title": "Accept Methods"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "form": [
+      "email",
+      {
+        "key": "payments",
+        "type": "array",
+        "items": [
+          "payments[].method",
+          "payments[].sandbox",
+          {
+            "key": "payments[].merchantId",
+            "condition": "model.payments[form.key[1]].method === 'Braintree'"
+          },
+          {
+            "key": "payments[].privateKey",
+            "condition": "model.payments[form.key[1]].method === 'Braintree'"
+          },
+          {
+            "key": "payments[].publicKey",
+            "condition": "model.payments[form.key[1]].method === 'Braintree'"
+          },
+          {
+            "key": "payments[].tokenName",
+            "condition": "model.payments[form.key[1]].method === 'TaijiToken'"
+          },
+          {
+            "key": "payments[].address",
+            "condition": "model.payments[form.key[1]].method === 'Taiji' || model.payments[form.key[1]].method === 'TaijiToken' || model.payments[form.key[1]].method === 'Bitcoin' || model.payments[form.key[1]].method === 'Ethereum'"
+          },
+          {
+            "key": "payments[].acceptMethods",
+            "condition": "model.payments[form.key[1]].method === 'OnPickup' || model.payments[form.key[1]].method === 'OnDelivery'"
+          }
+        ]
+      }
+    ]
+  },
+  "paymentForm": {
+    "formId": "paymentForm",
+    "actions": [
+      {
+        "action": "delivery",
+        "title": "Review Delivery"
+      },
+      {
+        "action": "confirm",
+        "title": "Confirm Order"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Delivery",
+      "required": [
+        "payment"
+      ],
+      "properties": {
+        "payment": {
+          "title": "Payment Option",
+          "type": "string",
+          "enum": [
+            "Pickup",
+            "Online"
+          ]
+        }
+      }
+    },
+    "form": [
+      {
+        "key": "payment",
+        "type": "select",
+        "titleMap": [
+          {
+            "value": "Pickup",
+            "name": "Pay at Pickup"
+          },
+          {
+            "value": "Online",
+            "name": "Pay Online"
+          }
+        ]
+      }
+    ]
+  },
+  "pickupForm": {
+    "formId": "pickupForm",
+    "actions": [
+      {
+        "action": "cart",
+        "title": "Review Cart"
+      },
+      {
+        "action": "payment",
+        "title": "Payment"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Delivery",
+      "required": [
+        "pickupTime"
+      ],
+      "properties": {
+        "pickupTime": {
+          "title": "Pick up Time",
+          "type": "string",
+          "enum": [
+            "0",
+            "5",
+            "10",
+            "20",
+            "30",
+            "60",
+            "120",
+            "240"
+          ]
+        },
+        "instruction": {
+          "title": "Additional Instruction",
+          "type": "string"
+        }
+      }
+    },
+    "form": [
+      {
+        "type": "help",
+        "description": "22 Front Street, Toronto, ON",
+        "align": "left"
+      },
+      {
+        "key": "pickupTime",
+        "type": "select",
+        "titleMap": [
+          {
+            "value": "0",
+            "name": "Now"
+          },
+          {
+            "value": "5",
+            "name": "5 minutes"
+          },
+          {
+            "value": "10",
+            "name": "10 minutes"
+          },
+          {
+            "value": "20",
+            "name": "20 minutes"
+          },
+          {
+            "value": "30",
+            "name": "30 minutes"
+          },
+          {
+            "value": "60",
+            "name": "1 hour"
+          },
+          {
+            "value": "120",
+            "name": "2 hours"
+          },
+          {
+            "value": "240",
+            "name": "4 hours"
+          }
+        ]
+      },
+      {
+        "key": "instruction",
+        "type": "textarea"
+      }
+    ]
+  },
+  "restaurantForm": {
+    "formId": "restaurantForm",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "covid",
+        "action": "updateWebsite",
+        "version": "0.1.0",
+        "title": "Restaurant",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "co"
+      ],
+      "properties": {
+        "co": {
+          "title": "Component",
+          "type": "string",
+          "default": "restaurant",
+          "readonly": true
+        },
+        "home": {
+          "type": "object",
+          "title": "Home",
+          "required": [
+            "render"
+          ],
+          "properties": {
+            "render": {
+              "type": "boolean",
+              "title": "Render?"
+            },
+            "name": {
+              "type": "string",
+              "title": "Restaurant Name"
+            },
+            "nameSize": {
+              "type": "string",
+              "title": "Size of the name in px"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title or Type"
+            },
+            "titleSize": {
+              "type": "string",
+              "title": "Size of the title in px"
+            },
+            "background": {
+              "type": "string",
+              "title": "Backgroud Picture Url"
+            },
+            "buttons": {
+              "type": "array",
+              "title": "Menu Buttons",
+              "minItems": 1,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "title": "Label",
+                    "type": "string"
+                  },
+                  "menu": {
+                    "title": "Menu",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "label",
+                  "menu"
+                ]
+              }
+            }
+          }
+        },
+        "about": {
+          "type": "object",
+          "title": "About",
+          "required": [
+            "render"
+          ],
+          "properties": {
+            "render": {
+              "type": "boolean",
+              "title": "Render?"
+            },
+            "banner": {
+              "type": "string",
+              "title": "Banner Picture Url"
+            },
+            "stories": {
+              "type": "array",
+              "title": "stories",
+              "minItems": 1,
+              "maxItems": 10,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "subject": {
+                    "type": "string",
+                    "title": "Subject"
+                  },
+                  "content": {
+                    "type": "string",
+                    "title": "Content"
+                  },
+                  "image": {
+                    "type": "string",
+                    "title": "Image Url"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "catalog": {
+          "type": "object",
+          "title": "Online Order",
+          "required": [
+            "render"
+          ],
+          "properties": {
+            "render": {
+              "type": "boolean",
+              "title": "Render?"
+            },
+            "banner": {
+              "type": "string",
+              "title": "Banner Picture Url"
+            },
+            "taxRate": {
+              "type": "number",
+              "title": "Tax Rate Percentage. i.e 13"
+            },
+            "products": {
+              "type": "array",
+              "title": "Products",
+              "minItems": 1,
+              "maxItems": 1000,
+              "items": {
+                "type": "object",
+                "title": "product",
+                "properties": {
+                  "sku": {
+                    "type": "string",
+                    "title": "SKU"
+                  },
+                  "name": {
+                    "type": "string",
+                    "title": "Name"
+                  },
+                  "price": {
+                    "type": "number",
+                    "title": "Price"
+                  },
+                  "maxOrderQty": {
+                    "type": "number",
+                    "title": "Max quantity per order"
+                  },
+                  "image": {
+                    "type": "string",
+                    "title": "Image Url"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "reservation": {
+          "type": "object",
+          "title": "Reservation",
+          "required": [
+            "render"
+          ],
+          "properties": {
+            "render": {
+              "type": "boolean",
+              "title": "Render?"
+            },
+            "background": {
+              "type": "string",
+              "title": "Backgroud Image Url"
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "title": "Contact",
+          "required": [
+            "render"
+          ],
+          "properties": {
+            "render": {
+              "type": "boolean",
+              "title": "Render?"
+            },
+            "lines": {
+              "type": "array",
+              "title": "Lines",
+              "minItems": 1,
+              "maxItems": 20,
+              "itmes": {
+                "type": "string",
+                "title": "Line"
+              }
+            }
+          }
+        }
+      }
+    },
+    "form": [
+      "co",
+      "home",
+      "about",
+      "catalog",
+      "reservation",
+      "contact"
+    ]
+  },
+  "websiteForm": {
+    "formId": "websiteForm",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "covid",
+        "action": "updateWebsite",
+        "version": "0.1.0",
+        "title": "Website",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Update Website",
+      "type": "object",
+      "properties": {
+        "co": {
+          "title": "Component",
+          "type": "string",
+          "default": "generic",
+          "readonly": true
+        },
+        "ss": {
+          "type": "array",
+          "title": "Subject",
+          "minItems": 1,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "properties": {
+              "t": {
+                "title": "Timestamp",
+                "type": "string"
+              },
+              "s": {
+                "title": "Subject",
+                "type": "string"
+              },
+              "d": {
+                "title": "Description",
+                "type": "string"
+              },
+              "is": {
+                "type": "array",
+                "title": "Optional Image Urls",
+                "maxItems": 50,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "u": {
+                      "title": "Image Url",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "u"
+                  ]
+                }
+              },
+              "vs": {
+                "type": "array",
+                "title": "Optional Video Urls",
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "u": {
+                      "title": "Video Url",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "u"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "t",
+              "s",
+              "d"
+            ]
+          }
+        }
+      }
+    },
+    "form": [
+      "co",
+      {
+        "key": "ss",
+        "add": "New",
+        "style": {
+          "add": "btn-success"
+        },
+        "items": [
+          {
+            "key": "ss[].t",
+            "type": "timestamp"
+          },
+          "ss[].s",
+          {
+            "key": "ss[].d",
+            "type": "textarea"
+          },
+          {
+            "key": "ss[].is",
+            "add": "New URL",
+            "style": {
+              "add": "btn-success"
+            },
+            "items": [
+              "ss[].is[].u"
+            ]
+          },
+          {
+            "key": "ss[].vs",
+            "add": "New URL",
+            "style": {
+              "add": "btn-success"
+            },
+            "items": [
+              "ss[].vs[].u"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "longLivedTokenForm": {
     "formId": "longLivedTokenForm",
     "actions": [
@@ -60,7 +669,7 @@
         "host": {
           "type": "string",
           "default": "lightapi.net",
-          "enum" : [
+          "enum": [
             "lightapi.net"
           ]
         },
@@ -77,7 +686,7 @@
           "default": "en",
           "enum": [
             "en"
-          ] 
+          ]
         },
         "password": {
           "type": "string"
@@ -119,7 +728,7 @@
         "address": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "host",
         "email",
@@ -156,23 +765,25 @@
       {
         "key": "country",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=country"
+          "url": "https://lightapi.net/r/data?name=country"
         }
       },
       {
         "key": "province",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
         }
       },
-
       {
         "key": "city",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
         }
       },
       "postCode",
@@ -205,7 +816,7 @@
         "passwordConfirm": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "oldPassword",
         "newPassword",
@@ -246,7 +857,7 @@
       "properties": {
         "host": {
           "type": "string",
-          "enum" : [
+          "enum": [
             "lightapi.net"
           ]
         },
@@ -264,7 +875,7 @@
           "type": "string",
           "enum": [
             "en"
-          ] 
+          ]
         },
         "firstName": {
           "type": "string"
@@ -300,7 +911,7 @@
         "address": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "host",
         "email",
@@ -327,22 +938,25 @@
       {
         "key": "country",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=country"
+          "url": "https://lightapi.net/r/data?name=country"
         }
       },
       {
         "key": "province",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
         }
       },
       {
         "key": "city",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
         }
       },
       "postCode",
@@ -382,7 +996,7 @@
         "subcategory": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "country",
         "province",
@@ -394,36 +1008,41 @@
       {
         "key": "country",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=country"
+          "url": "https://lightapi.net/r/data?name=country"
         }
       },
       {
         "key": "province",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
         }
       },
       {
         "key": "city",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
         }
       },
       {
         "key": "category",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-category"
+          "url": "https://lightapi.net/r/data?name=covid-category"
         }
       },
       {
         "key": "subcategory",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
         }
       }
     ]
@@ -455,7 +1074,7 @@
         "city": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "country",
         "province",
@@ -466,22 +1085,25 @@
       {
         "key": "country",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=country"
+          "url": "https://lightapi.net/r/data?name=country"
         }
       },
       {
         "key": "province",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
         }
       },
       {
         "key": "city",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
         }
       }
     ]
@@ -524,7 +1146,7 @@
           "type": "integer",
           "description": "initial zoom"
         }
-      },  
+      },
       "required": [
         "country",
         "province",
@@ -538,22 +1160,25 @@
       {
         "key": "country",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=country"
+          "url": "https://lightapi.net/r/data?name=country"
         }
       },
       {
         "key": "province",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "https://lightapi.net/r/data?name=province&rela=ctry-prov&from=$(country)"
         }
       },
       {
         "key": "city",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "https://lightapi.net/r/data?name=city&rela=prov-city&from=$(province)"
         }
       },
       "latitude",
@@ -602,7 +1227,7 @@
           "type": "integer",
           "description": "initial zoom"
         }
-      },  
+      },
       "required": [
         "country",
         "province",
@@ -656,7 +1281,7 @@
           "type": "string",
           "description": "introduction"
         }
-      },  
+      },
       "required": [
         "category",
         "subcategory",
@@ -669,15 +1294,17 @@
       {
         "key": "category",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-category"
+          "url": "https://lightapi.net/r/data?name=covid-category"
         }
       },
       {
         "key": "subcategory",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
         }
       },
       "latitude",
@@ -720,7 +1347,7 @@
           "type": "string",
           "description": "introduction"
         }
-      },  
+      },
       "required": [
         "category",
         "subcategory",
@@ -733,15 +1360,17 @@
       {
         "key": "category",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-category"
+          "url": "https://lightapi.net/r/data?name=covid-category"
         }
       },
       {
         "key": "subcategory",
         "type": "rc-select",
+        "filterOption": true,
         "action": {
-          "url" : "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "https://lightapi.net/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
         }
       },
       "latitude",
@@ -775,7 +1404,7 @@
         "content": {
           "type": "string"
         }
-      },  
+      },
       "required": [
         "userId",
         "subject",
@@ -788,10 +1417,9 @@
       {
         "key": "content",
         "type": "textarea"
-      }  
+      }
     ]
   },
-
   "service": {
     "schema": {
       "type": "object",

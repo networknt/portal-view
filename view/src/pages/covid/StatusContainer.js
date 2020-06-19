@@ -3,13 +3,15 @@ import Subject from './Subject';
 import Button from '@material-ui/core/Button';
 //import { makeStyles } from '@material-ui/core/styles';
 import Cookies from 'universal-cookie'
+import { useUserState } from "../../context/UserContext";
 
 export default function StatusContainer(props) {
     const [subjects, setSubjects] = useState(props.subjects);
     const [currentCategory, setCurrentCategory] = useState('');
+    const { isAuthenticated } = useUserState();
 
     const createItem = (category, item) => {
-        // console.log("createItem is called!", category, item);
+        console.log("createItem is called!", category, item);
         let list = subjects[category];
         var object = {};
         object[Date.now().toString()] = item;
@@ -69,10 +71,29 @@ export default function StatusContainer(props) {
         submit(url, headers, action);
     };
 
+    const updatePeerStatus = () => {
+        console.log("update other user's status!");
+        const url = '/portal/command';
+        const headers = {
+           'Content-Type': 'application/json'
+        };
+        const action = {
+            host: 'lightapi.net',
+            service: 'covid',
+            action: 'updatePeerStatus',
+            version: '0.1.0',
+            data: {
+                subjects,
+                userId: props.userId
+            }    
+        }
+        submit(url, headers, action);
+    };
+
     const submit = async (url, headers, action) => {
-      const cookies = new Cookies();
-      Object.assign(headers, {'X-CSRF-TOKEN': cookies.get('csrf')})
       try {
+        const cookies = new Cookies();
+        Object.assign(headers, {'X-CSRF-TOKEN': cookies.get('csrf')})
         const response = await fetch(url, { method: 'POST', body: JSON.stringify(action), headers, credentials: 'include'});
         const s = await response.text();
         console.log("submit response", s);
@@ -95,8 +116,14 @@ export default function StatusContainer(props) {
 
     return <React.Fragment>
         { Object.keys(subjects).map((key) => ( <Subject key={key} isReadonly={props.isReadonly} category={key} delCategory={delCategory} createItem={createItem} deleteItem={deleteItem} items={subjects[key]}/> ))}
-        { props.isReadonly ? null :
+        { !isAuthenticated ? null :
         <div>
+            { props.isReadonly ? 
+            <Button variant="contained" color="primary" onClick={updatePeerStatus}>
+                Update Peer Status
+            </Button>
+            : 
+            <div>    
             <input
                 type="text"
                 value={currentCategory}
@@ -111,6 +138,8 @@ export default function StatusContainer(props) {
             <Button variant="contained" color="primary" onClick={submitStatus}>
                 Submit Status
             </Button>
+            </div>
+            }
         </div>
         } 
     </React.Fragment>

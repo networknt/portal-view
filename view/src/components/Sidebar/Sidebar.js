@@ -10,12 +10,15 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
+  Toc as OrderIcon,
 } from "@material-ui/icons";
 
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import LocationCity from '@material-ui/icons/LocationCity';
 import EmojiPeople from '@material-ui/icons/EmojiPeople';
 import AddAlert from '@material-ui/icons/AddAlert';
+import Business from '@material-ui/icons/Business';
+import AccountBox from '@material-ui/icons/AccountBox'
 
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -37,7 +40,8 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 1, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
+  //{ id: 1, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
+  { id: 1, label: "OAuth 2.0", link: "/app/oauth", icon: <TypographyIcon />,
       children: [
         { label: "Test Token", link: "/app/oauth/longlived" },
         { label: "Client", link: "/app/oauth/client" },
@@ -100,6 +104,10 @@ const structure = [
     ]
   },
   { id: 20, type: "divider" },
+  { id: 25, label: "Website", role: "user", link: "/app/covid/publish", icon: <Business/>, },
+  { id: 26, label: "Status", role: "user", link: "/app/covid/status", icon: <AddAlert/>, },
+  { id: 27, label: "User Id", link: "/app/covid/userId", icon: <AccountBox />},
+  { id: 28, label: "Merchant Orders", role: "merchant", link: "/app/merchantOrders", icon: <OrderIcon/>},
 ];
 
 function Sidebar({ location }) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useUserDispatch, useUserState, signOut, signUp, changePassword, getProfile } from "../../context/UserContext";
+import { useUserDispatch, useUserState, signOut, signUp, changePassword, getProfile, getPayment, updateRoles, getOrders } from "../../context/UserContext";
 import {
   IconButton,
   Menu,
@@ -15,7 +15,7 @@ export default function ProfileMenu(props) {
     var [profileMenu, setProfileMenu] = useState(null);
     var userDispatch = useUserDispatch();
     var classes = props.classes;
-    var { isAuthenticated, userId } = useUserState();
+    var { isAuthenticated, userId, roles } = useUserState();
 
     //console.log(isAuthenticated);
 
@@ -58,9 +58,39 @@ export default function ProfileMenu(props) {
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}
-            onClick={() => getProfile(userDispatch, props.history)}
+            onClick={() => {getProfile(userDispatch, props.history); setProfileMenu(false);}}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Profile
+          </MenuItem>
+          <MenuItem
+            className={classNames(
+              classes.profileMenuItem,
+              classes.headerMenuItem,
+            )}
+            onClick={() => {getPayment(userDispatch, props.history); setProfileMenu(false);}}
+          >
+            <AccountIcon className={classes.profileMenuIcon} /> Payment
+          </MenuItem>
+          {roles.includes("admin") ?      
+          <MenuItem
+            className={classNames(
+              classes.profileMenuItem,
+              classes.headerMenuItem,
+            )}
+            onClick={() => {updateRoles(userDispatch, props.history); setProfileMenu(false);}}
+          >
+            <AccountIcon className={classes.profileMenuIcon} /> Update Roles
+          </MenuItem>
+          : null 
+          }
+          <MenuItem
+            className={classNames(
+              classes.profileMenuItem,
+              classes.headerMenuItem,
+            )}
+            onClick={() => {getOrders(userDispatch, props.history); setProfileMenu(false);}}
+          >
+            <AccountIcon className={classes.profileMenuIcon} /> Orders
           </MenuItem>
           <MenuItem
             className={classNames(
@@ -90,7 +120,7 @@ export default function ProfileMenu(props) {
             <Typography
               className={classes.profileMenuLink}
               color="primary"
-              onClick={() => changePassword(userDispatch, props.history)}
+              onClick={() => {changePassword(userDispatch, props.history); setProfileMenu(false);}}
             >
               Change Password
             </Typography>
@@ -120,7 +150,7 @@ export default function ProfileMenu(props) {
             <Typography
               className={classes.profileMenuLink}
               color="primary"
-              onClick={() => signUp(userDispatch, props.history)}
+              onClick={() => {signUp(userDispatch, props.history); setProfileMenu(false);}}
             >
               Sign Up
             </Typography>
