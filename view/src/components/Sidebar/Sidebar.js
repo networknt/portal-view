@@ -43,7 +43,7 @@ const structure = [
   //{ id: 1, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
   { id: 1, label: "OAuth 2.0", link: "/app/oauth", icon: <TypographyIcon />,
       children: [
-        { label: "Test Token", link: "/app/oauth/longlived" },
+        { label: "Test Token", link: "/app/form/longLivedTokenForm" },
         { label: "Client", link: "/app/oauth/client" },
         { label: "Service", link: "/app/oauth/service" },
       ]
