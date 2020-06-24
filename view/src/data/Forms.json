@@ -119,6 +119,62 @@
       }
     ]
   },
+  "hostForm": {
+    "formId": "hostForm",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "user",
+        "action": "createHost",
+        "version": "0.1.0",
+        "title": "Create Host",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      },
+      {
+        "host": "lightapi.net",
+        "service": "user",
+        "action": "updateHost",
+        "version": "0.1.0",
+        "title": "Update Host",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      },
+      {
+        "host": "lightapi.net",
+        "service": "user",
+        "action": "deleteHost",
+        "version": "0.1.0",
+        "title": "Delete Host",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Host",
+      "required": [
+        "host"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host name",
+          "type": "string"
+        },
+        "desc": {
+          "title": "Host description",
+          "type": "string"
+        }
+      }
+    },
+    "form": [
+      "host",
+      {
+        "key": "desc",
+        "type": "textarea"
+      }
+    ]
+  },
   "paymentForm": {
     "formId": "paymentForm",
     "actions": [
@@ -668,10 +724,7 @@
       "properties": {
         "host": {
           "type": "string",
-          "default": "lightapi.net",
-          "enum": [
-            "lightapi.net"
-          ]
+          "default": "lightapi.net"
         },
         "email": {
           "type": "string",
@@ -742,7 +795,14 @@
       ]
     },
     "form": [
-      "host",
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "https://local.lightapi.net/portal/query?cmd={\"host\":\"lightapi.net\",\"service\":\"user\",\"action\":\"getReference\",\"version\":\"0.1.0\",\"data\":{\"name\":\"host\"}}"
+        }
+      },
       "email",
       "userId",
       "language",
