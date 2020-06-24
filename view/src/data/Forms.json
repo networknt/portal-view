@@ -800,7 +800,7 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "https://local.lightapi.net/portal/query?cmd={\"host\":\"lightapi.net\",\"service\":\"user\",\"action\":\"getReference\",\"version\":\"0.1.0\",\"data\":{\"name\":\"host\"}}"
+          "url": "https://lightapi.net/portal/query?cmd={\"host\":\"lightapi.net\",\"service\":\"user\",\"action\":\"getReference\",\"version\":\"0.1.0\",\"data\":{\"name\":\"host\"}}"
         }
       },
       "email",
@@ -916,10 +916,7 @@
       "type": "object",
       "properties": {
         "host": {
-          "type": "string",
-          "enum": [
-            "lightapi.net"
-          ]
+          "type": "string"
         },
         "email": {
           "type": "string",
@@ -983,7 +980,14 @@
       ]
     },
     "form": [
-      "host",
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "https://lightapi.net/portal/query?cmd={\"host\":\"lightapi.net\",\"service\":\"user\",\"action\":\"getReference\",\"version\":\"0.1.0\",\"data\":{\"name\":\"host\"}}"
+        }
+      },
       "email",
       "userId",
       "language",
