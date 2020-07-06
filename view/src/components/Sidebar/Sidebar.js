@@ -41,14 +41,14 @@ import {
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
   //{ id: 1, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
-  { id: 1, label: "OAuth 2.0", link: "/app/oauth", icon: <TypographyIcon />,
+  { id: 10, label: "OAuth 2.0", link: "/app/oauth", icon: <TypographyIcon />,
       children: [
         { label: "Test Token", link: "/app/form/longLivedTokenForm" },
         { label: "Client", link: "/app/oauth/client" },
         { label: "Service", link: "/app/oauth/service" },
       ]
   },
-  { id: 2, label: "Marketplace", link: "/app/marketplace", icon: <TableIcon />,
+  { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <TableIcon />,
       children: [
         { label: "Restful", link: "/app/restful" },
         { label: "GraphQL", link: "/app/graphql" },
@@ -57,16 +57,26 @@ const structure = [
         { label: "JSON Schema", link: "/app/jsonschema" },
       ]
   },
-  { id: 3, label: "Notifications", role: "user", link: "/app/notifications", icon: <NotificationsIcon /> },
-  { id: 4, label: "News", link: "/app/news", icon: <UIElementsIcon /> },
-  { id: 5, label: "Blog", link: "/app/blog", icon: <UIElementsIcon /> },
-  { id: 6, label: "Forum", link: "/app/forum", icon: <UIElementsIcon /> },
-  { id: 7, label: "Support", link: "/app/support", icon: <SupportIcon /> },
-  { id: 8, label: "FAQ", link: "/app/faq", icon: <FAQIcon /> },
+  { id: 25, label: "Reference", role: "admin", link: "/app/reference", icon: <TableIcon />,
+      children: [
+        { label: "Table", link: "/app/ref/table" },
+        { label: "Value", link: "/app/ref/tableForm" },
+        { label: "Locale", link: "/app/ref/valueForm" },
+        { label: "RelaType", link: "/app/ref/relatype" },
+        { label: "Relation", link: "/app/ref/relationForm" },
+      ]
+  },
+
+  { id: 30, label: "Notifications", role: "user", link: "/app/notifications", icon: <NotificationsIcon /> },
+  { id: 40, label: "News", link: "/app/news", icon: <UIElementsIcon /> },
+  { id: 50, label: "Blog", link: "/app/blog", icon: <UIElementsIcon /> },
+  { id: 60, label: "Forum", link: "/app/forum", icon: <UIElementsIcon /> },
+  { id: 70, label: "Support", link: "/app/support", icon: <SupportIcon /> },
+  { id: 80, label: "FAQ", link: "/app/faq", icon: <FAQIcon /> },
   
-  { id: 9, type: "divider", role: "orgadm" },
-  { id: 10, type: "title", role: "orgadm", label: "ADMIN" },
-  { id: 11, label: "Client Admin", role: "orgadm", link: "/app/client/admin", icon: <LibraryIcon />,
+  { id: 90, type: "divider", role: "orgadm" },
+  { id: 100, type: "title", role: "orgadm", label: "ADMIN" },
+  { id: 110, label: "Client Admin", role: "orgadm", link: "/app/client/admin", icon: <LibraryIcon />,
     children: [
       { label: "Register", link: "/app/client/register" },
       { label: "Update", link: "/app/client/update" },
@@ -74,7 +84,7 @@ const structure = [
       { label: "Service Request", link: "/app/client/request" },
     ]
   },
-  { id: 12, label: "Service Admin", role: "orgadm", link: "/app/service/admin", icon: <LibraryIcon />,
+  { id: 120, label: "Service Admin", role: "orgadm", link: "/app/service/admin", icon: <LibraryIcon />,
     children: [
       { label: "Register", link: "/app/service/register" },
       { label: "Update", link: "/app/service/update" },
@@ -82,32 +92,32 @@ const structure = [
       { label: "Client Approval", link: "/app/service/approval" },
     ]
   },
-  { id: 13, label: "News Admin", role: "orgadm", link: "/app/news/admin", icon: <LibraryIcon />,
+  { id: 130, label: "News Admin", role: "orgadm", link: "/app/news/admin", icon: <LibraryIcon />,
     children: [
       { label: "Create", link: "/app/news/create" },
       { label: "Update", link: "/app/news/update" },
       { label: "Delete", link: "/app/news/delete" }
     ]
   },
-  { id: 14, label: "Blog Admin", role: "orgadm", link: "/app/blog/admin", icon: <LibraryIcon />,
+  { id: 140, label: "Blog Admin", role: "orgadm", link: "/app/blog/admin", icon: <LibraryIcon />,
     children: [
       { label: "Create", link: "/app/blog/create" },
       { label: "Update", link: "/app/blog/update" },
       { label: "Delete", link: "/app/blog/delete" }
     ]
   },
-  { id: 15, label: "Forum Admin", role: "orgadm", link: "/app/forum/admin", icon: <LibraryIcon />,
+  { id: 150, label: "Forum Admin", role: "orgadm", link: "/app/forum/admin", icon: <LibraryIcon />,
     children: [
       { label: "Create", link: "/app/forum/create" },
       { label: "Update", link: "/app/forum/update" },
       { label: "Delete", link: "/app/forum/delete" }
     ]
   },
-  { id: 20, type: "divider" },
-  { id: 25, label: "Website", role: "user", link: "/app/covid/publish", icon: <Business/>, },
-  { id: 26, label: "Status", role: "user", link: "/app/covid/status", icon: <AddAlert/>, },
-  { id: 27, label: "User Id", link: "/app/covid/userId", icon: <AccountBox />},
-  { id: 28, label: "Merchant Orders", role: "merchant", link: "/app/merchantOrders", icon: <OrderIcon/>},
+  { id: 200, type: "divider" },
+  { id: 250, label: "Website", role: "user", link: "/app/covid/publish", icon: <Business/>, },
+  { id: 260, label: "Status", role: "user", link: "/app/covid/status", icon: <AddAlert/>, },
+  { id: 270, label: "User Id", link: "/app/covid/userId", icon: <AccountBox />},
+  { id: 280, label: "Merchant Orders", role: "merchant", link: "/app/merchantOrders", icon: <OrderIcon/>},
 ];
 
 function Sidebar({ location }) {

@@ -40,6 +40,17 @@ import Messages from "../Notification/Messages";
 import UserId from "../../pages/covid/UserId";
 import MerchantOrders from "../../pages/profile/MerchantOrders";
 import UserOrders from "../../pages/profile/UserOrders";
+import RefTable from "../../pages/ref/RefTable";
+import TableDelete from "../../pages/ref/TableDelete";
+import TableForm from "../../pages/ref/TableForm";
+import RefValue from "../../pages/ref/RefValue";
+import ValueDelete from "../../pages/ref/ValueDelete";
+import ValueForm from "../../pages/ref/ValueForm";
+import RefLocale from "../../pages/ref/RefLocale";
+import LocaleDelete from "../../pages/ref/LocaleDelete";
+import RefRelaType from "../../pages/ref/RefRelaType";
+import RefRelation from "../../pages/ref/RefRelation";
+import RelationForm from "../../pages/ref/RelationForm";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -76,6 +87,18 @@ function Layout(props) {
               <Route path="/app/messages" component={Messages} />
               <Route path="/app/merchantOrders" component={MerchantOrders} />
               <Route path="/app/userOrders" component={UserOrders} />
+              
+              <Route path="/app/ref/table" component={RefTable} />
+              <Route path="/app/ref/deleteTable" component={TableDelete} />
+              <Route path="/app/ref/tableForm" component={TableForm} />
+              <Route path="/app/ref/value" component={RefValue} />
+              <Route path="/app/ref/deleteValue" component={ValueDelete} />
+              <Route path="/app/ref/valueForm" component={ValueForm} />
+              <Route path="/app/ref/locale" component={RefLocale} />
+              <Route path="/app/ref/deleteLocale" component={LocaleDelete} />
+              <Route path="/app/ref/relaType" component={RefRelaType} />
+              <Route path="/app/ref/relation" component={RefRelation} />
+              <Route path="/app/ref/relationForm" component={RelationForm} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />

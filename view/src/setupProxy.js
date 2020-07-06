@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.use(proxy('/oauth2/service', { target: 'https://local.lightapi.net', secure: false }));
   app.use(proxy('/oauth2/token', { target: 'https://local.lightapi.net', secure: false }));
   app.use(proxy('/oauth2/user', { target: 'https://local.lightapi.net', secure: false }));
+  app.use(proxy('/r/data', { target: 'https://local.lightapi.net', secure: false }));
   app.use(proxy('/authorization', { target: 'https://local.lightapi.net', secure: false }));
   app.use(proxy('/logout', { target: 'https://local.lightapi.net', secure: false }));
 };
