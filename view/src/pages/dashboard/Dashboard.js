@@ -41,7 +41,7 @@ export default function Dashboard(props) {
 
         const data = await response.json();
         //console.log(data);
-        userDispatch({ type: "UPDATE_PROFILE", userId: data.userId });
+        userDispatch({ type: "UPDATE_PROFILE", userId: data.userId, host: data.host });
       } catch (e) {
         // only call dispatch when we know the fetch was not aborted
         if (!abortController.signal.aborted) {

@@ -13,7 +13,7 @@ function userReducer(state, action) {
     case "SIGN_OUT_SUCCESS":
       return { ...state, isAuthenticated: false, email: null, userId: null, roles: null };
     case "UPDATE_PROFILE":
-      return { ...state, userId: action.userId }
+      return { ...state, userId: action.userId, host: action.host }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -28,6 +28,7 @@ function UserProvider({ children }) {
     isAuthenticated: !!email,
     email: email,
     userId: null,
+    host: null,
     roles: cookies.get('roles')
   });
 
