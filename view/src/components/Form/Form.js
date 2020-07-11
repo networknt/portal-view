@@ -80,7 +80,7 @@ function Form(props) {
       try {
         const cookies = new Cookies();
         Object.assign(headers, {'X-CSRF-TOKEN': cookies.get('csrf')})
-        const response = await fetch(url, { method: 'POST', body: JSON.stringify(action), headers, credentials: 'include'});
+        const response = await fetch(url, { method: action.method ? action.method : 'POST', body: action.rest ? JSON.stringify(action.data) : JSON.stringify(action), headers, credentials: 'include'});
         // we have tried out best to response json from our APIs; however, some services return text instead like light-oauth2.
         const s = await response.text();
         console.log("submit error", s);

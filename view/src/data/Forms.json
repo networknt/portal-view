@@ -664,16 +664,17 @@
       }
     ]
   },
-  "longLivedTokenForm": {
-    "formId": "longLivedTokenForm",
+  "testTokenForm": {
+    "formId": "testTokenForm",
     "actions": [
       {
         "host": "lightapi.net",
         "service": "playground",
         "action": "generateJwt",
         "version": "0.1.0",
-        "title": "Generate Long-Lived Token",
-        "success": "/playground/longLivedToken"
+        "title": "Generate Test Token",
+        "success": "/app/success",
+        "failure": "/app/failure"
       }
     ],
     "schema": {
@@ -685,18 +686,26 @@
       "title": "JWT Claims",
       "properties": {
         "exp": {
-          "type": "integer"
+          "type": "integer",
+          "title": "Expires in Second"
         },
         "client_id": {
-          "type": "string"
+          "type": "string",
+          "title": "Client Id"
         },
         "user_id": {
-          "type": "string"
+          "type": "string",
+          "title": "User Id"
         },
+        "roles": {
+          "type": "string",
+          "title": "Roles Separated with Space"
+        }, 
         "scope": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "title": "Scope"
           }
         }
       }
@@ -985,7 +994,7 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "https://lightapi.net/portal/query?cmd={\"host\":\"lightapi.net\",\"service\":\"user\",\"action\":\"getReference\",\"version\":\"0.1.0\",\"data\":{\"name\":\"host\"}}"
+          "url": "/r/data?name=host"
         }
       },
       "email",
@@ -1605,18 +1614,32 @@
       }
     }
   },
-  "client": {
+  "createClient": {
+    "formId": "createClient",
+    "actions": [
+      {
+        "path": "/oauth2/client",
+        "rest": true,
+        "title": "Create Client",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
     "schema": {
       "type": "object",
       "required": [
+        "host",
         "clientType",
         "clientProfile",
         "clientName",
         "clientDesc",
-        "ownerId",
         "scope"
       ],
       "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
         "clientType": {
           "title": "Client Type",
           "type": "string",
@@ -1646,6 +1669,10 @@
           "title": "Client Description",
           "type": "string"
         },
+        "scope": {
+          "title": "Scope",
+          "type": "string"
+        },
         "customClaim": {
           "title": "Custom Claim",
           "type": "string"
@@ -1661,17 +1688,144 @@
         "derefClientId": {
           "title": "Dereference Client ID",
           "type": "string"
+        }
+      }
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "clientType",
+      "clientProfile",
+      "clientName",
+      {
+        "key": "clientDesc",
+        "type": "textarea"
+      },
+      "scope",
+      {
+        "key": "customClaim",
+        "type": "textarea"
+      },
+      "redirectUri",
+      "authenticateClass",
+      "derefClientId"
+    ]
+  },
+  "updateClient": {
+    "formId": "updateClient",
+    "actions": [
+      {
+        "path": "/oauth2/client",
+        "rest": true,
+        "method": "put",
+        "title": "Update Client",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "clientType",
+        "clientProfile",
+        "clientName",
+        "clientDesc",
+        "scope"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "clientId": {
+          "title": "Client Id",
+          "type": "string",
+          "readonly": true
+        },
+        "clientType": {
+          "title": "Client Type",
+          "type": "string",
+          "enum": [
+            "confidential",
+            "public",
+            "trusted",
+            "external"
+          ]
+        },
+        "clientProfile": {
+          "title": "Client Profile",
+          "type": "string",
+          "enum": [
+            "webserver",
+            "browser",
+            "mobile",
+            "service",
+            "batch"
+          ]
+        },
+        "clientName": {
+          "title": "Client Name",
+          "type": "string"
+        },
+        "clientDesc": {
+          "title": "Client Description",
+          "type": "string"
         },
         "scope": {
           "title": "Scope",
           "type": "string"
         },
-        "ownerId": {
-          "title": "Owner ID",
+        "customClaim": {
+          "title": "Custom Claim",
+          "type": "string"
+        },
+        "redirectUri": {
+          "title": "Redirect URI",
+          "type": "string"
+        },
+        "authenticateClass": {
+          "title": "Authenticate Class",
+          "type": "string"
+        },
+        "derefClientId": {
+          "title": "Dereference Client ID",
           "type": "string"
         }
       }
-    }
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "clientId",
+      "clientType",
+      "clientProfile",
+      "clientName",
+      {
+        "key": "clientDesc",
+        "type": "textarea"
+      },
+      "scope",
+      {
+        "key": "customClaim",
+        "type": "textarea"
+      },
+      "redirectUri",
+      "authenticateClass",
+      "derefClientId"
+    ]
   },
   "token": {
     "schema": {

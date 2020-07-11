@@ -51,6 +51,8 @@ import LocaleDelete from "../../pages/ref/LocaleDelete";
 import RefRelaType from "../../pages/ref/RefRelaType";
 import RefRelation from "../../pages/ref/RefRelation";
 import RelationForm from "../../pages/ref/RelationForm";
+import Client from "../../pages/oauth/Client";
+import ClientDelete from "../../pages/oauth/ClientDelete";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -99,6 +101,9 @@ function Layout(props) {
               <Route path="/app/ref/relaType" component={RefRelaType} />
               <Route path="/app/ref/relation" component={RefRelation} />
               <Route path="/app/ref/relationForm" component={RelationForm} />
+
+              <Route path="/app/oauth/client" component={Client} />
+              <Route path="/app/oauth/deleteClient" component={ClientDelete} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />

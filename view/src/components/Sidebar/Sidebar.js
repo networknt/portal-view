@@ -40,10 +40,8 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  //{ id: 1, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
-  { id: 10, label: "OAuth 2.0", link: "/app/oauth", icon: <TypographyIcon />,
+  { id: 10, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
       children: [
-        { label: "Test Token", link: "/app/form/longLivedTokenForm" },
         { label: "Client", link: "/app/oauth/client" },
         { label: "Service", link: "/app/oauth/service" },
       ]
