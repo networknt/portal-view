@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import { useUserState } from "../../context/UserContext";
 
 const useRowStyles = makeStyles({
     root: {
@@ -21,20 +22,20 @@ const useRowStyles = makeStyles({
 
 function Row(props) {
     //console.log(props);
-    const { row } = props;
+    const { row, history, email, roles } = props;
     const classes = useRowStyles();
 
     const handleUpdate = (row) => {
-        props.history.push({pathname: '/app/form/updateClient', state: { data : row}});
+        history.push({pathname: '/app/form/updateClient', state: { data : row}});
     };
 
     const handleToken = (row) => {
-      props.history.push({pathname: '/app/form/testTokenForm', state: { data : { client_id: row.clientId }}});
-  };
+        history.push({pathname: '/app/form/testTokenForm', state: { data : { client_id: row.clientId, user_id: email, roles }}});
+    };
 
     const handleDelete = (clientId) => {
         if (window.confirm("Are you sure you want to delete the client?")) {
-            props.history.push({pathname: '/app/oauth/deleteClient', state: { data : { clientId }}});
+            history.push({pathname: '/app/oauth/deleteClient', state: { data : { clientId }}});
         } 
     };
 
@@ -67,6 +68,7 @@ function Row(props) {
 
 export default function ClientList(props) {
     const { clients } = props;
+    const { email, roles } = useUserState();
     console.log(clients);
     return (
       <TableContainer component={Paper}>
@@ -92,7 +94,7 @@ export default function ClientList(props) {
           </TableHead>
           <TableBody>
           {clients.map((client, index) => (
-              <Row history={props.history} key={index} row={client} />
+              <Row history={props.history} email={email} roles={roles} key={index} row={client} />
           ))}
           </TableBody>
       </Table>
