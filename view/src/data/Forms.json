@@ -680,8 +680,7 @@
     "schema": {
       "type": "object",
       "required": [
-        "client_id",
-        "scope"
+        "client_id"
       ],
       "title": "JWT Claims",
       "properties": {
