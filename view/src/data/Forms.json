@@ -152,7 +152,7 @@
     ],
     "schema": {
       "type": "object",
-      "title": "Host",
+      "title": "Host Request",
       "required": [
         "host"
       ],
@@ -168,6 +168,11 @@
       }
     },
     "form": [
+      {
+        "type": "help",
+        "description": "The hostname should be your email domain name. i.e., it should be example.com if your email is yourname@example.com",
+        "align": "left"
+      },
       "host",
       {
         "key": "desc",
