@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { useSiteState, useSiteDispatch } from "../../context/SiteContext";
 
 
-export default function MailMenu(props) {
+export default function HomeMenu(props) {
     var classes = props.classes;
     const [homeMenu, setHomeMenu] = useState(null);
     var siteDispatch = useSiteDispatch();
