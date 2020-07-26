@@ -19,6 +19,7 @@ import EmojiPeople from '@material-ui/icons/EmojiPeople';
 import AddAlert from '@material-ui/icons/AddAlert';
 import Business from '@material-ui/icons/Business';
 import AccountBox from '@material-ui/icons/AccountBox'
+import PublishIcon from '@material-ui/icons/Publish';
 
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -55,6 +56,16 @@ const structure = [
         { label: "JSON Schema", link: "/app/jsonschema" },
       ]
   },
+  { id: 23, label: "Publish", link: "/app/publish", icon: <PublishIcon />,
+      children: [
+        { label: "API Restful", link: "/app/publishApi" },
+        { label: "API GraphQL", link: "/app/publishApi" },
+        { label: "API Hybrid", link: "/app/publishApi" },
+        { label: "Schema Form", link: "/app/publishSchemaForm" },
+        { label: "JSON Schema", link: "/app/publishJsonSchema" },
+      ]
+  },
+
   { id: 25, label: "Reference", role: "admin", link: "/app/reference", icon: <TableIcon />,
       children: [
         { label: "Table", link: "/app/ref/table" },

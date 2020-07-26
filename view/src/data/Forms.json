@@ -1859,6 +1859,116 @@
       }
     }
   },
+  "specDetailForm": {
+    "formId": "specDetailForm",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "marketplace",
+        "action": "upload",
+        "version": "0.1.0",
+        "title": "Upload Specification",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "lob",
+        "style",
+        "name",
+        "version",
+        "desc",
+        "tags",
+        "status"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "lob": {
+          "title": "Line of Business",
+          "type": "string"
+        },
+        "style": {
+          "title": "API Style",
+          "type": "string",
+          "enum": [
+            "Restful",
+            "GraphQL",
+            "Hybrid"
+          ]
+        },
+        "name": {
+          "title": "API Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "API Version",
+          "type": "string"
+        },
+        "desc": {
+          "title": "API Description",
+          "type": "string"
+        },
+        "status": {
+          "title": "API Status",
+          "type": "string",
+          "enum": [
+            "published",
+            "implemented",
+            "deployed",
+            "decommissioned"
+          ]
+        },
+        "tags": {
+          "title": "Tags",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10
+        }
+      }
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "lob",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
+        }
+      },
+      "style",
+      "name",
+      "version",
+      {
+        "key": "desc",
+        "type": "textarea"
+      },
+      "status",
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+          "url" : "/r/data?name=tag"
+        }      
+      }
+    ]
+  },
   "createRefTable": {
     "formId": "createRefTable",
     "actions": [
@@ -2315,5 +2425,151 @@
         }
       }
     }
+  },
+  "createRefRelation": {
+    "formId": "createRefRelation",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "ref",
+        "action": "createRelation",
+        "version": "0.1.0",
+        "title": "Create Relation",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Relation",
+      "type": "object",
+      "properties": {
+        "relationId": {
+          "title": "Relation Id",
+          "type": "string"
+        },
+        "valueIdFrom": {
+          "title": "Value Id From",
+          "type": "string"
+        },
+        "valueIdTo": {
+          "title": "Value Id To",
+          "type": "string"
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        }
+      },
+      "required": [
+        "relationId",
+        "valueIdFrom",
+        "valueIdTo",
+        "active"
+      ]
+    },
+    "form": [
+      "relationId",
+      "valueIdFrom",
+      "valueIdTo",
+      "active"
+    ]
+  },
+  "updateRefRelation": {
+    "formId": "updateRefRelation",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "ref",
+        "action": "updateRelation",
+        "version": "0.1.0",
+        "title": "Update Relation",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Relation",
+      "type": "object",
+      "properties": {
+        "relationId": {
+          "title": "Relation Id",
+          "type": "string"
+        },
+        "valueIdFrom": {
+          "title": "Value Id From",
+          "type": "string"
+        },
+        "valueIdTo": {
+          "title": "Value Id To",
+          "type": "string"
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        }
+      },
+      "required": [
+        "relationId",
+        "valueIdFrom",
+        "valueIdTo",
+        "active"
+      ]
+    },
+    "form": [
+      "relationId",
+      "valueIdFrom",
+      "valueIdTo",
+      "active"
+    ]
+  },
+  "deleteRefRelation": {
+    "formId": "deleteRefRelation",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "ref",
+        "action": "deleteRelation",
+        "version": "0.1.0",
+        "title": "Delete Relation",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Relation",
+      "type": "object",
+      "properties": {
+        "relationId": {
+          "title": "Relation Id",
+          "type": "string"
+        },
+        "valueIdFrom": {
+          "title": "Value Id From",
+          "type": "string"
+        },
+        "valueIdTo": {
+          "title": "Value Id To",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relationId",
+        "valueIdFrom",
+        "valueIdTo"
+      ]
+    },
+    "form": [
+      "relationId",
+      "valueIdFrom",
+      "valueIdTo"
+    ]
   }
 }

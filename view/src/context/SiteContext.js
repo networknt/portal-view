@@ -21,6 +21,8 @@ function siteReducer(state, action) {
       return { ...state, delivery: action.delivery };
     case "UPDATE_PAYMENT":
       return { ...state, payment: action.payment };
+    case "UPDATE_SPECDETAIL":
+      return { ...state, specDetail: action.specDetail };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -35,6 +37,7 @@ function SiteProvider({ children }) {
     cart: [],
     delivery: {},
     payment: {},
+    specDetail: {},
     filter: null,
     menu: 'catalog'
   });
