@@ -58,9 +58,9 @@ const structure = [
   },
   { id: 23, label: "Publish", link: "/app/publish", icon: <PublishIcon />,
       children: [
-        { label: "API Restful", link: "/app/publishApi" },
-        { label: "API GraphQL", link: "/app/publishApi" },
-        { label: "API Hybrid", link: "/app/publishApi" },
+        { label: "API Restful", link: "/app/publishApi?style=Restful" },
+        { label: "API GraphQL", link: "/app/publishApi?style=GraphQL" },
+        { label: "API Hybrid", link: "/app/publishApi?style=Hybrid" },
         { label: "Schema Form", link: "/app/publishSchemaForm" },
         { label: "JSON Schema", link: "/app/publishJsonSchema" },
       ]

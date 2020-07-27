@@ -37,12 +37,12 @@ export default function PublishApi(props) {
   
     return (
         <div>
-            <SpecDetail step={step} classes={classes} specUpload={specUpload} />
-            <SpecUpload step={step} />
-            <ConfigOption step={step} />
-            <ConfigDetail step={step} />
-            <ConfigUpload step={step} />
-            <Summary step={step} />
+            <SpecDetail {...props} step={step} classes={classes} specUpload={specUpload} />
+            <SpecUpload {...props} step={step} />
+            <ConfigOption {...props} step={step} />
+            <ConfigDetail {...props} step={step} />
+            <ConfigUpload {...props} step={step} />
+            <Summary {...props} step={step} />
         </div>
     );
 }

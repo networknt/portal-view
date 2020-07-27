@@ -8,7 +8,9 @@ import { useSiteState, useSiteDispatch } from "../../context/SiteContext";
 
 export default function SpecDetail(props) {
     const { step, classes, specUpload } = props;
-    const [model, setModel] = useState({...useSiteState().specDetail});
+    let params = new URLSearchParams(props.location.search);
+    let style = params.get('style');
+    const [model, setModel] = useState({...useSiteState().specDetail, style });
     const [showErrors, setShowErrors]  = useState(false);
     const [specDetail, setSpecDetail] = useState();
     const mapper = {
@@ -24,7 +26,6 @@ export default function SpecDetail(props) {
     if(step !== 1) {
       return null;
     }
-  
 
     let formData = forms['specDetailForm'];
     var buttons = [];
