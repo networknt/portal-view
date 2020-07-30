@@ -23,6 +23,8 @@ function siteReducer(state, action) {
       return { ...state, payment: action.payment };
     case "UPDATE_SPECDETAIL":
       return { ...state, specDetail: action.specDetail };
+    case "UPDATE_CONFIGDETAIL":
+      return { ...state, configDetail: action.configDetail };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -38,6 +40,7 @@ function SiteProvider({ children }) {
     delivery: {},
     payment: {},
     specDetail: {},
+    configDetail: {},
     filter: null,
     menu: 'catalog'
   });
