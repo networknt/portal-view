@@ -5,46 +5,41 @@ import Cookies from 'universal-cookie'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { useUserState } from "../../context/UserContext";
 import useStyles from "./styles";
-import ClientList from "./ClientList";
+import ServiceList from "./ServiceList";
 
-export default function Client(props) {
+export default function Service(props) {
   const classes = useStyles();
-  const { host } = useUserState();
+  const { email, host } = useUserState();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [count, setCount] = useState(0);
-  const [clients, setClients] = useState([]);
-
-  const cmd = {
-    host: 'lightapi.net',
-    service: 'market',
-    action: 'getClient',
-    version: '0.1.0',
-    data: { host, offset: page * rowsPerPage, limit: rowsPerPage }
-  }
+  const [services, setServices] = useState([]);
   
-  const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
+  const url = '/oauth2/service?page=' + page + '&pageSize=' + rowsPerPage + (host ? ('&host=' + host) : '');
+  console.log(url);
   const headers = {};
-  const queryClients = async (url, headers) => {
+
+  const queryServices = async (url, headers) => {
     try {
       setLoading(true);
       const response = await fetch(url, { headers, credentials: 'include'});
       if (!response.ok) {
-        const error = await response.json();
-        setError(error.description);
-        setClients([]);
+        const error = await response.text();
+        console.log(response.status);
+        setError(error);
+        setServices([]);
       } else {
         const data = await response.json();
-        setClients(data.clients);
+        setServices(data.services);
         setCount(data.total)
       }
       setLoading(false);
     } catch (e) {
       console.log(e);
       setError(e);
-      setClients([]);
+      setServices([]);
       setLoading(false);
     }
   };
@@ -52,7 +47,7 @@ export default function Client(props) {
   useEffect(() => {
     const cookies = new Cookies();
     const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
-    queryClients(url, headers);
+    queryServices(url, headers);
   }, [page, rowsPerPage]);
   
   const handleChangePage = (event, newPage) => {  
@@ -62,10 +57,10 @@ export default function Client(props) {
   const handleChangeRowsPerPage = event => {  
     setRowsPerPage(+event.target.value);  
     setPage(0);
-  };
+  };      
 
   const handleCreate = () => {
-    props.history.push('/app/form/createClient');
+    props.history.push('/app/form/createService');
   }
 
   let wait;
@@ -80,7 +75,7 @@ export default function Client(props) {
   } else {
     wait = (
         <div>
-          <ClientList {...props} clients={clients}/>
+          <ServiceList {...props} services={services}/>
           <TablePagination  
             rowsPerPageOptions={[10, 25, 100]}  
             component="div"  
@@ -89,7 +84,7 @@ export default function Client(props) {
             page={page}  
             onChangePage={handleChangePage}  
             onChangeRowsPerPage={handleChangeRowsPerPage}  
-          />          
+          />
           <AddBoxIcon onClick={() => handleCreate()} />
         </div>
     )

@@ -1622,8 +1622,10 @@
     "formId": "createClient",
     "actions": [
       {
-        "path": "/oauth2/client",
-        "rest": true,
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "createClient",
+        "version": "0.1.0",
         "title": "Create Client",
         "success": "/app/success",
         "failure": "/app/failure"
@@ -1643,6 +1645,10 @@
         "host": {
           "title": "Host",
           "type": "string"
+        },
+        "lob": {
+          "type": "string",
+          "description": "Line of Business"
         },
         "clientType": {
           "title": "Client Type",
@@ -1690,7 +1696,11 @@
           "type": "string"
         },
         "derefClientId": {
-          "title": "Dereference Client ID",
+          "title": "Dereference Client Id",
+          "type": "string"
+        },
+        "serviceId": {
+          "title": "Reference Service Id",
           "type": "string"
         }
       }
@@ -1702,6 +1712,14 @@
         "filterOption": true,
         "action": {
           "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "lob",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
         }
       },
       "clientType",
@@ -1718,16 +1736,18 @@
       },
       "redirectUri",
       "authenticateClass",
-      "derefClientId"
+      "derefClientId",
+      "serviceId"
     ]
   },
   "updateClient": {
     "formId": "updateClient",
     "actions": [
       {
-        "path": "/oauth2/client",
-        "rest": true,
-        "method": "put",
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateClient",
+        "version": "0.1.0",
         "title": "Update Client",
         "success": "/app/success",
         "failure": "/app/failure"
@@ -1747,6 +1767,10 @@
         "host": {
           "title": "Host",
           "type": "string"
+        },
+        "lob": {
+          "type": "string",
+          "description": "Line of Business"
         },
         "clientId": {
           "title": "Client Id",
@@ -1801,6 +1825,10 @@
         "derefClientId": {
           "title": "Dereference Client ID",
           "type": "string"
+        },
+        "serviceId": {
+          "title": "Reference Service Id",
+          "type": "string"
         }
       }
     },
@@ -1811,6 +1839,14 @@
         "filterOption": true,
         "action": {
           "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "lob",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
         }
       },
       "clientId",
@@ -1828,7 +1864,152 @@
       },
       "redirectUri",
       "authenticateClass",
-      "derefClientId"
+      "derefClientId",
+      "serviceId"
+    ]
+  },
+  "createService": {
+    "formId": "createService",
+    "actions": [
+      {
+        "path": "/oauth2/service",
+        "rest": true,
+        "title": "Create Service",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "serviceId",
+        "serviceType",
+        "serviceName",
+        "serviceDesc"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string",
+          "title": "Service Id"
+        },
+        "serviceType": {
+          "title": "Service Type",
+          "type": "string",
+          "enum": [
+            "openapi",
+            "graphql",
+            "hybrid"
+          ]
+        },
+        "serviceName": {
+          "title": "Service Name",
+          "type": "string"
+        },
+        "serviceDesc": {
+          "title": "Service Description",
+          "type": "string"
+        },
+        "scope": {
+          "title": "Scopes Separate in space",
+          "type": "string"
+        }
+      }
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "serviceId",
+      "serviceType",
+      "serviceName",
+      {
+        "key": "serviceDesc",
+        "type": "textarea"
+      },
+      "scope"
+    ]
+  },
+  "updateService": {
+    "formId": "updateService",
+    "actions": [
+      {
+        "path": "/oauth2/service",
+        "rest": true,
+        "method": "put",
+        "title": "Update Service",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "serviceId",
+        "serviceType",
+        "serviceName",
+        "serviceDesc"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "serviceId": {
+          "title": "Service Id",
+          "type": "string",
+          "readonly": true
+        },
+        "serviceType": {
+          "title": "Service Type",
+          "type": "string",
+          "enum": [
+            "openapi",
+            "graphql",
+            "hybrid"
+          ]
+        },
+        "serviceName": {
+          "title": "Service Name",
+          "type": "string"
+        },
+        "serviceDesc": {
+          "title": "Service Description",
+          "type": "string"
+        },
+        "scope": {
+          "title": "Scope",
+          "type": "string"
+        }
+      }
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "serviceId",
+      "serviceType",
+      "serviceName",
+      {
+        "key": "serviceDesc",
+        "type": "textarea"
+      },
+      "scope"
     ]
   },
   "token": {

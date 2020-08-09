@@ -1,14 +1,23 @@
 import React from 'react';
-import { useApiDelete } from '../../hooks/useApiDelete';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useApiPost } from '../../hooks/useApiPost';
+import { useUserState } from '../../context/UserContext';
 
 
 export default function ClientDelete(props) {
 	console.log(props.location.state.data);
 	const clientId = props.location.state.data.clientId;
-	const url = '/oauth2/client/' + clientId;
+	const { host } = useUserState();
+	const body = {
+		host: 'lightapi.net',
+		service: 'market',
+		action: 'deleteClient',
+		version: '0.1.0',
+		data: { clientId, host }
+	};
+	const url = '/portal/command';
 	const headers = {};
-	const { isLoading, data, error } = useApiDelete({url, headers});
+	const { isLoading, data, error } = useApiPost({url, headers, body});
   	console.log(isLoading, data, error);
 	let wait;
 	if(isLoading) {
@@ -20,7 +29,6 @@ export default function ClientDelete(props) {
 		</div>
 		)  
 	}	
-
 	return (
 	<div>
 		{wait}

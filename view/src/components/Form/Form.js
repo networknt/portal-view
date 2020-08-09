@@ -59,7 +59,9 @@ function Form(props) {
     };
 
     function onButtonClick(action) {
+        console.log("onButtonClick is called", action);
         let validationResult = utils.validateBySchema(schema, model);
+        console.log(validationResult);
         if(!validationResult.valid) {
             setShowErrors(true);
         } else {

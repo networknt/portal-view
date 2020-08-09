@@ -54,6 +54,8 @@ import RelationForm from "../../pages/ref/RelationForm";
 import RelationDelete from "../../pages/ref/RelationDelete";
 import Client from "../../pages/oauth/Client";
 import ClientDelete from "../../pages/oauth/ClientDelete";
+import Service from "../../pages/oauth/Service";
+import ServiceDelete from "../../pages/oauth/ServiceDelete";
 import PublishApi from "../../pages/publish/PublishApi";
 
 // context
@@ -92,6 +94,8 @@ function Layout(props) {
               <Route path="/app/merchantOrders" component={MerchantOrders} />
               <Route path="/app/userOrders" component={UserOrders} />
               <Route path="/app/publishApi" component={PublishApi} />
+              <Route path="/app/client" component={Client} />
+
               
               <Route path="/app/ref/table" component={RefTable} />
               <Route path="/app/ref/deleteTable" component={TableDelete} />
@@ -108,6 +112,8 @@ function Layout(props) {
 
               <Route path="/app/oauth/client" component={Client} />
               <Route path="/app/oauth/deleteClient" component={ClientDelete} />
+              <Route path="/app/oauth/service" component={Service} />
+              <Route path="/app/oauth/deleteService" component={ServiceDelete} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />

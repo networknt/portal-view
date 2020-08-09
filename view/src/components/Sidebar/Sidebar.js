@@ -13,9 +13,6 @@ import {
   Toc as OrderIcon,
 } from "@material-ui/icons";
 
-import AcUnitIcon from '@material-ui/icons/AcUnit';
-import LocationCity from '@material-ui/icons/LocationCity';
-import EmojiPeople from '@material-ui/icons/EmojiPeople';
 import AddAlert from '@material-ui/icons/AddAlert';
 import Business from '@material-ui/icons/Business';
 import AccountBox from '@material-ui/icons/AccountBox'
@@ -49,9 +46,10 @@ const structure = [
   },
   { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <TableIcon />,
       children: [
-        { label: "Restful", link: "/app/restful" },
-        { label: "GraphQL", link: "/app/graphql" },
-        { label: "Hybrid", link: "/app/hybrid" },
+        { label: "API Client", link: "/app/client" },
+        { label: "Restful API", link: "/app/restful" },
+        { label: "GraphQL API", link: "/app/graphql" },
+        { label: "Hybrid API", link: "/app/hybrid" },
         { label: "Schema Form", link: "/app/schemaform" },
         { label: "JSON Schema", link: "/app/jsonschema" },
       ]
