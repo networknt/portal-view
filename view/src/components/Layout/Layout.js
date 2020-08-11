@@ -54,6 +54,9 @@ import RelationForm from "../../pages/ref/RelationForm";
 import RelationDelete from "../../pages/ref/RelationDelete";
 import Client from "../../pages/oauth/Client";
 import ClientDelete from "../../pages/oauth/ClientDelete";
+import RefreshToken from "../../pages/oauth/RefreshToken";
+import RefreshTokenDelete from "../../pages/oauth/RefreshTokenDelete";
+
 import Service from "../../pages/oauth/Service";
 import ServiceDelete from "../../pages/oauth/ServiceDelete";
 import PublishApi from "../../pages/publish/PublishApi";
@@ -95,6 +98,8 @@ function Layout(props) {
               <Route path="/app/userOrders" component={UserOrders} />
               <Route path="/app/publishApi" component={PublishApi} />
               <Route path="/app/client" component={Client} />
+              <Route path="/app/refreshToken" component={RefreshToken} />
+              <Route path="/app/deleteRefreshToken" component={RefreshTokenDelete} />
 
               
               <Route path="/app/ref/table" component={RefTable} />

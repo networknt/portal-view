@@ -40,8 +40,7 @@ const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
   { id: 10, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
       children: [
-        { label: "Client", link: "/app/oauth/client" },
-        { label: "Service", link: "/app/oauth/service" },
+        { label: "Refresh Token", link: "/app/refreshToken" },
       ]
   },
   { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <TableIcon />,
