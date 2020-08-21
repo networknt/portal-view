@@ -8,10 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import Cookies from 'universal-cookie'
 import { useUserState } from "../../context/UserContext";
+import { timeConversion } from '../../Utils';
 
 const useRowStyles = makeStyles({
     root: {
@@ -23,6 +21,8 @@ const useRowStyles = makeStyles({
 
 function Row(props) {
     const { row, history, email, roles, host } = props;
+    const refreshToken = row.substring(0, row.indexOf('|'));
+    const timestamp = timeConversion((new Date()).getTime() - Number(row.substring(row.indexOf('|') + 1)));
     const classes = useRowStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
@@ -35,16 +35,11 @@ function Row(props) {
 
     return (
         <TableRow className={classes.root}>
-          <TableCell align="left">{row.refreshToken}</TableCell>
+          <TableCell align="left">{refreshToken}</TableCell>
           <TableCell align="left">{host}</TableCell>
-          <TableCell align="left">{row.userId}</TableCell>
-          <TableCell align="left">{row.userType}</TableCell>
-          <TableCell align="left">{row.roles}</TableCell>
-          <TableCell align="left">{row.clientId}</TableCell>
-          <TableCell align="left">{row.scope}</TableCell>
-          <TableCell align="left">{row.remember}</TableCell>
+          <TableCell align="left">{timestamp}</TableCell>
           <TableCell align="right">
-              <DeleteForeverIcon onClick={() => handleDelete(row.refreshToken)} />
+              <DeleteForeverIcon onClick={() => handleDelete(refreshToken)} />
           </TableCell>
         </TableRow>
     );
@@ -61,12 +56,7 @@ export default function RefreshTokenList(props) {
           <TableRow>
               <TableCell align="left">Refresh Token</TableCell>
               <TableCell align="left">Host</TableCell>
-              <TableCell align="left">User Id</TableCell>
-              <TableCell align="left">User Type</TableCell>
-              <TableCell align="left">Roles</TableCell>
-              <TableCell align="left">Client Id</TableCell>
-              <TableCell align="left">Scope</TableCell>
-              <TableCell align="left">Remember</TableCell>
+              <TableCell align="left">Timestamp</TableCell>
               <TableCell align="right">Delete</TableCell>
           </TableRow>
           </TableHead>
