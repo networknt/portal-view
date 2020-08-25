@@ -23,8 +23,10 @@ const useRowStyles = makeStyles({
 
 function Row(props) {
     const { row, history, email, roles, host } = props;
-    const refreshToken = row.substring(0, row.indexOf('|'));
-    const timestamp = timeConversion((new Date()).getTime() - Number(row.substring(row.indexOf('|') + 1)));
+    const fields = row.split("|");
+    const refreshToken = fields[0];
+    const userId = fields[1];
+    const timestamp = timeConversion((new Date()).getTime() - Number(fields[2]));
     const classes = useRowStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
@@ -76,6 +78,7 @@ function Row(props) {
     return (
         <TableRow className={classes.root}>
           <TableCell align="left">{refreshToken}</TableCell>
+          <TableCell align="left">{userId}</TableCell>
           <TableCell align="left">{host}</TableCell>
           <TableCell align="left">{timestamp}</TableCell>
           <TableCell align="right">
@@ -98,6 +101,7 @@ export default function RefreshTokenList(props) {
           <TableHead>
           <TableRow>
               <TableCell align="left">Refresh Token</TableCell>
+              <TableCell align="left">User Id</TableCell>
               <TableCell align="left">Host</TableCell>
               <TableCell align="left">Timestamp</TableCell>
               <TableCell align="right">Detail</TableCell>

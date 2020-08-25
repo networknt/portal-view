@@ -24,6 +24,10 @@ const useRowStyles = makeStyles({
 function Row(props) {
     const { row, history, email, roles, host } = props;
     const classes = useRowStyles();
+    const fields = row.split("|");
+    const clientId = fields[0];
+    const clientName = fields[1];
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
   
@@ -76,17 +80,17 @@ function Row(props) {
 
     return (
         <TableRow className={classes.root}>
-          <TableCell align="left">{row.clientId}</TableCell>
-          <TableCell align="left">{row.clientName}</TableCell>
+          <TableCell align="left">{clientId}</TableCell>
+          <TableCell align="left">{clientName}</TableCell>
           <TableCell align="left">{host}</TableCell>
           <TableCell align="right">
-              <VpnKeyIcon onClick={() => handleToken(row.clientId)} />
+              <VpnKeyIcon onClick={() => handleToken(clientId)} />
           </TableCell>
           <TableCell align="right">
-              <SystemUpdateIcon onClick={() => handleUpdate(row.clientId)} />
+              <SystemUpdateIcon onClick={() => handleUpdate(clientId)} />
           </TableCell>
           <TableCell align="right">
-              <DeleteForeverIcon onClick={() => handleDelete(row.clientId)} />
+              <DeleteForeverIcon onClick={() => handleDelete(clientId)} />
           </TableCell>
         </TableRow>
     );
