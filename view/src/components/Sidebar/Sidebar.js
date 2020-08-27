@@ -43,7 +43,7 @@ const structure = [
         { label: "Refresh Token", link: "/app/refreshToken" },
       ]
   },
-  { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <TableIcon />,
+  { id: 20, label: "Marketplace", role: "user", link: "/app/marketplace", icon: <TableIcon />,
       children: [
         { label: "API Client", link: "/app/client" },
         { label: "Restful API", link: "/app/restful" },
@@ -53,7 +53,7 @@ const structure = [
         { label: "JSON Schema", link: "/app/jsonschema" },
       ]
   },
-  { id: 23, label: "Publish", link: "/app/publish", icon: <PublishIcon />,
+  { id: 23, label: "Publish", role: "user", link: "/app/publish", icon: <PublishIcon />,
       children: [
         { label: "API Restful", link: "/app/publishApi?style=Restful" },
         { label: "API GraphQL", link: "/app/publishApi?style=GraphQL" },
