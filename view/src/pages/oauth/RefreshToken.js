@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TablePagination from '@material-ui/core/TablePagination';  
 import Cookies from 'universal-cookie'
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import { useUserState } from "../../context/UserContext";
 import useStyles from "./styles";
 import RefreshTokenList from "./RefreshTokenList";
