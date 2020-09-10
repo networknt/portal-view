@@ -77,6 +77,14 @@ const structure = [
   { id: 40, label: "News", link: "/app/news", icon: <UIElementsIcon /> },
   { id: 50, label: "Blog", link: "/app/blog", icon: <UIElementsIcon /> },
   { id: 60, label: "Forum", link: "/app/forum", icon: <UIElementsIcon /> },
+  { id: 65, label: "Training", role: "user", link: "/app/training", icon: <UIElementsIcon />,
+    children: [
+      { label: "Course", link: "/app/edu/course" },
+      { label: "Quiz", link: "/app/edu/quiz" },
+      { label: "Progress", link: "/app/edu/progress" },
+      { label: "Certificate", link: "/app/edu/certificate" }
+    ]
+  },
   { id: 70, label: "Support", link: "/app/support", icon: <SupportIcon /> },
   { id: 80, label: "FAQ", link: "/app/faq", icon: <FAQIcon /> },
   
@@ -117,6 +125,14 @@ const structure = [
       { label: "Create", link: "/app/forum/create" },
       { label: "Update", link: "/app/forum/update" },
       { label: "Delete", link: "/app/forum/delete" }
+    ]
+  },
+  { id: 160, label: "Training Admin", link: "/app/edu/admin", icon: <LibraryIcon />,
+    children: [
+      { label: "List Quiz", link: "/app/form/listQuiz" },
+      { label: "Create Quiz", link: "/app/form/createQuiz" },
+      { label: "Update Quiz", link: "/app/edu/updateQuiz" },
+      { label: "Delete Quiz", link: "/app/edu/deleteQuiz" }
     ]
   },
   { id: 200, type: "divider" },

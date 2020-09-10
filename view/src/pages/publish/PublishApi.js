@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import {useDropzone} from "react-dropzone";
-import SchemaForm from 'react-schema-form/lib/SchemaForm';
+import { SchemaForm, utils } from 'react-schema-form';
 import RcSelect from "react-schema-form-rc-select";
-import utils from 'react-schema-form/lib/utils';
 import Button from '@material-ui/core/Button';
 import forms from '../../data/Forms';
 import { useSiteState, useSiteDispatch } from "../../context/SiteContext";

@@ -2945,5 +2945,351 @@
       "valueIdFrom",
       "valueIdTo"
     ]
+  },
+  "listQuiz": {
+    "formId": "listQuiz",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "edu",
+        "action": "listQuiz",
+        "version": "0.1.0",
+        "title": "List Quiz",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Quiz",
+      "type": "object",
+      "properties": {
+        "quizType": {
+          "title": "Quiz Type",
+          "type": "string"
+        },
+        "category": {
+          "title": "Quiz Category",
+          "type": "string"
+        },
+        "subCategory": {
+          "title": "Quiz Sub Category",
+          "type": "string"
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        }
+      },
+      "required": [
+        "quizType",
+        "category",
+        "subCategory",
+        "active"
+      ]
+    },
+    "form": [
+      "quizType",
+      "category",
+      "subCategory",
+      "active"
+    ]
+  },
+  "createQuiz": {
+    "formId": "createQuiz",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "edu",
+        "action": "createQuiz",
+        "version": "0.1.0",
+        "title": "Create Quiz",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Quiz",
+      "type": "object",
+      "properties": {
+        "quizName": {
+          "title": "Quiz Name",
+          "type": "string"
+        },
+        "language": {
+          "title": "Quiz Language",
+          "type": "string"
+        },
+        "quizType": {
+          "title": "Quiz Type",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Quiz Purpose",
+          "type": "string"
+        },
+        "category": {
+          "title": "Quiz Category",
+          "type": "string"
+        },
+        "subCategory": {
+          "title": "Quiz Sub Category",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "answerType": {
+          "type": "string",
+          "title": "Answer Type",
+          "default": "single",
+          "enum": [
+            "single",
+            "multiple",
+            "text",
+            "image",
+            "audio",
+            "video"
+          ]
+        },
+        "answerOptions": {
+          "type": "array",
+          "maxItems": 6,
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "stirng",
+                "title": "Content"
+              },
+              "correct": {
+                "type": "boolean",
+                "default": false,
+                "title": "Correct?"
+              }
+            }
+          }
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        }
+      },
+      "required": [
+        "quizName",
+        "language",
+        "quizType",
+        "purpose",
+        "category",
+        "subCategory",
+        "active",
+        "question",
+        "answerType",
+        "answerOptions"
+      ]
+    },
+    "form": [
+      "quizName",
+      "language",
+      "quizType",
+      "purpose",
+      "category",
+      "subCategory",
+      "active",
+      {
+        "key": "question",
+        "type": "markdown"
+      },
+      "answerType",
+      {
+        "key": "answerOptions",
+        "type": "array",
+        "items": [
+          {
+            "key": "answerOptions[].correct",
+            "type": "checkbox"
+          },
+          
+          {
+            "key": "answerOptions[].content",
+            "type": "markdown"
+          }
+        ]
+      }
+    ]
+  },
+  "updateQuiz": {
+    "formId": "updateQuiz",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "edu",
+        "action": "updateQuiz",
+        "version": "0.1.0",
+        "title": "Update Quiz",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Quiz",
+      "type": "object",
+      "properties": {
+        "quizId": {
+          "title": "Quiz Id",
+          "type": "string",
+          "readonly": true
+        },
+        "quizName": {
+          "title": "Quiz Name",
+          "type": "string"
+        },
+        "language": {
+          "title": "Language",
+          "type": "string"
+        },
+        "quizType": {
+          "title": "Quiz Type",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Quiz Purpose",
+          "type": "string"
+        },
+        "category": {
+          "title": "Quiz Category",
+          "type": "string"
+        },
+        "subCategory": {
+          "title": "Quiz Sub Category",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "answerType": {
+          "type": "string",
+          "title": "Answer Type",
+          "default": "single",
+          "enum": [
+            "single",
+            "multiple",
+            "text",
+            "image",
+            "audio",
+            "video"
+          ]
+        },
+        "answerOptions": {
+          "type": "array",
+          "maxItems": 6,
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "stirng",
+                "title": "Content"
+              },
+              "correct": {
+                "type": "boolean",
+                "default": false,
+                "title": "Correct?"
+              }
+            }
+          }
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
+        }
+      },
+      "required": [
+        "quizId",
+        "quizName",
+        "language",
+        "quizType",
+        "purpose",
+        "category",
+        "subCategory",
+        "active",
+        "question",
+        "answer"
+      ]
+    },
+    "form": [
+      "quizId",
+      "quizName",
+      "language",
+      "quizType",
+      "purpose",
+      "category",
+      "subCategory",
+      "active",
+      {
+        "key": "question",
+        "type": "markdown"
+      },
+      "answerType",
+      {
+        "key": "answerOptions",
+        "type": "array",
+        "items": [
+          {
+            "key": "answerOptions[].correct",
+            "type": "checkbox"
+          },
+          
+          {
+            "key": "answerOptions[].content",
+            "type": "markdown"
+          }
+        ]
+      }
+    ]
+  },
+  "deleteQuiz": {
+    "formId": "deleteQuiz",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "edu",
+        "action": "deleteQuiz",
+        "version": "0.1.0",
+        "title": "Delete Quiz",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Quiz",
+      "type": "object",
+      "properties": {
+        "quizId": {
+          "title": "Quiz Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "quizId"
+      ]
+    },
+    "form": [
+      "quizId"
+    ]
   }
 }
