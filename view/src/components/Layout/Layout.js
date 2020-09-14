@@ -62,6 +62,9 @@ import Service from "../../pages/oauth/Service";
 import ServiceDelete from "../../pages/oauth/ServiceDelete";
 import PublishApi from "../../pages/publish/PublishApi";
 
+import Category from "../../pages/category/Category";
+import CategoryDelete from "../../pages/category/CategoryDelete";
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -120,6 +123,9 @@ function Layout(props) {
               <Route path="/app/oauth/deleteClient" component={ClientDelete} />
               <Route path="/app/oauth/service" component={Service} />
               <Route path="/app/oauth/deleteService" component={ServiceDelete} />
+
+              <Route path="/app/category/list" component={Category} />
+              <Route path="/app/category/deleteCategory" component={CategoryDelete} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />

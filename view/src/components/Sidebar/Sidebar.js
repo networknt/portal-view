@@ -49,7 +49,7 @@ const structure = [
         { label: "Restful API", link: "/app/restful" },
         { label: "GraphQL API", link: "/app/graphql" },
         { label: "Hybrid API", link: "/app/hybrid" },
-        { label: "Schema Form", link: "/app/schemaform" },
+        { label: "Schema Form", link: "/app/form/schemaFormFilter" },
         { label: "JSON Schema", link: "/app/jsonschema" },
       ]
   },
@@ -58,7 +58,7 @@ const structure = [
         { label: "API Restful", link: "/app/publishApi?style=Restful" },
         { label: "API GraphQL", link: "/app/publishApi?style=GraphQL" },
         { label: "API Hybrid", link: "/app/publishApi?style=Hybrid" },
-        { label: "Schema Form", link: "/app/publishSchemaForm" },
+        { label: "Schema Form", link: "/app/form/createSchemaForm" },
         { label: "JSON Schema", link: "/app/publishJsonSchema" },
       ]
   },
@@ -104,6 +104,14 @@ const structure = [
       { label: "Update", link: "/app/service/update" },
       { label: "Delete", link: "/app/service/delete" },
       { label: "Client Approval", link: "/app/service/approval" },
+    ]
+  },
+  { id: 125, label: "Category Admin", role: "admin", link: "/app/category/admin", icon: <LibraryIcon />,
+    children: [
+      { label: "List", link: "/app/category/list" },
+      { label: "Create", link: "/app/form/createCategory" },
+      { label: "Update", link: "/app/form/updateCategory" },
+      { label: "Delete", link: "/app/form/deleteCategory" }
     ]
   },
   { id: 130, label: "News Admin", role: "orgadm", link: "/app/news/admin", icon: <LibraryIcon />,
