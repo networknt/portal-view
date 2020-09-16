@@ -22,13 +22,13 @@ export const useApiPost = ({ url, headers, body }) => {
         const response = await fetch(url, { method: 'POST', body: JSON.stringify(body), headers, credentials: 'include', signal: abortController.signal });
         console.log(response);
         if (!response.ok) {
-          throw new Error(
-            `${response.status} ${response.statusText}`
-          );
+          const status = await response.json();
+          dispatch(requestFailure({ error: status }));
+        } else {
+          const data = await response.json();
+          console.log(data);
+          dispatch(requestSuccess({ data }));  
         }
-        const data = await response.json();
-        console.log(data);
-        dispatch(requestSuccess({ data }));  
       } catch (e) {
         // only call dispatch when we know the fetch was not aborted
         if (!abortController.signal.aborted) {
