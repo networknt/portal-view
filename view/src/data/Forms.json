@@ -704,7 +704,7 @@
         "roles": {
           "type": "string",
           "title": "Roles Separated with Space"
-        }, 
+        },
         "scope": {
           "type": "array",
           "items": {
@@ -2154,8 +2154,8 @@
         "tags": true,
         "maxTagTextLength": 20,
         "action": {
-          "url" : "/r/data?name=tag"
-        }      
+          "url": "/r/data?name=tag"
+        }
       }
     ]
   },
@@ -2323,7 +2323,7 @@
       "artifactId",
       "rootPackage",
       "handlerPackage",
-      "modelPackage",   
+      "modelPackage",
       "overwriteHandler",
       "overwriteHandlerTest",
       "overwriteModel",
@@ -3118,7 +3118,6 @@
             "key": "answerOptions[].correct",
             "type": "checkbox"
           },
-          
           {
             "key": "answerOptions[].content",
             "type": "markdown"
@@ -3253,7 +3252,6 @@
             "key": "answerOptions[].correct",
             "type": "checkbox"
           },
-          
           {
             "key": "answerOptions[].content",
             "type": "markdown"
@@ -3357,15 +3355,23 @@
       }
     ],
     "schema": {
-      "title": "Relation",
+      "title": "Create Schema Form",
       "type": "object",
       "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
         "formId": {
           "title": "Form Id",
           "type": "string"
         },
         "formName": {
           "title": "Form Name",
+          "type": "string"
+        },
+        "definition": {
+          "title": "Form Definition",
           "type": "string"
         },
         "formDesc": {
@@ -3376,69 +3382,55 @@
           "title": "Image URL",
           "type": "string"
         },
-        "categories": {
+        "taxonomies": {
           "type": "array",
-          "title": "Categories",
+          "title": "Taxonomies",
           "minItems": 1,
-          "maxItems": 5,
+          "maxItems": 10,
           "items": {
-            "type": "object",
-            "properties": {
-              "category": {
-                "type": "string",
-                "title": "Category"
-              },
-              "subcategory": {
-                "type": "string",
-                "title": "Sub Category"
-              }
-            },
-            "required": [
-              "category"
-            ]
+            "type": "string",
+            "title": "taxonomy"
           }
         }
       },
       "required": [
+        "host",
         "formId",
         "formName",
+        "definition",
         "formDesc",
         "imageUrl",
-        "categories"
+        "taxonomies"
       ]
     },
     "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
       "formId",
       "formName",
+      {
+        "key": "definition",
+        "type": "textarea",
+        "placeholder": "Copy/paste your schema form JSON definition here",
+        "rows": 20
+      },
       {
         "key": "formDesc",
         "type": "markdown"
       },
       "imageUrl",
       {
-        "key": "categories",
-        "add": "Add Categories",
-        "style": {
-          "add": "btn-success"
-        },
-        "items": [
-          {
-            "key": "categories[].category",
-            "type": "rc-select",
-            "filterOption": true,
-            "action": {
-              "url": "/r/data?name=schema-category"
-            }
-              },
-          {
-            "key": "categories[].subcategory",
-            "type": "rc-select",
-            "filterOption": true,
-            "action": {
-              "url": "/r/data?name=schema-subcategory&rela=schema-cat-sub&from=$(categories[].category)"
-            }
-          }
-        ]
+        "key": "taxonomies",
+        "type": "taxonomy",
+        "action": {
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schemaForm%22%7D%7D"
+        }
       }
     ]
   },
@@ -3456,9 +3448,14 @@
       }
     ],
     "schema": {
-      "title": "Schema Form",
+      "title": "Update Schema Form",
       "type": "object",
       "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
         "formId": {
           "title": "Form Id",
           "type": "string",
@@ -3466,6 +3463,10 @@
         },
         "formName": {
           "title": "Form Name",
+          "type": "string"
+        },
+        "definition": {
+          "title": "Form Definition",
           "type": "string"
         },
         "formDesc": {
@@ -3476,46 +3477,49 @@
           "title": "Image URL",
           "type": "string"
         },
-        "categories": {
+        "taxonomies": {
           "type": "array",
-          "title": "Categories",
+          "title": "Taxonomies",
           "minItems": 1,
-          "maxItems": 5,
+          "maxItems": 10,
           "items": {
-            "type": "object",
-            "properties": {
-              "category": {
-                "type": "string",
-                "title": "Category"
-              },
-              "subcategory": {
-                "type": "string",
-                "title": "Sub Category"
-              }
-            },
-            "required": [
-              "category"
-            ]
+            "type": "string",
+            "title": "taxonomy"
           }
         }
       },
       "required": [
+        "host",
         "formId",
         "formName",
+        "definition",
         "formDesc",
         "imageUrl",
-        "categories"
+        "taxonomies"
       ]
     },
     "form": [
+      "host",
       "formId",
       "formName",
+      {
+        "key": "definition",
+        "type": "textarea",
+        "placeholder": "Copy/paste your schema form JSON definition here",
+        "rows": 20
+      },
       {
         "key": "formDesc",
         "type": "markdown"
       },
       "imageUrl",
-      "categories"
+      {
+        "key": "taxonomies",
+        "type": "taxonomy",
+        "action": {
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schemaForm%22%7D%7D"
+        }
+      }
     ]
   },
   "deleteSchemaForm": {
@@ -3535,16 +3539,22 @@
       "title": "Schema Form",
       "type": "object",
       "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
         "formId": {
           "title": "Form Id",
           "type": "string"
         }
       },
       "required": [
+        "host",
         "formId"
       ]
     },
     "form": [
+      "host",
       "formId"
     ]
   },
@@ -3582,7 +3592,7 @@
           "type": "array",
           "title": "Categories",
           "maxItems": 100,
-          "minItems":1,
+          "minItems": 1,
           "items": {
             "type": "object",
             "properties": {
@@ -3590,21 +3600,8 @@
                 "title": "Label",
                 "type": "string"
               },
-              "code": {
-                "title": "Code",
-                "type": "string"
-              },
-              "type": {
-                "title": "Type",
-                "type": "string",
-                "enum": [
-                  "volcabulary",
-                  "term"
-                ],
-                "default": "volcabulary"
-              },
-              "description": {
-                "title": "Description",
+              "value": {
+                "title": "Value",
                 "type": "string"
               },
               "children": {
@@ -3617,21 +3614,8 @@
                       "title": "Label",
                       "type": "string"
                     },
-                    "code": {
-                      "title": "Code",
-                      "type": "string"
-                    },
-                    "type": {
-                      "title": "Type",
-                      "type": "string",
-                      "enum": [
-                        "volcabulary",
-                        "term"
-                      ],
-                      "default": "term"
-                    },
-                    "description": {
-                      "title": "Description",
+                    "value": {
+                      "title": "Value",
                       "type": "string"
                     },
                     "children": {
@@ -3644,21 +3628,8 @@
                             "title": "Label",
                             "type": "string"
                           },
-                          "code": {
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "type": {
-                            "title": "Type",
-                            "type": "string",
-                            "enum": [
-                              "volcabulary",
-                              "term"
-                            ],
-                            "default": "term"
-                          },
-                          "description": {
-                            "title": "Description",
+                          "value": {
+                            "title": "Value",
                             "type": "string"
                           },
                           "children": {
@@ -3671,53 +3642,35 @@
                                   "title": "Label",
                                   "type": "string"
                                 },
-                                "code": {
-                                  "title": "Code",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "title": "Type",
-                                  "type": "string",
-                                  "enum": [
-                                    "volcabulary",
-                                    "term"
-                                  ],
-                                  "default": "term"
-                                },
-                                "description": {
-                                  "title": "Description",
+                                "value": {
+                                  "title": "Value",
                                   "type": "string"
                                 }
-                                  
                               },
                               "required": [
                                 "label",
-                                "code",
-                                "type"
+                                "value"
                               ]
                             }
-                          }                          
+                          }
                         },
                         "required": [
                           "label",
-                          "code",
-                          "type"
+                          "value"
                         ]
                       }
                     }
                   },
                   "required": [
                     "label",
-                    "code",
-                    "type"
+                    "value"
                   ]
                 }
               }
             },
             "required": [
               "label",
-              "code",
-              "type"
+              "value"
             ]
           }
         }
@@ -3748,30 +3701,22 @@
         },
         "items": [
           "categories[].label",
-          "categories[].code",
-          "categories[].type",
-          "categories[].description",
+          "categories[].value",
           {
             "key": "categories[].children",
             "items": [
               "categories[].children[].label",
-              "categories[].children[].code",
-              "categories[].children[].type",
-              "categories[].children[].description",
+              "categories[].children[].value",
               {
                 "key": "categories[].children[].children",
                 "items": [
                   "categories[].children[].children[].label",
-                  "categories[].children[].children[].code",
-                  "categories[].children[].children[].type",
-                  "categories[].children[].children[].description",
+                  "categories[].children[].children[].value",
                   {
                     "key": "categories[].children[].children[].children",
                     "items": [
                       "categories[].children[].children[].children[].label",
-                      "categories[].children[].children[].children[].code",
-                      "categories[].children[].children[].children[].type",
-                      "categories[].children[].children[].children[].description"
+                      "categories[].children[].children[].children[].value"
                     ]
                   }
                 ]
@@ -3818,7 +3763,7 @@
           "type": "array",
           "title": "Categories",
           "maxItems": 100,
-          "minItems":1,
+          "minItems": 1,
           "items": {
             "type": "object",
             "properties": {
@@ -3826,21 +3771,8 @@
                 "title": "Label",
                 "type": "string"
               },
-              "code": {
-                "title": "Code",
-                "type": "string"
-              },
-              "type": {
-                "title": "Type",
-                "type": "string",
-                "enum": [
-                  "volcabulary",
-                  "term"
-                ],
-                "default": "volcabulary"
-              },
-              "description": {
-                "title": "Description",
+              "value": {
+                "title": "Value",
                 "type": "string"
               },
               "children": {
@@ -3853,21 +3785,8 @@
                       "title": "Label",
                       "type": "string"
                     },
-                    "code": {
-                      "title": "Code",
-                      "type": "string"
-                    },
-                    "type": {
-                      "title": "Type",
-                      "type": "string",
-                      "enum": [
-                        "volcabulary",
-                        "term"
-                      ],
-                      "default": "term"
-                    },
-                    "description": {
-                      "title": "Description",
+                    "value": {
+                      "title": "Value",
                       "type": "string"
                     },
                     "children": {
@@ -3880,21 +3799,8 @@
                             "title": "Label",
                             "type": "string"
                           },
-                          "code": {
-                            "title": "Code",
-                            "type": "string"
-                          },
-                          "type": {
-                            "title": "Type",
-                            "type": "string",
-                            "enum": [
-                              "volcabulary",
-                              "term"
-                            ],
-                            "default": "term"
-                          },
-                          "description": {
-                            "title": "Description",
+                          "value": {
+                            "title": "Value",
                             "type": "string"
                           },
                           "children": {
@@ -3907,53 +3813,35 @@
                                   "title": "Label",
                                   "type": "string"
                                 },
-                                "code": {
-                                  "title": "Code",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "title": "Type",
-                                  "type": "string",
-                                  "enum": [
-                                    "volcabulary",
-                                    "term"
-                                  ],
-                                  "default": "term"
-                                },
-                                "description": {
-                                  "title": "Description",
+                                "value": {
+                                  "title": "Value",
                                   "type": "string"
                                 }
-                                  
                               },
                               "required": [
                                 "label",
-                                "code",
-                                "type"
+                                "value"
                               ]
                             }
-                          }                          
+                          }
                         },
                         "required": [
                           "label",
-                          "code",
-                          "type"
+                          "value"
                         ]
                       }
                     }
                   },
                   "required": [
                     "label",
-                    "code",
-                    "type"
+                    "value"
                   ]
                 }
               }
             },
             "required": [
               "label",
-              "code",
-              "type"
+              "value"
             ]
           }
         }
@@ -3977,30 +3865,22 @@
         },
         "items": [
           "categories[].label",
-          "categories[].code",
-          "categories[].type",
-          "categories[].description",
+          "categories[].value",
           {
             "key": "categories[].children",
             "items": [
               "categories[].children[].label",
-              "categories[].children[].code",
-              "categories[].children[].type",
-              "categories[].children[].description",
+              "categories[].children[].value",
               {
                 "key": "categories[].children[].children",
                 "items": [
                   "categories[].children[].children[].label",
-                  "categories[].children[].children[].code",
-                  "categories[].children[].children[].type",
-                  "categories[].children[].children[].description",
+                  "categories[].children[].children[].value",
                   {
                     "key": "categories[].children[].children[].children",
                     "items": [
                       "categories[].children[].children[].children[].label",
-                      "categories[].children[].children[].children[].code",
-                      "categories[].children[].children[].children[].type",
-                      "categories[].children[].children[].children[].description"
+                      "categories[].children[].children[].children[].value"
                     ]
                   }
                 ]

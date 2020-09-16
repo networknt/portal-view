@@ -108,7 +108,7 @@ export default function Category(props) {
   }
 
   const { isLoading, data, error } = useApiGet({url, headers, callback});
-
+  console.log(isLoading, data, error);
   const handleCreate = () => {
     props.history.push({pathname: '/app/form/createCategory', state: { data : { host }}});
   }
