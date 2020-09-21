@@ -20,7 +20,7 @@ export const useApiGet = ({ url, headers, callback }) => {
         const cookies = new Cookies();
         Object.assign(headers, {'X-CSRF-TOKEN': cookies.get('csrf')})
         const response = await fetch(url, { headers, credentials: 'include', signal: abortController.signal });
-        console.log(response.ok, response.status);
+        console.log(url, response.status);
         if (!response.ok) {
           const status = await response.json();
           console.log("error", status);

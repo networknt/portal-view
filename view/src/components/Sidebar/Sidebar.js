@@ -121,9 +121,10 @@ const structure = [
       { label: "Delete", link: "/app/news/delete" }
     ]
   },
-  { id: 140, label: "Blog Admin", role: "orgadm", link: "/app/blog/admin", icon: <LibraryIcon />,
+  { id: 140, label: "Blog Admin", role: "admin", link: "/app/blog/admin", icon: <LibraryIcon />,
     children: [
-      { label: "Create", link: "/app/blog/create" },
+      { label: "List", link: "/app/blog/list" },
+      { label: "Create", link: "/app/form/createBlog" },
       { label: "Update", link: "/app/blog/update" },
       { label: "Delete", link: "/app/blog/delete" }
     ]

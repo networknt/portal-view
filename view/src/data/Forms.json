@@ -3890,5 +3890,293 @@
         ]
       }
     ]
+  },
+  "createBlog": {
+    "formId": "createBlog",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "createBlog",
+        "version": "0.1.0",
+        "title": "Create Blog Form",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Create Blog Form",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "id": {
+          "title": "Blog Id",
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status",
+          "enum": [
+            "draft",
+            "published"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Title"
+        },
+        "body": {
+          "type": "string",
+          "description": "Body"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Summary"
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "featuredImageUrl": {
+          "type": "string",
+          "description": "Featured Image URL"
+        },
+        "commentStatus": {
+          "type": "string",
+          "description": "Comment Open or Closed",
+          "default": "O",
+          "enum":[
+            "O",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "host",
+        "id",
+        "status",
+        "title",
+        "body",
+        "summary",
+        "categories",
+        "tags",
+        "commentStatus"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "id",
+      "status",
+      "title",
+      {
+        "key": "body",
+        "type": "markdown"
+      },
+      {
+        "key": "summary",
+        "type": "textarea",
+        "placeholder": "Plain text summary",
+        "rows": 5
+      },
+      {
+        "key": "categories",
+        "type": "taxonomy",
+        "action": {
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+        }
+      },
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+            "url" : "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+        }
+      },
+      "featuredImageUrl",
+      {
+        "key": "commentStatus",
+        "titleMap": [
+          {"value": "O", "name": "Open"},
+          {"value": "C", "name": "Closed"}
+        ]            
+      }
+    ]
+  },
+  "updateBlog": {
+    "formId": "updateBlog",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateBlog",
+        "version": "0.1.0",
+        "title": "Update Blog",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Update Blog Form",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
+        "id": {
+          "title": "Blog Id",
+          "type": "string",
+          "readonly": true
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "enum": [
+            "draft",
+            "published"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "body": {
+          "type": "string",
+          "title": "Body"
+        },
+        "summary": {
+          "type": "string",
+          "title": "Summary"
+        },
+        "author": {
+          "type": "string",
+          "title": "Author Id",
+          "readonly": true
+        },
+        "publishDate": {
+          "type": "number",
+          "title": "Publish Date",
+          "readonly": true
+        },
+        "categories": {
+          "type": "array",
+          "title": "Categories",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "title": "Tags",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "featuredImageUrl": {
+          "type": "string",
+          "title": "Featured Image URL"
+        },
+        "commentStatus": {
+          "type": "string",
+          "title": "Comment Open or Closed",
+          "default": "O",
+          "enum":[
+            "O",
+            "C"
+          ]
+        },
+        "commentCount": {
+          "type": "integer",
+          "title": "Number of comments",
+          "readonly": true
+        }
+      },
+      "required": [
+        "host",
+        "id",
+        "status",
+        "title",
+        "body",
+        "summary",
+        "author",
+        "publishDate",
+        "categories",
+        "tags",
+        "commentStatus",
+        "commentCount"
+      ]
+    },
+    "form": [
+      "host",
+      "id",
+      "status",
+      "title",
+      {
+        "key": "body",
+        "type": "markdown"
+      },
+      {
+        "key": "summary",
+        "type": "textarea",
+        "placeholder": "Plain text summary",
+        "rows": 5
+      },
+      "author",
+      "publishDate",
+      {
+        "key": "categories",
+        "type": "taxonomy",
+        "action": {
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+        }
+      },
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+            "url" : "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+        }
+      },
+      "featuredImageUrl",
+      {
+        "key": "commentStatus",
+        "titleMap": [
+          {"value": "O", "name": "Open"},
+          {"value": "C", "name": "Closed"}
+        ]            
+      },
+      "commentCount"
+   ]
   }
 }
