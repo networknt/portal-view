@@ -65,8 +65,9 @@ import PublishApi from "../../pages/publish/PublishApi";
 import Category from "../../pages/category/Category";
 import CategoryDelete from "../../pages/category/CategoryDelete";
 
-import Blog from "../../pages/blog/Blog";
+import BlogAdmin from "../../pages/blog/BlogAdmin";
 import BlogDelete from "../../pages/blog/BlogDelete";
+import BlogList from "../../pages/blog/BlogList";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -130,9 +131,10 @@ function Layout(props) {
               <Route path="/app/category/list" component={Category} />
               <Route path="/app/category/deleteCategory" component={CategoryDelete} />
 
-              <Route path="/app/blog/list" component={Blog} />
+              <Route path="/app/blog/adminList" component={BlogAdmin} />
               <Route path="/app/blog/deleteBlog" component={BlogDelete} />
-
+              <Route path="/app/blog/blogList" component={BlogList} />
+              
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />
               <Route path="/app/covid/deleteCity" component={DeleteCity} />

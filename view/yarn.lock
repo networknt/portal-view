@@ -8167,7 +8167,7 @@ object-keys@^1.0.12, object-keys@^1.1.1:
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
   integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
 
-object-path@0.11.4:
+object-path@0.11.4, object-path@^0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
   integrity sha1-NwrnUvvzfePqcKhhwju6iRVpGUk=
@@ -9961,36 +9961,23 @@ react-router@5.2.0, react-router@^5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-schema-form-rc-select@^0.3.14:
-  version "0.3.14"
-  resolved "https://registry.yarnpkg.com/react-schema-form-rc-select/-/react-schema-form-rc-select-0.3.14.tgz#51efa3501e1c1a12c2b11357485172d015d99cdf"
-  integrity sha512-AV8ANwrZJ92FhPEkj49ZzCzZ4Li0NJjLHIZHMh9ZaXqduygb2s/0Y12phph27ocqBTH84w1CPC3EvGTJp7/mxQ==
+react-schema-form-rc-select@^0.3.16:
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/react-schema-form-rc-select/-/react-schema-form-rc-select-0.3.16.tgz#7a9398c3d3ca33d9ce299b5b86285d131c40966b"
+  integrity sha512-KK5b9CpHJIZIYy8Q667WPlMmGBN6QbZ00uZ6j6LkeFXxhWY1MQnW/wDVKcwEww1iMfIENr5QP33iUx8ijV+gpQ==
   dependencies:
     classnames "^2.2.6"
     lodash "^4.17.15"
+    object-path "^0.11.4"
     objectpath "^1.2.2"
     rc-select "^9.2.1"
-    react-schema-form "^0.8.4"
+    react-schema-form "^0.9.9"
     tv4 "^1.3.0"
 
-react-schema-form@^0.8.4:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/react-schema-form/-/react-schema-form-0.8.8.tgz#002f5ffd89e9ad8b8525308d008aaef24992b93f"
-  integrity sha512-Hdy6stIgmqqShDLyETagSNYE1s3IhFl6xwSJP5huUTJBq4V/1XSklfoca4ORIgHsBDeT/X1PhTrc8JxGsNKPYA==
-  dependencies:
-    classnames "^2.2.6"
-    lodash "^4.17.15"
-    notevil "^1.3.2"
-    objectpath "1.2.2"
-    prop-types "^15.7.2"
-    react-autosuggest "^9.4.3"
-    supports-color "^7.1.0"
-    tv4 "^1.3.0"
-
-react-schema-form@^0.9.7:
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/react-schema-form/-/react-schema-form-0.9.7.tgz#01f1843b570dbac6ad97fd5822243d4e4c9d5f8c"
-  integrity sha512-t+Gd+SnoziS5DRMDK3b3Q6LughiKOE167frtXlxNuRZvduwfsehknbAQpMqgBEguujlYyUuRZyP1rAtkkGbZZQ==
+react-schema-form@^0.9.9:
+  version "0.9.9"
+  resolved "https://registry.yarnpkg.com/react-schema-form/-/react-schema-form-0.9.9.tgz#8990f594cef5c74ac89d8e976da627690ec0c7e5"
+  integrity sha512-qKq5RsVE+oDi0B3Aic2vcgjFTXIaubMvSQupgXXUaTtbat+yEkUF0GFfl7rrDi3McpkbTF5lN2pR5mKAvKoalQ==
   dependencies:
     classnames "^2.2.6"
     lodash "^4.17.15"

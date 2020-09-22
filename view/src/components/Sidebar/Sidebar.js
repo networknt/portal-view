@@ -75,7 +75,7 @@ const structure = [
 
   { id: 30, label: "Notifications", role: "user", link: "/app/notifications", icon: <NotificationsIcon /> },
   { id: 40, label: "News", link: "/app/news", icon: <UIElementsIcon /> },
-  { id: 50, label: "Blog", link: "/app/blog", icon: <UIElementsIcon /> },
+  { id: 50, label: "Blog", link: "/app/blog/blogList", icon: <UIElementsIcon /> },
   { id: 60, label: "Forum", link: "/app/forum", icon: <UIElementsIcon /> },
   { id: 65, label: "Training", role: "user", link: "/app/training", icon: <UIElementsIcon />,
     children: [
@@ -123,7 +123,7 @@ const structure = [
   },
   { id: 140, label: "Blog Admin", role: "admin", link: "/app/blog/admin", icon: <LibraryIcon />,
     children: [
-      { label: "List", link: "/app/blog/list" },
+      { label: "List", link: "/app/blog/adminList" },
       { label: "Create", link: "/app/form/createBlog" },
       { label: "Update", link: "/app/blog/update" },
       { label: "Delete", link: "/app/blog/delete" }
