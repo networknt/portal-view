@@ -24,6 +24,7 @@ function UserProvider({ children }) {
   console.log("UserProvider is called...");
   const cookies = new Cookies();
   const email = cookies.get('userId');
+  const refreshToken = cookies.get('refreshToken');
   var [state, dispatch] = React.useReducer(userReducer, {
     isAuthenticated: !!email,
     email: email,
@@ -32,10 +33,10 @@ function UserProvider({ children }) {
     roles: cookies.get('roles')
   });
 
-  if(email == null) {
+  if(email == null && refreshToken != null) {
     // send a fake request to server to renew the access token from refreshToken 
     // in case you have set the remember me to true during login. 
-    console.log("email is null, renew the token...");
+    console.log("email is null and fetch is not done yet, renew the token...");
     const cmd = {
       host: 'lightapi.net',
       service: 'user',
@@ -56,7 +57,7 @@ function UserProvider({ children }) {
           // if other errors, then there would be no cookies. Only 404 is the right response in this case.
           // if we don't check the status code and blindly dispatch, we will go into a dead loop as there is userId available.
           dispatch({ type: "LOGIN_SUCCESS", isAuthenticated: !!cookies.get('userId'), email: cookies.get('userId'), roles: cookies.get('roles') });
-        }        
+        }
       } catch (e) {
         console.log(e);
       }
