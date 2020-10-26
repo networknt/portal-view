@@ -3362,11 +3362,11 @@
           "title": "Host",
           "type": "string"
         },
-        "formId": {
+        "id": {
           "title": "Form Id",
           "type": "string"
         },
-        "formName": {
+        "name": {
           "title": "Form Name",
           "type": "string"
         },
@@ -3374,7 +3374,7 @@
           "title": "Form Definition",
           "type": "string"
         },
-        "formDesc": {
+        "desc": {
           "title": "Form Description",
           "type": "string"
         },
@@ -3382,25 +3382,25 @@
           "title": "Image URL",
           "type": "string"
         },
-        "taxonomies": {
+        "categories": {
           "type": "array",
-          "title": "Taxonomies",
+          "title": "Categories",
           "minItems": 1,
           "maxItems": 10,
           "items": {
             "type": "string",
-            "title": "taxonomy"
+            "title": "category"
           }
         }
       },
       "required": [
         "host",
-        "formId",
-        "formName",
+        "id",
+        "name",
         "definition",
-        "formDesc",
+        "desc",
         "imageUrl",
-        "taxonomies"
+        "categories"
       ]
     },
     "form": [
@@ -3412,8 +3412,8 @@
           "url": "/r/data?name=host"
         }
       },
-      "formId",
-      "formName",
+      "id",
+      "name",
       {
         "key": "definition",
         "type": "textarea",
@@ -3421,15 +3421,15 @@
         "rows": 20
       },
       {
-        "key": "formDesc",
+        "key": "desc",
         "type": "markdown"
       },
       "imageUrl",
       {
-        "key": "taxonomies",
+        "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schemaForm%22%7D%7D"
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22SchemaForm%22%7D%7D"
         }
       }
     ]
@@ -3456,12 +3456,12 @@
           "type": "string",
           "readonly": true
         },
-        "formId": {
+        "id": {
           "title": "Form Id",
           "type": "string",
           "readonly": true
         },
-        "formName": {
+        "name": {
           "title": "Form Name",
           "type": "string"
         },
@@ -3469,7 +3469,7 @@
           "title": "Form Definition",
           "type": "string"
         },
-        "formDesc": {
+        "desc": {
           "title": "Form Description",
           "type": "string"
         },
@@ -3477,31 +3477,31 @@
           "title": "Image URL",
           "type": "string"
         },
-        "taxonomies": {
+        "categories": {
           "type": "array",
-          "title": "Taxonomies",
+          "title": "Categories",
           "minItems": 1,
           "maxItems": 10,
           "items": {
             "type": "string",
-            "title": "taxonomy"
+            "title": "category"
           }
         }
       },
       "required": [
         "host",
-        "formId",
-        "formName",
+        "id",
+        "name",
         "definition",
-        "formDesc",
+        "desc",
         "imageUrl",
-        "taxonomies"
+        "categories"
       ]
     },
     "form": [
       "host",
-      "formId",
-      "formName",
+      "id",
+      "name",
       {
         "key": "definition",
         "type": "textarea",
@@ -3509,12 +3509,12 @@
         "rows": 20
       },
       {
-        "key": "formDesc",
+        "key": "desc",
         "type": "markdown"
       },
       "imageUrl",
       {
-        "key": "taxonomies",
+        "key": "categories",
         "type": "taxonomy",
         "action": {
           "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schemaForm%22%7D%7D"
@@ -3523,7 +3523,7 @@
     ]
   },
   "deleteSchemaForm": {
-    "formId": "deleteSchemaForm",
+    "id": "deleteSchemaForm",
     "actions": [
       {
         "host": "lightapi.net",
@@ -3543,19 +3543,19 @@
           "title": "Host",
           "type": "string"
         },
-        "formId": {
+        "id": {
           "title": "Form Id",
           "type": "string"
         }
       },
       "required": [
         "host",
-        "formId"
+        "id"
       ]
     },
     "form": [
       "host",
-      "formId"
+      "id"
     ]
   },
   "createCategory": {
@@ -3918,23 +3918,20 @@
         },
         "status": {
           "type": "string",
-          "description": "Status",
           "enum": [
             "draft",
             "published"
           ]
         },
         "title": {
-          "type": "string",
-          "description": "Title"
+          "type": "string"
         },
         "body": {
           "type": "string",
           "description": "Body"
         },
         "summary": {
-          "type": "string",
-          "description": "Summary"
+          "type": "string"
         },
         "categories": {
           "type": "array",
@@ -3953,12 +3950,10 @@
           }
         },
         "featuredImageUrl": {
-          "type": "string",
-          "description": "Featured Image URL"
+          "type": "string"
         },
         "commentStatus": {
           "type": "string",
-          "description": "Comment Open or Closed",
           "default": "O",
           "enum":[
             "O",
@@ -4004,7 +3999,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22Blog%22%7D%7D"
         }
       },
       {
@@ -4014,7 +4009,7 @@
         "tags": true,
         "maxTagTextLength": 20,
         "action": {
-            "url" : "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getTags%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22app%22%3A%22blog%22%7D%7D"
         }
       },
       "featuredImageUrl",
@@ -4155,7 +4150,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22Blog%22%7D%7D"
         }
       },
       {
@@ -4165,7 +4160,7 @@
         "tags": true,
         "maxTagTextLength": 20,
         "action": {
-            "url" : "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
+          "url": "https://localhost/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getTags%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22app%22%3A%22blog%22%7D%7D"
         }
       },
       "featuredImageUrl",
