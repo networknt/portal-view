@@ -1,4 +1,28 @@
-export const timeConversion = (millisec) => {
+import MarkdownParser from './mdParser';
+
+export {
+    validateImageUrl,
+    timeConversion,
+    isJson,
+    MarkdownParser
+  }
+  
+const validateImageUrl = (url) => {
+    return new Promise(function(resolve, reject) {
+      const img = new Image();
+      img.onload = function() {
+        resolve(url);
+      };
+  
+      img.onerror = function(){
+        reject('The url of image is invalid.');
+      };
+  
+      img.src = url;
+    });
+}
+
+const timeConversion = (millisec) => {
     var seconds = (millisec / 1000).toFixed(1);
   
     var minutes = (millisec / (1000 * 60)).toFixed(1);
@@ -18,7 +42,7 @@ export const timeConversion = (millisec) => {
     }
 }
 
-export const isJson = (str) => {
+const isJson = (str) => {
     if (typeof str !== 'string') return false;
     try {
         const result = JSON.parse(str);
@@ -29,4 +53,3 @@ export const isJson = (str) => {
         return false;
     }
 }
-

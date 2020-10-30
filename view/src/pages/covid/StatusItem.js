@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 import { useUserState } from "../../context/UserContext";
 
 const StatusItem = React.memo(({isReadonly, deleteItem, category, item}) => {

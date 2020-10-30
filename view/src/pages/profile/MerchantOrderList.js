@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import Box from '@material-ui/core/Box';
 import Cookies from 'universal-cookie'
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 import { useUserState } from "../../context/UserContext";
 
 const useRowStyles = makeStyles({

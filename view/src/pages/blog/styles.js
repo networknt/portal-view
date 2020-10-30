@@ -84,4 +84,43 @@ export default makeStyles(theme => ({
     fontSize: "18px !important",
     marginLeft: theme.spacing(1),
   },
+  image: {
+    height: "250px",
+    width: "250px",
+    boxShadow: "none",
+    borderRadius: "8px",
+    transition: "all ease-in 300ms",
+  },
+  imageWrapper: {
+    marginRight: "30px",
+  },
+  itemWrapper: {
+    display: "flex",
+    padding: "26px 16px",
+    borderBottom: "1px solid #eee",
+    overflow: "hidden",
+  },
+  contentWrapper: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+  },
+  
+  title: {
+    maxHeight: "none",
+    lineHeight: 1.4,
+    fontWeight: 600,
+    whiteSpace: "pre-wrap",
+  },
+  infoWrapper: {
+    margin: "4px 0",
+    fontSize: "14px",
+    fontWeight: 600,
+  },
+
+  content: {
+    margin: "18px 0 0",
+  },
+            
 }));

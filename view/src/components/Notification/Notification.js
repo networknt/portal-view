@@ -23,7 +23,7 @@ import useStyles from "./styles";
 
 // components
 import { Typography } from "../Wrappers";
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 
 const typesIcons = {
   "e-commerce": <ShoppingCartIcon />,

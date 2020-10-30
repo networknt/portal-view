@@ -72,7 +72,21 @@ export default function BlogList(props) {
     };
   
     console.log(blogs);
+    let Blogs = undefined;
+    if (Array.isArray(blogs)) {
+      Blogs = blogs.map(data => (
+        <BlogListItem 
+          {...props}
+          data={data}
+          key={data.id}
+        />
+      ));
+    }
+  
     return (
-      <div>Blog List</div>      
+      <div>
+        {Blogs}        
+      </div>      
     );
 }
+

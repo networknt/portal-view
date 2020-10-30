@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import StatusItem from './StatusItem';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 import { useUserState } from "../../context/UserContext";
 
 export default function Subject(props) {

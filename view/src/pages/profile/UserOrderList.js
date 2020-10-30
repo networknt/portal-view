@@ -16,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 import { useApiGet } from '../../hooks/useApiGet';
 import { useUserState } from "../../context/UserContext";
 

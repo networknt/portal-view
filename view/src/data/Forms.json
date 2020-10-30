@@ -4125,8 +4125,7 @@
         "publishDate",
         "categories",
         "tags",
-        "commentStatus",
-        "commentCount"
+        "commentStatus"
       ]
     },
     "form": [
@@ -4170,8 +4169,7 @@
           {"value": "O", "name": "Open"},
           {"value": "C", "name": "Closed"}
         ]            
-      },
-      "commentCount"
+      }
    ]
   }
 }

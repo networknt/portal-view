@@ -16,7 +16,7 @@ import classNames from "classnames";
 import { useUserState } from "../../context/UserContext";
 import { useInterval } from '../../hooks/useInterval';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 import Cookies from 'universal-cookie'
 
 

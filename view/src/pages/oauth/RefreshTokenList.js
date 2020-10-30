@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import { useUserState } from "../../context/UserContext";
-import { timeConversion } from '../../Utils';
+import { timeConversion } from '../../utils';
 
 const useRowStyles = makeStyles({
     root: {
