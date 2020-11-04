@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
 import Cookies from 'universal-cookie'
+import TablePagination from '@material-ui/core/TablePagination';  
 import { useUserState } from "../../context/UserContext";
 import BlogListItem from "./BlogListItem";
 import useStyles from "./styles";
@@ -86,6 +87,15 @@ export default function BlogList(props) {
     return (
       <div>
         {Blogs}        
+        <TablePagination  
+            rowsPerPageOptions={[10, 25, 100]}  
+            component="div"  
+            count={count}  
+            rowsPerPage={rowsPerPage}  
+            page={page}  
+            onChangePage={handleChangePage}  
+            onChangeRowsPerPage={handleChangeRowsPerPage}  
+          />          
       </div>      
     );
 }
