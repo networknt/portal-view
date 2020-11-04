@@ -17,7 +17,14 @@ import AddAlert from '@material-ui/icons/AddAlert';
 import Business from '@material-ui/icons/Business';
 import AccountBox from '@material-ui/icons/AccountBox'
 import PublishIcon from '@material-ui/icons/Publish';
-
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import SecurityIcon from '@material-ui/icons/Security';
+import BookIcon from '@material-ui/icons/Book';
+import HelpIcon from '@material-ui/icons/Help';
+import ForumIcon from '@material-ui/icons/Forum';
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
@@ -38,12 +45,12 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  { id: 10, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <TypographyIcon />,
+  { id: 10, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <SecurityIcon />,
       children: [
         { label: "Refresh Token", link: "/app/refreshToken" },
       ]
   },
-  { id: 20, label: "Marketplace", role: "user", link: "/app/marketplace", icon: <TableIcon />,
+  { id: 20, label: "Marketplace", role: "user", link: "/app/marketplace", icon: <ShoppingBasketIcon />,
       children: [
         { label: "API Client", link: "/app/client" },
         { label: "Restful API", link: "/app/restful" },
@@ -59,7 +66,8 @@ const structure = [
         { label: "API GraphQL", link: "/app/publishApi?style=GraphQL" },
         { label: "API Hybrid", link: "/app/publishApi?style=Hybrid" },
         { label: "Schema Form", link: "/app/form/createSchemaForm" },
-        { label: "JSON Schema", link: "/app/publishJsonSchema" },
+        { label: "JSON Schema", link: "/app/form/createJsonSchema" },
+        { label: "Error Code", link: "/app/form/createErrorCode" },
       ]
   },
 
@@ -74,10 +82,10 @@ const structure = [
   },
 
   { id: 30, label: "Notifications", role: "user", link: "/app/notifications", icon: <NotificationsIcon /> },
-  { id: 40, label: "News", link: "/app/news", icon: <UIElementsIcon /> },
-  { id: 50, label: "Blog", link: "/app/blog/blogList", icon: <UIElementsIcon /> },
-  { id: 60, label: "Forum", link: "/app/forum", icon: <UIElementsIcon /> },
-  { id: 65, label: "Training", role: "user", link: "/app/training", icon: <UIElementsIcon />,
+  { id: 40, label: "News", link: "/app/news", icon: <AnnouncementIcon /> },
+  { id: 50, label: "Blog", link: "/app/blog/blogList", icon: <BookIcon /> },
+  { id: 60, label: "Forum", link: "/app/forum", icon: <ForumIcon /> },
+  { id: 65, label: "Training", role: "user", link: "/app/training", icon: <CastForEducationIcon />,
     children: [
       { label: "Course", link: "/app/edu/course" },
       { label: "Quiz", link: "/app/edu/quiz" },
@@ -85,7 +93,7 @@ const structure = [
       { label: "Certificate", link: "/app/edu/certificate" }
     ]
   },
-  { id: 70, label: "Support", link: "/app/support", icon: <SupportIcon /> },
+  { id: 70, label: "Support", link: "/app/support", icon: <HelpIcon /> },
   { id: 80, label: "FAQ", link: "/app/faq", icon: <FAQIcon /> },
   
   { id: 90, type: "divider", role: "orgadm" },
@@ -106,6 +114,7 @@ const structure = [
       { label: "Client Approval", link: "/app/service/approval" },
     ]
   },
+  { id: 122, type: "divider" },
   { id: 125, label: "Category Admin", role: "admin", link: "/app/category/admin", icon: <LibraryIcon />,
     children: [
       { label: "List", link: "/app/category/list" },
