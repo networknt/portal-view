@@ -70,6 +70,11 @@ import BlogDelete from "../../pages/blog/BlogDelete";
 import BlogList from "../../pages/blog/BlogList";
 import BlogItem from "../../pages/blog/BlogItem";
 
+import ErrorAdmin from "../../pages/error/ErrorAdmin";
+import ErrorDelete from "../../pages/error/ErrorDelete";
+import ErrorList from "../../pages/error/ErrorList";
+import ErrorItem from "../../pages/error/ErrorItem";
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -136,7 +141,12 @@ function Layout(props) {
               <Route path="/app/blog/deleteBlog" component={BlogDelete} />
               <Route path="/app/blog/blogList" component={BlogList} />
               <Route path="/app/blog/:host/:id" component={BlogItem} />
-              
+
+              <Route path="/app/error/adminList" component={ErrorAdmin} />
+              <Route path="/app/error/deleteBlog" component={ErrorDelete} />
+              <Route path="/app/error/blogList" component={ErrorList} />
+              <Route path="/app/error/:host/:errorCode" component={ErrorItem} />
+
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />
               <Route path="/app/covid/deleteCity" component={DeleteCity} />

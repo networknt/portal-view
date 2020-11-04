@@ -138,6 +138,14 @@ const structure = [
       { label: "Delete", link: "/app/blog/delete" }
     ]
   },
+  { id: 141, label: "Error Admin", role: "admin", link: "/app/error/admin", icon: <LibraryIcon />,
+    children: [
+      { label: "List", link: "/app/error/adminList" },
+      { label: "Create", link: "/app/form/createError" },
+      { label: "Update", link: "/app/error/update" },
+      { label: "Delete", link: "/app/error/delete" }
+    ]
+  },
   { id: 150, label: "Forum Admin", role: "orgadm", link: "/app/forum/admin", icon: <LibraryIcon />,
     children: [
       { label: "Create", link: "/app/forum/create" },
