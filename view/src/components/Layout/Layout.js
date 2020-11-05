@@ -72,7 +72,6 @@ import BlogItem from "../../pages/blog/BlogItem";
 
 import ErrorAdmin from "../../pages/error/ErrorAdmin";
 import ErrorDelete from "../../pages/error/ErrorDelete";
-import ErrorList from "../../pages/error/ErrorList";
 import ErrorItem from "../../pages/error/ErrorItem";
 
 // context
@@ -144,7 +143,6 @@ function Layout(props) {
 
               <Route path="/app/error/adminList" component={ErrorAdmin} />
               <Route path="/app/error/deleteBlog" component={ErrorDelete} />
-              <Route path="/app/error/blogList" component={ErrorList} />
               <Route path="/app/error/:host/:errorCode" component={ErrorItem} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
