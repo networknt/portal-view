@@ -66,8 +66,7 @@ export default function SchemaItem(props) {
                 <div>Categories: {schema.categories}</div>
                 <div>Tags: {schema.tags}</div>
                 <div>Schema: {schema.schema}</div>
-                <div>valid: {schema.valid}</div>
-                <div>invalid: {schema.invalid}</div>
+                <div>Example: {schema.example}</div>
             </div>
         )
     }

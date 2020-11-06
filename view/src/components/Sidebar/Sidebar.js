@@ -50,7 +50,7 @@ const structure = [
         { label: "Refresh Token", link: "/app/refreshToken" },
       ]
   },
-  { id: 20, label: "Marketplace", role: "user", link: "/app/marketplace", icon: <ShoppingBasketIcon />,
+  { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <ShoppingBasketIcon />,
       children: [
         { label: "API Client", link: "/app/client" },
         { label: "Restful API", link: "/app/restful" },

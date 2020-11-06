@@ -7,14 +7,12 @@ import Table from '@material-ui/core/Table';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
-
 import useStyles from "./styles";
-import { validateImageUrl, timeConversion } from "../../utils";
 
 export default function SchemaListItem(props) {
     const classes = useStyles();
     console.log(props);
-    const {data} = props;
+    const { data } = props;
     const toReadPage = {
         pathname: `/app/schema/${data.host}/${data.id}`,
         state: {
@@ -33,10 +31,10 @@ export default function SchemaListItem(props) {
                     </TableRow>
                     <TableRow className={classes.root}>
                         {
-                        data.summary.length > 300
+                            data.description.length > 300
                             ? (
                             <span>
-                                {data.summary.slice(0, 300) + ' ... '}
+                                {data.description.slice(0, 300) + ' ... '}
                                 <span className={classes.readMoreLink}>
                                 <Link to={toReadPage}>
                                     Read More
@@ -45,7 +43,7 @@ export default function SchemaListItem(props) {
                             </span>
                             ) : (
                             <span>
-                                {data.summary + ' '} &nbsp;
+                                {data.description + ' '} &nbsp;
                                 <span className={classes.readMoreLink}>
                                 <Link to={toReadPage}>
                                     Read More
@@ -75,6 +73,3 @@ const TagGroup = ({ tags }) => (
       }
     </div>
 );
-
-  
-

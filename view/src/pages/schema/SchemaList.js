@@ -29,7 +29,7 @@ export default function SchemaList(props) {
     const cmd = {
       host: 'lightapi.net',
       service: 'market',
-      action: 'getJsonSchema',
+      action: 'getJsonSchemaList',
       version: '0.1.0',
       data: { host, offset: page * rowsPerPage, limit: rowsPerPage }
     }
@@ -45,6 +45,7 @@ export default function SchemaList(props) {
           setSchemas([]);
         } else {
           const data = await response.json();
+          console.log("data", data);
           setSchemas(data.schemas);
           setCount(data.total)
         }
