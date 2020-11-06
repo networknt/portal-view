@@ -3429,7 +3429,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22SchemaForm%22%7D%7D"
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22form%22%7D%7D"
         }
       }
     ]
@@ -3517,7 +3517,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schemaForm%22%7D%7D"
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22form%22%7D%7D"
         }
       }
     ]
@@ -3797,6 +3797,357 @@
       "errorCode"
     ]
   },
+  "createJsonSchema": {
+    "formId": "createJsonSchema",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "createJsonSchema",
+        "version": "0.1.0",
+        "title": "Create Schema",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Create Schema",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "Schema Id"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status",
+          "enum": [
+            "draft",
+            "published"
+          ]
+        },
+        "version": {
+          "title": "Schema Version",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "v4",
+              "v6",
+              "v7",
+              "v2019-09"
+            ]
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Schema Name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Schema Description"
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact Email"
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "description": "Json Schema"
+        },
+        "example": {
+          "type": "string",
+          "description": "Json Example"
+        },
+        "commentStatus": {
+          "type": "string",
+          "description": "Comment Open or Closed",
+          "default": "O",
+          "enum": [
+            "O",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "host",
+        "id",
+        "status",
+        "version",
+        "name",
+        "description",
+        "categories",
+        "tags",
+        "schema",
+        "example",
+        "commentStatus"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "id",
+      "status",
+      {
+        "key": "version",
+        "type": "multiselect",
+        "titleMap": [
+          {
+            "value": "v4",
+            "name": "Draft-04"
+          },
+          {
+            "value": "v6",
+            "name": "Draft-06"
+          },
+          {
+            "value": "v7",
+            "name": "Draft-07"
+          },
+          {
+            "value": "v2019-09",
+            "name": "2019-09"
+          }
+        ]
+      },
+      "name",
+      "description",
+      "email",
+      {
+        "key": "categories",
+        "type": "taxonomy",
+        "action": {
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schema%22%7D%7D"
+        }
+      },
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getTags%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22app%22%3A%22schema%22%7D%7D"
+        }
+      },
+      {
+        "key": "schema",
+        "type": "textarea",
+        "placeholder": "Plain text json schema",
+        "rows": 10
+      },
+      {
+        "key": "example",
+        "type": "textarea",
+        "placeholder": "Plain text json examples",
+        "rows": 10
+      },
+      "commentStatus"
+    ]
+  },
+  "updateJsonSchema": {
+    "formId": "updateJsonSchema",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateJsonSchema",
+        "version": "0.1.0",
+        "title": "Update Schema",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Update Schema",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
+        "id": {
+          "type": "string",
+          "description": "Schema Id",
+          "readonly": true
+        },
+        "status": {
+          "type": "string",
+          "description": "Status",
+          "enum": [
+            "draft",
+            "published"
+          ]
+        },
+        "version": {
+          "title": "Schema Version",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "v4",
+              "v6",
+              "v7",
+              "v2019-09"
+            ]
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "Schema Name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Schema Description"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Owner Id",
+          "readonly": true
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact Email"
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "description": "Json Schema"
+        },
+        "example": {
+          "type": "string",
+          "description": "Json Example"
+        },
+        "commentStatus": {
+          "type": "string",
+          "description": "Comment Open or Closed",
+          "default": "O",
+          "enum": [
+            "O",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "host",
+        "id",
+        "status",
+        "version",
+        "name",
+        "description",
+        "owner",
+        "categories",
+        "tags",
+        "schema",
+        "example",
+        "commentStatus"
+      ]
+    },
+    "form": [
+      "host",
+      "id",
+      "status",
+      {
+        "key": "version",
+        "type": "multiselect",
+        "titleMap": [
+          {
+            "value": "v4",
+            "name": "Draft-04"
+          },
+          {
+            "value": "v6",
+            "name": "Draft-06"
+          },
+          {
+            "value": "v7",
+            "name": "Draft-07"
+          },
+          {
+            "value": "v2019-09",
+            "name": "2019-09"
+          }
+        ]
+      },
+      "name",
+      "description",
+      "owner",
+      "email",
+      {
+        "key": "categories",
+        "type": "taxonomy",
+        "action": {
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22schema%22%7D%7D"
+        }
+      },
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getTags%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22app%22%3A%22schema%22%7D%7D"
+        }
+      },
+      {
+        "key": "schema",
+        "type": "textarea",
+        "placeholder": "Plain text summary",
+        "rows": 10
+      },
+      {
+        "key": "example",
+        "type": "textarea",
+        "placeholder": "Plain text json examples",
+        "rows": 10
+      },
+      "commentStatus"
+    ]
+  },
+
   "createCategory": {
     "formId": "createCategory",
     "actions": [
@@ -4238,7 +4589,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22Blog%22%7D%7D"
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
         }
       },
       {
@@ -4388,7 +4739,7 @@
         "key": "categories",
         "type": "taxonomy",
         "action": {
-          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22Blog%22%7D%7D"
+          "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getCategoryByName%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22lightapi.net%22%2C%22name%22%3A%22blog%22%7D%7D"
         }
       },
       {

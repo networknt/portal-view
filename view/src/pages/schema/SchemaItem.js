@@ -4,26 +4,26 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { MarkdownParser, timeConversion } from '../../utils';
 import useStyles from "./styles";
 
-export default function BlogItem(props) {
+export default function SchemaItem(props) {
     const classes = useStyles();
     console.log(props.match.params.host);
     console.log(props.match.params.id);
     const host = props.match.params.host;
     const id = props.match.params.id;
-    const [blog, setBlog] = useState();
+    const [schema, setSchema] = useState();
     const [loading, setLoading] = useState(true);
     
     const cmd = {
         host: 'lightapi.net',
         service: 'market',
-        action: 'getBlogById',
+        action: 'getJsonSchemaById',
         version: '0.1.0',
         data: { host, id }
     }
   
     const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   
-    const queryBlogFn = async (url, headers) => {
+    const querySchemaFn = async (url, headers) => {
         try {
           setLoading(true);
           const response = await fetch(url, { headers, credentials: 'include'});
@@ -32,7 +32,7 @@ export default function BlogItem(props) {
             const error = await response.json();
           } else {
             const data = await response.json();
-            setBlog(data);
+            setSchema(data);
           }
           setLoading(false);
         } catch (e) {
@@ -44,21 +44,30 @@ export default function BlogItem(props) {
     useEffect(() => {
         const cookies = new Cookies();
         const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
-        queryBlogFn(url, headers);
+        querySchemaFn(url, headers);
     }, []);
     
     let wait;
     if(loading) {
         wait = <div><CircularProgress/></div>;
     } else {
-        console.log("blog = ", blog);
+        console.log("schema = ", schema);
         wait = (
             <div>
                 <h1 className={classes.title}>
-                    {blog.title}
+                    {schema.id}
                 </h1>
-                Posted by <span className={classes.author}>{blog.author}</span> at {timeConversion((new Date()).getTime() - blog.publishDate)}
-                <Content body={blog.body}/>
+                <div>Status: {schema.status}</div>
+                <div>Version: {schema.version}</div>
+                <div>Name: {schema.name}</div>
+                <div>Description: {schema.description}</div>
+                <div>Owner: {schema.owner}</div>
+                <div>Email: {schema.email}</div>
+                <div>Categories: {schema.categories}</div>
+                <div>Tags: {schema.tags}</div>
+                <div>Schema: {schema.schema}</div>
+                <div>valid: {schema.valid}</div>
+                <div>invalid: {schema.invalid}</div>
             </div>
         )
     }
@@ -69,23 +78,3 @@ export default function BlogItem(props) {
         </div>
     )
 }    
-
-const Content = ({ body }) => {
-    console.log("body = ", body);
-    const classes = useStyles();
-    const htmlOutput = MarkdownParser.render(body);
-  
-    const renderResult = {
-      __html: htmlOutput
-    };
-  
-    return (
-      <div className={classes.content}>
-        <div
-          className={'markdown-body'}
-          dangerouslySetInnerHTML={renderResult}
-        />
-      </div>
-    );
-};
-  

@@ -57,7 +57,7 @@ const structure = [
         { label: "GraphQL API", link: "/app/graphql" },
         { label: "Hybrid API", link: "/app/hybrid" },
         { label: "Schema Form", link: "/app/form/schemaFormFilter" },
-        { label: "JSON Schema", link: "/app/jsonschema" },
+        { label: "JSON Schema", link: "/app/schema/schemaList" },
       ]
   },
   { id: 23, label: "Publish", role: "user", link: "/app/publish", icon: <PublishIcon />,
@@ -144,6 +144,14 @@ const structure = [
       { label: "Create", link: "/app/form/createError" },
       { label: "Update", link: "/app/error/update" },
       { label: "Delete", link: "/app/error/delete" }
+    ]
+  },
+  { id: 142, label: "Schema Admin", role: "admin", link: "/app/schema/admin", icon: <LibraryIcon />,
+    children: [
+      { label: "List", link: "/app/schema/adminList" },
+      { label: "Create", link: "/app/form/createJsonSchema" },
+      { label: "Update", link: "/app/schema/update" },
+      { label: "Delete", link: "/app/schema/delete" }
     ]
   },
   { id: 150, label: "Forum Admin", role: "orgadm", link: "/app/forum/admin", icon: <LibraryIcon />,

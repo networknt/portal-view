@@ -74,6 +74,11 @@ import ErrorAdmin from "../../pages/error/ErrorAdmin";
 import ErrorDelete from "../../pages/error/ErrorDelete";
 import ErrorItem from "../../pages/error/ErrorItem";
 
+import SchemaAdmin from "../../pages/schema/SchemaAdmin";
+import SchemaDelete from "../../pages/schema/SchemaDelete";
+import SchemaList from "../../pages/schema/SchemaList";
+import SchemaItem from "../../pages/schema/SchemaItem";
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -144,6 +149,11 @@ function Layout(props) {
               <Route path="/app/error/adminList" component={ErrorAdmin} />
               <Route path="/app/error/deleteBlog" component={ErrorDelete} />
               <Route path="/app/error/:host/:errorCode" component={ErrorItem} />
+
+              <Route path="/app/schema/adminList" component={SchemaAdmin} />
+              <Route path="/app/schema/deleteSchema" component={SchemaDelete} />
+              <Route path="/app/schema/schemaList" component={SchemaList} />
+              <Route path="/app/schema/:host/:id" component={SchemaItem} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />
