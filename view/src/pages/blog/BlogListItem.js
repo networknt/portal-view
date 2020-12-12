@@ -62,7 +62,7 @@ export default function BlogListItem(props) {
                         <TableCell align="left">
                             Posted by <span className={classes.author}>{data.author}</span>
                         </TableCell>
-                        <TableCell align="right">
+                        <TableCell align="right" className={classes.timeConversion}>
                             {timeConversion((new Date()).getTime() - data.publishDate)}
                         </TableCell>
                     </TableRow>
