@@ -23,6 +23,9 @@ import MailMenu from "./MailMenu";
 import HomeMenu from "./HomeMenu";
 import CartMenu from './CartMenu';
 
+// router
+import { Link } from 'react-router-dom';
+
 // context
 import {
   useLayoutState,
@@ -35,7 +38,7 @@ import { useSiteState, useSiteDispatch } from "../../context/SiteContext";
 export default function Header(props) {
   //console.log("props= ", props);
 
-  var classes = useStyles();
+  const classes = useStyles();
 
   // global
   var layoutState = useLayoutState();
@@ -81,9 +84,11 @@ export default function Header(props) {
             />
           )}
         </IconButton>
-        <Typography variant="h6" weight="medium" className={classes.logotype}>
-          Light Portal
-        </Typography>
+        <Link to="/app/dashboard" className={classes.link}>
+          <Typography variant="h6" weight="medium" className={classes.logotype}>
+            Light Portal
+          </Typography>
+        </Link>
         <div className={classes.grow} />
         <div
           className={classNames(classes.search, {
