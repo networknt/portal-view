@@ -106,12 +106,18 @@ export default makeStyles(theme => ({
     flexDirection: "column",
     position: "relative",
   },
-  
   title: {
     maxHeight: "none",
     lineHeight: 1.4,
     fontWeight: 600,
     whiteSpace: "pre-wrap",
+  },
+  timeConversion: {
+    border: "1px solid #FFFFFF",
+    float: "right",
+    marginLeft: "5px",
+    position: "relative",
+    width: "204px",
   },
   infoWrapper: {
     margin: "4px 0",

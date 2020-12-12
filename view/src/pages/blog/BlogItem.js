@@ -57,7 +57,7 @@ export default function BlogItem(props) {
                 <h1 className={classes.title}>
                     {blog.title}
                 </h1>
-                Posted by <span className={classes.author}>{blog.author}</span> at {timeConversion((new Date()).getTime() - blog.publishDate)}
+                Posted by <span className={classes.author}>{blog.author}</span> {timeConversion((new Date()).getTime() - blog.publishDate)} ago
                 <Content body={blog.body}/>
             </div>
         )
