@@ -11,6 +11,7 @@ import { Typography } from "../../components/Wrappers";
 import Dot from "../../components/Sidebar/components/Dot";
 import { useUserState, useUserDispatch } from "../../context/UserContext";
 import Cookies from 'universal-cookie'
+import Link from '@material-ui/core/Link'
 
 export default function Dashboard(props) {
   var classes = useStyles();
@@ -64,7 +65,7 @@ export default function Dashboard(props) {
       <Grid container spacing={4}>
         <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
-            title="Share Knowledge"
+            title="Share Knowledge" 
             upperTitle
             className={classes.card}
             bodyClass={classes.fullHeightBody}
@@ -200,14 +201,14 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="https://www.youtube.com/channel/UCHCRMWJVXw8iB7zKxF55Byw" rel="noreferrer noopener" target="_blank">Demo Video</a>
+                    <Link href="https://www.youtube.com/channel/UCHCRMWJVXw8iB7zKxF55Byw" rel="noreferrer noopener" target="_blank">Demo Video</Link>
                   </Typography>
                   </div>
 
@@ -228,14 +229,14 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="https://github.com/networknt/portal-view" rel="noreferrer noopener" target="_blank">Portal-view</a>
+                    <Link href="https://github.com/networknt/portal-view" rel="noreferrer noopener" target="_blank">Portal-view</Link>
                   </Typography>
                   </div>
 
@@ -243,14 +244,14 @@ export default function Dashboard(props) {
               </div>  
               <div className={classes.performanceLegendWrapper}>
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="https://github.com/networknt" rel="noreferrer noopener" target="_blank">Light Platform</a>
+                    <Link href="https://github.com/networknt" rel="noreferrer noopener" target="_blank">Light Platform</Link>
                   </Typography>
                   </div>
 
@@ -273,14 +274,14 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="https://doc.networknt.com/" rel="noreferrer noopener" target="_blank">Documentation</a>                  
+                    <Link href="https://doc.networknt.com/" rel="noreferrer noopener" target="_blank">Documentation</Link>                  
                   </Typography>
                   </div>
 
@@ -295,30 +296,30 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="mailto:stevehu@gmail.com" target="_top">Send Mail</a>
+                    <Link href="mailto:stevehu@gmail.com" target="_top">Send Mail</Link>
                   </Typography>
                   </div>
 
                 </Grid>
               </div>  
 
-              <div className={classes.performanceLegendWrapper}>
+              <div className={classes.performanceLegendWrapper} >
                 <Grid item xs={12}>
-                  <div className={classes.legendElement}>
+                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
                     colorBrightness="secondary"
                     className={classes.legendElementText}
                   >
-                    <a href="https://gitter.im/networknt/light-portal" rel="noreferrer noopener" target="_blank">Gitter Chat</a>
+                    <Link href="https://gitter.im/networknt/light-portal" rel="noreferrer noopener" target="_blank">Gitter Chat</Link>
                   </Typography>
                   </div>
 

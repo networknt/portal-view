@@ -1,7 +1,7 @@
 import tinycolor from "tinycolor2";
 
-const primary = "#536DFE";
-const secondary = "#FF5C93";
+const primary = "#10427D";
+const secondary = "#EA6168";
 const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
@@ -58,12 +58,12 @@ export default {
         .toHexString(),
     },
     text: {
-      primary: "#4A4A4A",
-      secondary: "#6E6E6E",
-      hint: "#B9B9B9",
+      primary: "#212121",
+      secondary: "#1E2830",
+      hint: "#7288A1",
     },
     background: {
-      default: "#F6F7FF",
+      default: "#FCFCFC",
       light: "#F3F5FF",
     },
   },
