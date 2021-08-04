@@ -4,6 +4,18 @@ import { createMuiTheme } from "@material-ui/core";
 
 const overrides = {
   typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
     h1: {
       fontSize: "3rem",
     },
@@ -22,6 +34,7 @@ const overrides = {
     h6: {
       fontSize: "1.142rem",
     },
+    fontSize: '6rem',
   },
 };
 
