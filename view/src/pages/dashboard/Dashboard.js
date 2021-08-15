@@ -12,6 +12,8 @@ import Dot from "../../components/Sidebar/components/Dot";
 import { useUserState, useUserDispatch } from "../../context/UserContext";
 import Cookies from 'universal-cookie'
 import Link from '@material-ui/core/Link'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
 
 export default function Dashboard(props) {
   var classes = useStyles();
@@ -61,7 +63,15 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Bring the API producers and consumers together." button="Latest News" />
+    <Box className={classes.mainHeader}>
+      <Typography className={classes.mainTitle}>
+        Light Portal
+      </Typography>
+    </Box>
+      <PageTitle title="Bring the API producers and consumers together."/>
+      <Box className={classes.buttonHeader}>
+        <Button variant="contained" color="secondary" size="large">Latest News</Button>
+      </Box>
       <Grid container spacing={4}>
         <Grid item lg={3} md={8} sm={6} xs={12}>
           <Widget
@@ -201,7 +211,7 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement} >
                   <Dot color="primary" />
                   <Typography
                     color="text"
@@ -229,7 +239,7 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
@@ -244,7 +254,7 @@ export default function Dashboard(props) {
               </div>  
               <div className={classes.performanceLegendWrapper}>
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
@@ -274,7 +284,7 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
@@ -296,7 +306,7 @@ export default function Dashboard(props) {
               <div className={classes.performanceLegendWrapper}>
                 
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
@@ -310,9 +320,9 @@ export default function Dashboard(props) {
                 </Grid>
               </div>  
 
-              <div className={classes.performanceLegendWrapper} >
+              <div className={classes.performanceLegendWrapper}>
                 <Grid item xs={12}>
-                  <div className={classes.legendElement} style={{marginTop: "8px"}}>
+                  <div className={classes.legendElement}>
                   <Dot color="primary" />
                   <Typography
                     color="text"
