@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles(theme => ({
+  buttonHeader: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingBottom: "60px",
+  },
   card: {
     minHeight: "100%",
     display: "flex",
@@ -57,6 +63,7 @@ export default makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     marginRight: theme.spacing(2),
+    marginTop: "8px"
   },
   legendElementText: {
     marginLeft: theme.spacing(1),
@@ -112,4 +119,14 @@ export default makeStyles(theme => ({
     fontSize: "18px !important",
     marginLeft: theme.spacing(1),
   },
+  mainHeader: {
+    display: "flex",
+    marginTop: "70px",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  mainTitle: {
+    color: theme.palette.primary.main,
+    fontSize: "4rem",
+  }
 }));
