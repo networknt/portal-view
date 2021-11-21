@@ -79,6 +79,12 @@ import SchemaDelete from "../../pages/schema/SchemaDelete";
 import SchemaList from "../../pages/schema/SchemaList";
 import SchemaItem from "../../pages/schema/SchemaItem";
 
+import RuleAdmin from "../../pages/rule/RuleAdmin";
+import RuleDelete from "../../pages/rule/RuleDelete";
+import RuleList from "../../pages/rule/RuleList";
+import RuleItem from "../../pages/rule/RuleItem";
+
+
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -154,6 +160,11 @@ function Layout(props) {
               <Route path="/app/schema/deleteSchema" component={SchemaDelete} />
               <Route path="/app/schema/schemaList" component={SchemaList} />
               <Route path="/app/schema/:host/:id" component={SchemaItem} />
+
+              <Route path="/app/rule/adminList" component={RuleAdmin} />
+              <Route path="/app/rule/deleteRule" component={RuleDelete} />
+              <Route path="/app/rule/ruleList" component={RuleList} />
+              <Route path="/app/rule/:host/:id" component={RuleItem} />
 
               <Route path="/app/covid/cityRegistry" component={CityRegistry} />
               <Route path="/app/covid/cityProfile" component={CityProfile} />

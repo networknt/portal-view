@@ -58,6 +58,7 @@ const structure = [
         { label: "Hybrid API", link: "/app/hybrid" },
         { label: "Schema Form", link: "/app/form/schemaFormFilter" },
         { label: "JSON Schema", link: "/app/schema/schemaList" },
+        { label: "YAML Rule", link: "/app/rule/ruleList" },
       ]
   },
   { id: 23, label: "Publish", role: "user", link: "/app/publish", icon: <PublishIcon />,
@@ -68,6 +69,7 @@ const structure = [
         { label: "Schema Form", link: "/app/form/createSchemaForm" },
         { label: "JSON Schema", link: "/app/form/createJsonSchema" },
         { label: "Error Code", link: "/app/form/createErrorCode" },
+        { label: "YAML Rule", link: "/app/form/createRule" },
       ]
   },
 

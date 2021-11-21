@@ -4147,7 +4147,183 @@
       "commentStatus"
     ]
   },
-
+  "createRule": {
+    "formId": "createYamlRule",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "createRule",
+        "version": "0.1.0",
+        "title": "Create Rule",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Create Rule",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "ruleId": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Description"
+        },
+        "value": {
+          "type": "string",
+          "description": "Rule Body"
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Default Rule Service Id"
+        },
+        "buildNumber": {
+          "type": "string",
+          "description": "Default Rule Service Build Number"
+        }
+      },
+      "required": [
+        "host",
+        "ruleId",
+        "desc",
+        "value"
+    ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "ruleId",
+      "desc",
+      {
+        "key": "value",
+        "type": "textarea",
+        "placeholder": "YAML Rule Definition",
+        "rows": 10
+      },
+      "serviceId",
+      "buildNumber"
+    ]
+  },
+  "updateRule": {
+    "formId": "updateRule",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateRule",
+        "version": "0.1.0",
+        "title": "Update Rule",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Update Rule",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
+        "ruleId": {
+          "title": "Rule Id",
+          "type": "string",
+          "readonly": true
+        },
+        "desc": {
+          "type": "string",
+          "description": "Description"
+        },
+        "value": {
+          "type": "string",
+          "description": "Rule Body"
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Default Rule Service Id"
+        },
+        "buildNumber": {
+          "type": "string",
+          "description": "Default Rule Service Build Number"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Rule Owner",
+          "readonly": true
+        }
+      },
+      "required": [
+        "host",
+        "ruleId",
+        "desc",
+        "value"
+      ]
+    },
+    "form": [
+      "host",
+      "ruleId",
+      "desc",
+      {
+        "key": "value",
+        "type": "textarea",
+        "placeholder": "YAML Rule Definition",
+        "rows": 10
+      },
+      "serviceId",
+      "buildNumber",
+      "owner"
+    ]
+  },
+  "deleteRule": {
+    "id": "deleteRule",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "deleteRule",
+        "version": "0.1.0",
+        "title": "Delete Rule",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Delete Rule",
+      "type": "object",
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string"
+        },
+        "ruleId": {
+          "title": "Rule Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "ruleId"
+      ]
+    },
+    "form": [
+      "host",
+      "ruleId"
+    ]
+  },
   "createCategory": {
     "formId": "createCategory",
     "actions": [
