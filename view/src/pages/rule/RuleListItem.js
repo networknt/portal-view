@@ -1,12 +1,7 @@
 // this is a component to render an item in the BlogList component.
 import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie'
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
@@ -63,31 +58,15 @@ export default function RuleListItem(props) {
     };
 
     return (
-        <div className={classes.itemWrapper}>
-            <TableContainer component={Paper}>
-                <Table size="small" aria-label="table">
-                    <TableHead>
-                    <TableRow>
-                        <TableCell align="left">Rule Id</TableCell>
-                        <TableCell align="left">Host</TableCell>
-                        <TableCell align="right">Update</TableCell>
-                        <TableCell align="right">Delete</TableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    <TableRow className={classes.title}>
-                        <TableCell align="left">{data}</TableCell>
-                        <TableCell align="left">{host}</TableCell>
-                        <TableCell align="right">
-                            <SystemUpdateIcon onClick={() => handleUpdate(data)} />
-                        </TableCell>
-                        <TableCell align="right">
-                            <DeleteForeverIcon onClick={() => handleDelete(data)} />
-                        </TableCell>
-                    </TableRow>
-                    </TableBody>    
-                </Table>
-            </TableContainer>
-        </div>
+        <TableRow className={classes.title}>
+        <TableCell align="left">{data}</TableCell>
+        <TableCell align="left">{host}</TableCell>
+        <TableCell align="right">
+            <SystemUpdateIcon onClick={() => handleUpdate(data)} />
+        </TableCell>
+        <TableCell align="right">
+            <DeleteForeverIcon onClick={() => handleDelete(data)} />
+        </TableCell>
+        </TableRow>
     )
 }

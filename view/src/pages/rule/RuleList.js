@@ -1,6 +1,13 @@
 // this is a component to fetch a list of schemas and display them in pagination in marketplace
 import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie'
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';  
 import { useUserState } from "../../context/UserContext";
 import RuleListItem from "./RuleListItem";
@@ -78,7 +85,23 @@ export default function RuleList(props) {
   
     return (
       <div>
-        {Rules}        
+        <div className={classes.itemWrapper}>
+            <TableContainer component={Paper}>
+                <Table size="small" aria-label="table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell align="left">Rule Id</TableCell>
+                        <TableCell align="left">Host</TableCell>
+                        <TableCell align="right">Update</TableCell>
+                        <TableCell align="right">Delete</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {Rules}        
+                    </TableBody>    
+                </Table>
+            </TableContainer>
+        </div>
         <TablePagination  
             rowsPerPageOptions={[10, 25, 100]}  
             component="div"  
