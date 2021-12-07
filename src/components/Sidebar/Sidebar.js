@@ -18,6 +18,8 @@ import Business from '@material-ui/icons/Business';
 import AccountBox from '@material-ui/icons/AccountBox'
 import PublishIcon from '@material-ui/icons/Publish';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import AlarmIcon from '@material-ui/icons/Alarm';
+import PermDataSettingIcon from '@material-ui/icons/PermDataSetting';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
@@ -45,6 +47,9 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+  { id: 3, label: "Scheduler", link: "/app/scheduler", icon: <AlarmIcon />},
+  { id: 5, label: "Controller", link: "/app/controller", icon: <SportsEsportsIcon />},
+  { id: 7, label: "Configuration", link: "/app/configuration", icon: <PermDataSettingIcon />},
   { id: 10, label: "OAuth 2.0", role: "user", link: "/app/oauth", icon: <SecurityIcon />,
       children: [
         { label: "Refresh Token", link: "/app/refreshToken" },
