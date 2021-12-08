@@ -20,4 +20,7 @@ module.exports = function(app) {
   app.use(createProxyMiddleware('/r/data', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/authorization', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/logout', { target: 'https://local.lightapi.net', secure: false }));
+  app.use(createProxyMiddleware('/config-server', { target: 'https://local.lightapi.net', secure: false }));
+  app.use(createProxyMiddleware('/services', { target: 'https://local.lightapi.net', secure: false }));
+  app.use(createProxyMiddleware('/schedulers', { target: 'https://local.lightapi.net', secure: false }));
 };
