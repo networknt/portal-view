@@ -53,7 +53,7 @@
     "start": "react-scripts start",
     "startHttps": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
-    "build-dev": "REACT_APP_SIGNIN_URL=https://devsignin.lightapi.net?client_id=f7d42348-c647-4efb-a52d-4c5787421e72 react-scripts build",
+    "build-tst": "REACT_APP_SIGNIN_URL=https://devsignin.lightapi.net?client_id=f7d42348-c647-4efb-a52d-4c5787421e73 react-scripts build",
     "build-prd": "REACT_APP_SIGNIN_URL=https://signin.lightapi.net?client_id=8f66850d-16a2-4e81-977b-15a248a9ed7d react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
