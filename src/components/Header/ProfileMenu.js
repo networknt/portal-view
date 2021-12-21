@@ -21,7 +21,7 @@ export default function ProfileMenu(props) {
 
     const signIn = () => {
         // this is the dev url which is the default for local developement.
-        var url = "https://devsignin.lightapi.net?client_id=f7d42348-c647-4efb-a52d-4c5787421e73&user_type=customer&state=1222";
+        var url = "https://devsignin.lightapi.net?client_id=f7d42348-c647-4efb-a52d-4c5787421e72&user_type=customer&state=1222";
         if(process.env.REACT_APP_SIGNIN_URL) url = process.env.REACT_APP_SIGNIN_URL + "&user_type=customer&state=1222";
         window.location = url;
     }
