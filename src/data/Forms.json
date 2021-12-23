@@ -848,7 +848,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "/r/data?name=province&rela=ctry-prov&from={0}",
+          "params": ["country"]
         }
       },
       {
@@ -856,7 +857,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "/r/data?name=city&rela=prov-city&from={0}",
+          "params": ["province"]
         }
       },
       "postCode",
@@ -1025,7 +1027,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "/r/data?name=province&rela=ctry-prov&from={0}",
+          "params": ["country"]
         }
       },
       {
@@ -1033,7 +1036,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "/r/data?name=city&rela=prov-city&from={0}",
+          "params": ["province"]
         }
       },
       "postCode",
@@ -1095,7 +1099,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "/r/data?name=province&rela=ctry-prov&from={0}",
+          "params": ["country"]
         }
       },
       {
@@ -1103,7 +1108,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "/r/data?name=city&rela=prov-city&from={0}",
+          "params": ["province"]
         }
       },
       {
@@ -1119,7 +1125,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from={0}",
+          "params": ["category"]
         }
       }
     ]
@@ -1172,7 +1179,9 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "/r/data?name=province&rela=ctry-prov&from={0}",
+          "params": ["country"]
+
         }
       },
       {
@@ -1180,7 +1189,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "/r/data?name=city&rela=prov-city&from={0}",
+          "params": ["province"]
         }
       }
     ]
@@ -1247,7 +1257,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=province&rela=ctry-prov&from=$(country)"
+          "url": "/r/data?name=province&rela=ctry-prov&from={0}",
+          "params": ["country"]
         }
       },
       {
@@ -1255,7 +1266,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=city&rela=prov-city&from=$(province)"
+          "url": "/r/data?name=city&rela=prov-city&from={0}",
+          "params": ["province"]
         }
       },
       "latitude",
@@ -1381,7 +1393,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from={0}",
+          "params": ["category"]
         }
       },
       "latitude",
@@ -1447,7 +1460,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from=$(category)"
+          "url": "/r/data?name=covid-subcategory&rela=cov-cat&from={0}",
+          "params": ["category"]
         }
       },
       "latitude",
@@ -1719,7 +1733,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
+          "url": "/r/data?name=lob&rela=host-lob&from={0}",
+          "params": ["host"]
         }
       },
       "clientType",
@@ -1846,7 +1861,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
+          "url": "/r/data?name=lob&rela=host-lob&from={0}",
+          "params": ["host"]
         }
       },
       "clientId",
@@ -2136,7 +2152,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=lob&rela=host-lob&from=$(host)"
+          "url": "/r/data?name=lob&rela=host-lob&from={0}",
+          "params": ["host"]
         }
       },
       "style",
@@ -3336,7 +3353,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=schema-subcategory&rela=schema-cat-sub&from=$(category)"
+          "url": "/r/data?name=schema-subcategory&rela=schema-cat-sub&from={0}",
+          "params": ["category"]
         }
       }
     ]
