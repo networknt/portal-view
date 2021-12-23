@@ -68,9 +68,7 @@ const structure = [
   },
   { id: 23, label: "Publish", role: "user", link: "/app/publish", icon: <PublishIcon />,
       children: [
-        { label: "API Restful", link: "/app/publishApi?style=Restful" },
-        { label: "API GraphQL", link: "/app/publishApi?style=GraphQL" },
-        { label: "API Hybrid", link: "/app/publishApi?style=Hybrid" },
+        { label: "API Service", link: "/app/form/createService" },
         { label: "Schema Form", link: "/app/form/createSchemaForm" },
         { label: "JSON Schema", link: "/app/form/createJsonSchema" },
         { label: "Error Code", link: "/app/form/createErrorCode" },
