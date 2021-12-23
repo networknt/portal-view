@@ -1,103 +1,104 @@
-import React, { useState, useEffect } from "react";
 import {
-  IconButton,
-  Menu,
-  MenuItem,
-  Fab,
-} from "@material-ui/core";
-import {
+  Build as ManageIcon,
   MailOutline as MailIcon,
   Send as SendIcon,
-  Build as ManageIcon,
-} from "@material-ui/icons";
-import { Badge, Typography } from "../Wrappers/Wrappers";
-import UserAvatar from "../UserAvatar/UserAvatar";
-import classNames from "classnames";
-import { useUserState } from "../../context/UserContext";
+} from '@mui/icons-material';
+import { Fab, IconButton, Menu, MenuItem } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
+import { useUserState } from '../../context/UserContext';
 import { useInterval } from '../../hooks/useInterval';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { timeConversion } from '../../utils';
-import Cookies from 'universal-cookie'
-
+import UserAvatar from '../UserAvatar/UserAvatar';
+import { Badge, Typography } from '../Wrappers/Wrappers';
 
 export default function MailMenu(props) {
-    var [mailMenu, setMailMenu] = useState(null);
-    var [isMailsUnread, setIsMailsUnread] = useState(true);
-    var [messages, setMessages] = useState([]);
-    var [loading, setLoading] = useState(false);
-    var classes = props.classes;
-    var { email } = useUserState();
+  var [mailMenu, setMailMenu] = useState(null);
+  var [isMailsUnread, setIsMailsUnread] = useState(true);
+  var [messages, setMessages] = useState([]);
+  var [loading, setLoading] = useState(false);
+  var classes = props.classes;
+  var { email } = useUserState();
 
-    //console.log("csrf = ", csrf);
-    const cmd = {
-      host: 'lightapi.net',
-      service: 'user',
-      action: 'getPrivateMessage',
-      version: '0.1.0',
-      data: { email }
-    };
+  //console.log("csrf = ", csrf);
+  const cmd = {
+    host: 'lightapi.net',
+    service: 'user',
+    action: 'getPrivateMessage',
+    version: '0.1.0',
+    data: { email },
+  };
 
-    const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
+  const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
 
-    const queryMessageFn = async (url, headers) => {
-      try {
-        setLoading(true);
-        const response = await fetch(url, { headers, credentials: 'include'});
-        //console.log(response);
-        if (!response.ok) {
-          const error = await response.json();
-          //console.log(error);
-          setMessages([]);
-        } else {
-          const data = await response.json();
-          setMessages(data);
-        }
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
+  const queryMessageFn = async (url, headers) => {
+    try {
+      setLoading(true);
+      const response = await fetch(url, { headers, credentials: 'include' });
+      //console.log(response);
+      if (!response.ok) {
+        const error = await response.json();
+        //console.log(error);
         setMessages([]);
-        setLoading(false);
+      } else {
+        const data = await response.json();
+        setMessages(data);
       }
-    };
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      setMessages([]);
+      setLoading(false);
+    }
+  };
 
-    useEffect(() => {
-      const cookies = new Cookies();
-      const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
-      queryMessageFn(url, headers);
-    }, []);
+  useEffect(() => {
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
+    queryMessageFn(url, headers);
+  }, []);
 
-    useInterval(() => {
-      const cookies = new Cookies();
-      const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
-      queryMessageFn(url, headers);
-    }, 60000);
+  useInterval(() => {
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
+    queryMessageFn(url, headers);
+  }, 60000);
 
-    const sendMessage = () => {
-      console.log("sendMessage is callled");
-      props.history.push('/app/form/privateMessage');
-    };
+  const sendMessage = () => {
+    console.log('sendMessage is callled');
+    props.history.push('/app/form/privateMessage');
+  };
 
-    const manageMessages = () => {
-      console.log("manageMessages is callled");
-      props.history.push({pathname: '/app/messages', state: { data: messages }});
-    };
-    
-    //const { isLoading, data, error } = useApiGet({url, headers});
-    //console.log("messages", messages);
-    //console.log("error", error);
-    //console.log("isLoading", isLoading);
-    //const messages = data || [];
-    let wait;
-    if(loading) {
-      wait = <div><CircularProgress/></div>;
-    } else {
-      wait = (
-        <React.Fragment>
+  const manageMessages = () => {
+    console.log('manageMessages is callled');
+    props.history.push({
+      pathname: '/app/messages',
+      state: { data: messages },
+    });
+  };
+
+  //const { isLoading, data, error } = useApiGet({url, headers});
+  //console.log("messages", messages);
+  //console.log("error", error);
+  //console.log("isLoading", isLoading);
+  //const messages = data || [];
+  let wait;
+  if (loading) {
+    wait = (
+      <div>
+        <CircularProgress />
+      </div>
+    );
+  } else {
+    wait = (
+      <React.Fragment>
         <IconButton
           color="inherit"
           aria-haspopup="true"
           aria-controls="mail-menu"
-          onClick={e => {
+          onClick={(e) => {
             setMailMenu(e.currentTarget);
             setIsMailsUnread(false);
           }}
@@ -137,13 +138,13 @@ export default function MailMenu(props) {
               <div className={classes.messageNotificationSide}>
                 <UserAvatar color="primary" name={message.fromId} />
                 <Typography size="sm" color="text" colorBrightness="secondary">
-                  {timeConversion((new Date()).getTime() - message.timestamp)}
+                  {timeConversion(new Date().getTime() - message.timestamp)}
                 </Typography>
               </div>
               <div
                 className={classNames(
                   classes.messageNotificationSide,
-                  classes.messageNotificationBodySide,
+                  classes.messageNotificationBodySide
                 )}
               >
                 <Typography weight="medium" gutterBottom>
@@ -176,12 +177,8 @@ export default function MailMenu(props) {
             <ManageIcon className={classes.sendButtonIcon} />
           </Fab>
         </Menu>
-        </React.Fragment>
-      )  
-    }   
-    return (
-      <div>
-        {wait}  
-      </div>
-    )
+      </React.Fragment>
+    );
+  }
+  return <div>{wait}</div>;
 }

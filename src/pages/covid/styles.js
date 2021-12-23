@@ -1,16 +1,16 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   card: {
-    minHeight: "100%",
-    display: "flex",
-    flexDirection: "column",
+    minHeight: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   fullHeightBody: {
-    display: "flex",
+    display: 'flex',
     flexGrow: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   button: {
     '& > *': {
@@ -18,12 +18,12 @@ export default makeStyles(theme => ({
     },
   },
   clusterMarker: {
-    color: "#fff",
-    background: "#1978c8",
-    borderRadius: "50%",
-    padding: "10px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }
+    color: '#fff',
+    background: '#1978c8',
+    borderRadius: '50%',
+    padding: '10px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));

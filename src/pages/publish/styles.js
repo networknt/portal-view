@@ -1,8 +1,8 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@mui/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   hide: {
-    display: "none",
+    display: 'none',
   },
   table: {
     minWidth: 300,

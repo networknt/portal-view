@@ -1,7 +1,7 @@
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,15 +18,18 @@ export default function ValueForm(props) {
 
   const onChange = (event) => {
     setValueId(event.target.value);
-  }
-  
+  };
+
   const getLocales = () => {
-    props.history.push({pathname: '/app/ref/locale', state: { data : { valueId }}});
+    props.history.push({
+      pathname: '/app/ref/locale',
+      state: { data: { valueId } },
+    });
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="valueId" label="Value Id" onChange={onChange}/>
+      <TextField id="valueId" label="Value Id" onChange={onChange} />
       <Button variant="contained" color="primary" onClick={getLocales}>
         Get Locales
       </Button>

@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
-import TablePagination from '@material-ui/core/TablePagination';  
-import Cookies from 'universal-cookie'
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import { useUserState } from "../../context/UserContext";
-
-import useStyles from "./styles";
+// import AddBoxIcon from '@mui/material/icons/AddBox';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import CircularProgress from '@mui/material/CircularProgress';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import { makeStyles } from '@mui/styles';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
+import { useUserState } from '../../context/UserContext';
+import useStyles from './styles';
 
 const useRowStyles = makeStyles({
   root: {
@@ -33,60 +33,63 @@ function Row(props) {
   const [error, setError] = useState();
 
   const handleUpdate = () => {
-      const cmd = {
-          host: 'lightapi.net',
-          service: 'market',
-          action: 'getBlogById',
-          version: '0.1.0',
-          data: { host, id }
+    const cmd = {
+      host: 'lightapi.net',
+      service: 'market',
+      action: 'getBlogById',
+      version: '0.1.0',
+      data: { host, id },
+    };
+    const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
+    const callback = (data) => {
+      console.log('data = ', data);
+      history.push({ pathname: '/app/form/updateBlog', state: { data } });
+    };
+
+    const query = async (url, headers, callback) => {
+      try {
+        setLoading(true);
+        const response = await fetch(url, { headers, credentials: 'include' });
+        if (!response.ok) {
+          const error = await response.json();
+          setLoading(false);
+          setError(error.description);
+        } else {
+          const data = await response.json();
+          setLoading(false);
+          callback(data);
+        }
+      } catch (e) {
+        console.log(e);
+        setError(e);
+        setLoading(false);
       }
-      const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
-      const cookies = new Cookies();
-      const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
-      const callback = (data) => {
-          console.log("data = ", data);
-          history.push({pathname: '/app/form/updateBlog', state: { data }});
-      }
-      
-      const query = async (url, headers, callback) => {
-          try {
-            setLoading(true);
-            const response = await fetch(url, { headers, credentials: 'include'});
-            if (!response.ok) {
-              const error = await response.json();
-              setLoading(false);
-              setError(error.description);
-            } else {
-              const data = await response.json();
-              setLoading(false);
-              callback(data);
-            }
-          } catch (e) {
-            console.log(e);
-            setError(e);
-            setLoading(false);
-          }
-      };
-      query(url, headers, callback);
+    };
+    query(url, headers, callback);
   };
 
   const handleDelete = () => {
-      if (window.confirm("Are you sure you want to delete the client?")) {
-          history.push({pathname: '/app/oauth/deleteClient', state: { data : { host, id }}});
-      } 
+    if (window.confirm('Are you sure you want to delete the client?')) {
+      history.push({
+        pathname: '/app/oauth/deleteClient',
+        state: { data: { host, id } },
+      });
+    }
   };
 
   return (
-      <TableRow className={classes.root}>
-        <TableCell align="left">{host}</TableCell>
-        <TableCell align="left">{id}</TableCell>
-        <TableCell align="right">
-            <SystemUpdateIcon onClick={handleUpdate} />
-        </TableCell>
-        <TableCell align="right">
-            <DeleteForeverIcon onClick={handleDelete} />
-        </TableCell>
-      </TableRow>
+    <TableRow className={classes.root}>
+      <TableCell align="left">{host}</TableCell>
+      <TableCell align="left">{id}</TableCell>
+      <TableCell align="right">
+        <SystemUpdateIcon onClick={handleUpdate} />
+      </TableCell>
+      <TableCell align="right">
+        <DeleteForeverIcon onClick={handleDelete} />
+      </TableCell>
+    </TableRow>
   );
 }
 
@@ -96,23 +99,30 @@ function BlogAdminList(props) {
   console.log(blogs);
   return (
     <TableContainer component={Paper}>
-    <Table aria-label="collapsible table">
+      <Table aria-label="collapsible table">
         <TableHead>
-        <TableRow>
+          <TableRow>
             <TableCell align="left">Host</TableCell>
             <TableCell align="left">Id</TableCell>
             <TableCell align="right">Update</TableCell>
             <TableCell align="right">Delete</TableCell>
-        </TableRow>
+          </TableRow>
         </TableHead>
         <TableBody>
-        {blogs.map((blog, index) => (
-            <Row history={history} email={email} roles={roles} host={host} key={index} id={blog} />
-        ))}
+          {blogs.map((blog, index) => (
+            <Row
+              history={history}
+              email={email}
+              roles={roles}
+              host={host}
+              key={index}
+              id={blog}
+            />
+          ))}
         </TableBody>
-    </Table>
-  </TableContainer>
-);
+      </Table>
+    </TableContainer>
+  );
 }
 
 export default function BlogAdmin(props) {
@@ -130,14 +140,14 @@ export default function BlogAdmin(props) {
     service: 'market',
     action: 'getBlog',
     version: '0.1.0',
-    data: { host, offset: page * rowsPerPage, limit: rowsPerPage }
-  }
-  
+    data: { host, offset: page * rowsPerPage, limit: rowsPerPage },
+  };
+
   const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const query = async (url, headers) => {
     try {
       setLoading(true);
-      const response = await fetch(url, { headers, credentials: 'include'});
+      const response = await fetch(url, { headers, credentials: 'include' });
       if (!response.ok) {
         const error = await response.json();
         setError(error.description);
@@ -145,7 +155,7 @@ export default function BlogAdmin(props) {
       } else {
         const data = await response.json();
         setBlogs(data.blogs);
-        setCount(data.total)
+        setCount(data.total);
       }
       setLoading(false);
     } catch (e) {
@@ -158,53 +168,53 @@ export default function BlogAdmin(props) {
 
   useEffect(() => {
     const cookies = new Cookies();
-    const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     query(url, headers);
   }, [page, rowsPerPage]);
-  
-  const handleChangePage = (event, newPage) => {  
-    setPage(newPage);  
-  };  
 
-  const handleChangeRowsPerPage = event => {  
-    setRowsPerPage(+event.target.value);  
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
     setPage(0);
   };
 
   const handleCreate = () => {
     props.history.push('/app/form/createBlog');
-  }
+  };
 
   let wait;
-  if(loading) {
-    wait = <div><CircularProgress/></div>;
-  } else if(error) {
+  if (loading) {
     wait = (
-        <div>
-            <pre>{JSON.stringify(error, null, 2)}</pre>
-        </div>
-      )  
+      <div>
+        <CircularProgress />
+      </div>
+    );
+  } else if (error) {
+    wait = (
+      <div>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
   } else {
     wait = (
-        <div>
-          <BlogAdminList {...props} blogs={blogs}/>
-          <TablePagination  
-            rowsPerPageOptions={[10, 25, 100]}  
-            component="div"  
-            count={count}  
-            rowsPerPage={rowsPerPage}  
-            page={page}  
-            onChangePage={handleChangePage}  
-            onChangeRowsPerPage={handleChangeRowsPerPage}  
-          />          
-          <AddBoxIcon onClick={() => handleCreate()} />
-        </div>
-    )
+      <div>
+        <BlogAdminList {...props} blogs={blogs} />
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={count}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+        <AddBoxIcon onClick={() => handleCreate()} />
+      </div>
+    );
   }
 
-  return (
-    <div className="App">
-      {wait}
-    </div>
-  );
+  return <div className="App">{wait}</div>;
 }

@@ -1,7 +1,7 @@
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,15 +18,18 @@ export default function TableForm(props) {
 
   const onChange = (event) => {
     setTableId(event.target.value);
-  }
-  
+  };
+
   const getValues = () => {
-    props.history.push({pathname: '/app/ref/value', state: { data : { tableId }}});
+    props.history.push({
+      pathname: '/app/ref/value',
+      state: { data: { tableId } },
+    });
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="tableId" label="Table Id" onChange={onChange}/>
+      <TextField id="tableId" label="Table Id" onChange={onChange} />
       <Button variant="contained" color="primary" onClick={getValues}>
         Get Values
       </Button>

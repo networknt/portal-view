@@ -1,11 +1,9 @@
-import React from "react";
-import { Button } from "@material-ui/core";
-
-// styles
-import useStyles from "./styles";
-
+import { Button } from '@mui/material';
+import React from 'react';
 // components
-import { Typography } from "../Wrappers";
+import { Typography } from '../Wrappers';
+// styles
+import useStyles from './styles';
 
 export default function PageTitle(props) {
   var classes = useStyles();

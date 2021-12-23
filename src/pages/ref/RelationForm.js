@@ -1,7 +1,7 @@
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,15 +18,18 @@ export default function RelationForm(props) {
 
   const onChange = (event) => {
     setRelationId(event.target.value);
-  }
-  
+  };
+
   const getRelations = () => {
-    props.history.push({pathname: '/app/ref/relation', state: { data : { relationId }}});
+    props.history.push({
+      pathname: '/app/ref/relation',
+      state: { data: { relationId } },
+    });
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="relationId" label="Relation Id" onChange={onChange}/>
+      <TextField id="relationId" label="Relation Id" onChange={onChange} />
       <Button variant="contained" color="primary" onClick={getRelations}>
         Get Relations
       </Button>

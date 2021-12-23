@@ -1,18 +1,18 @@
-import React from "react";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
+import React from 'react';
 
 const useStyles = makeStyles({
   header: {
-    width: "100%",
-    height: "100px",
-    paddingLeft: "10px",
+    width: '100%',
+    height: '100px',
+    paddingLeft: '10px',
     left: 0,
-    border: "1px solid #ccc",
-    backgroundColor: "#fa4303",
-    color: "white",
-    lineHeight: "20px"
-  },  
-})
+    border: '1px solid #ccc',
+    backgroundColor: '#fa4303',
+    color: 'white',
+    lineHeight: '20px',
+  },
+});
 
 const CatalogHeader = (props) => {
   var classes = useStyles();

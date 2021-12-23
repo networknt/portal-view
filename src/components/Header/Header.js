@@ -1,43 +1,35 @@
-import React, { useState } from "react";
 import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  InputBase
-} from "@material-ui/core";
-import {
+  ArrowBack as ArrowBackIcon,
   Menu as MenuIcon,
   Search as SearchIcon,
-  ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
-import classNames from "classnames";
-
-// styles
-import useStyles from "./styles";
-
-// components
-import { Typography } from "../Wrappers/Wrappers";
-import ProfileMenu from "./ProfileMenu";
-import NotificationMenu from "./NotificationMenu";
-import MailMenu from "./MailMenu";
-import HomeMenu from "./HomeMenu";
-import CartMenu from './CartMenu';
-
+} from '@mui/icons-material';
+import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material';
+import classNames from 'classnames';
+import React, { useState } from 'react';
 // router
 import { Link } from 'react-router-dom';
-
 // context
 import {
-  useLayoutState,
-  useLayoutDispatch,
   toggleSidebar,
-} from "../../context/LayoutContext";
-import { useUserState } from "../../context/UserContext";
-import { useSiteState, useSiteDispatch } from "../../context/SiteContext";
+  useLayoutDispatch,
+  useLayoutState,
+} from '../../context/LayoutContext';
+import { useSiteDispatch } from '../../context/SiteContext';
+import { useUserState } from '../../context/UserContext';
+// components
+import { Typography } from '../Wrappers/Wrappers';
+import CartMenu from './CartMenu';
+import HomeMenu from './HomeMenu';
+import MailMenu from './MailMenu';
+import NotificationMenu from './NotificationMenu';
+import ProfileMenu from './ProfileMenu';
+// styles
+import useStyles from './styles';
 
 export default function Header(props) {
-  //console.log("props= ", props);
+  console.log('In Header.js 000 props= ', props);
 
+  // const theme = useTheme();
   const classes = useStyles();
 
   // global
@@ -50,8 +42,8 @@ export default function Header(props) {
 
   var siteDispatch = useSiteDispatch();
   const changeFilter = (e) => {
-    siteDispatch({ type: "UPDATE_FILTER", filter: e.target.value }); 
-  }
+    siteDispatch({ type: 'UPDATE_FILTER', filter: e.target.value });
+  };
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -61,7 +53,7 @@ export default function Header(props) {
           onClick={() => toggleSidebar(layoutDispatch)}
           className={classNames(
             classes.headerMenuButton,
-            classes.headerMenuButtonCollapse,
+            classes.headerMenuButtonCollapse
           )}
         >
           {layoutState.isSidebarOpened ? (
@@ -69,7 +61,7 @@ export default function Header(props) {
               classes={{
                 root: classNames(
                   classes.headerIcon,
-                  classes.headerIconCollapse,
+                  classes.headerIconCollapse
                 ),
               }}
             />
@@ -78,7 +70,7 @@ export default function Header(props) {
               classes={{
                 root: classNames(
                   classes.headerIcon,
-                  classes.headerIconCollapse,
+                  classes.headerIconCollapse
                 ),
               }}
             />
@@ -86,7 +78,7 @@ export default function Header(props) {
         </IconButton>
         <Link to="/app/dashboard" className={classes.link}>
           <Typography variant="h6" weight="medium" className={classes.logotype}>
-            Light Portal
+            API Portal
           </Typography>
         </Link>
         <div className={classes.grow} />
@@ -112,23 +104,17 @@ export default function Header(props) {
             }}
           />
         </div>
-        { props.history.location.pathname.startsWith('/app/website') ? (
-          <HomeMenu {...props} classes = {classes} />
-        ) : null
-        }  
-        { props.history.location.pathname.startsWith('/app/website') ? (
-          <CartMenu {...props} classes = {classes} />
-        ) : null
-        }  
-        { isAuthenticated ? (
-          <NotificationMenu {...props} classes = {classes} />
-        ) : null
-        }
-        { isAuthenticated ? (
-          <MailMenu {...props} classes = {classes} />
-        ) : null
-        }
-        <ProfileMenu classes = {classes } history = {props.history} />
+        {props.history.location.pathname.startsWith('/app/website') ? (
+          <HomeMenu {...props} classes={classes} />
+        ) : null}
+        {props.history.location.pathname.startsWith('/app/website') ? (
+          <CartMenu {...props} classes={classes} />
+        ) : null}
+        {isAuthenticated ? (
+          <NotificationMenu {...props} classes={classes} />
+        ) : null}
+        {isAuthenticated ? <MailMenu {...props} classes={classes} /> : null}
+        <ProfileMenu classes={classes} history={props.history} />
       </Toolbar>
     </AppBar>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
-import { useApiGet } from '../../hooks/useApiGet';
-import { useUserState } from "../../context/UserContext";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { useUserState } from '../../context/UserContext';
 import FormDispatcher from './FormDispatcher';
 
 // This is the publish entry point for users to update his/her website after logging in.
@@ -13,15 +11,15 @@ export default function Publish(props) {
   let subcategory = params.get('subcategory');
 
   let wait;
-  if(category && subcategory) {
+  if (category && subcategory) {
     wait = (
-      <FormDispatcher {...props} category={category} subcategory={subcategory} />
-    )
+      <FormDispatcher
+        {...props}
+        category={category}
+        subcategory={subcategory}
+      />
+    );
   }
 
-  return (
-    <div className="App">
-      {wait}
-    </div>
-  );
+  return <div className="App">{wait}</div>;
 }

@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
-import { ToastContainer, toast } from "react-toastify";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import classnames from "classnames";
-
+import { Close as CloseIcon } from '@mui/icons-material';
+import { Grid } from '@mui/material';
+import classnames from 'classnames';
+import React, { useState } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { toast, ToastContainer } from 'react-toastify';
 // styles
-import "react-toastify/dist/ReactToastify.css";
-import useStyles from "./styles";
-
+import 'react-toastify/dist/ReactToastify.css';
+import Notification from '../../components/Notification';
+import PageTitle from '../../components/PageTitle/PageTitle';
 // components
-import Widget from "../../components/Widget/Widget";
-import PageTitle from "../../components/PageTitle/PageTitle";
-import Notification from "../../components/Notification";
-import { Typography, Button } from "../../components/Wrappers/Wrappers";
+import Widget from '../../components/Widget/Widget';
+import { Button, Typography } from '../../components/Wrappers/Wrappers';
+import useStyles from './styles';
 
 const positions = [
   toast.POSITION.TOP_LEFT,
@@ -107,7 +105,7 @@ export default function NotificationsPage(props) {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => handleNotificationCall("info")}
+                onClick={() => handleNotificationCall('info')}
                 className={classnames(classes.notificationCallButton)}
               >
                 Info Message
@@ -115,7 +113,7 @@ export default function NotificationsPage(props) {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={() => handleNotificationCall("error")}
+                onClick={() => handleNotificationCall('error')}
                 className={classnames(classes.notificationCallButton)}
               >
                 Error + Retry Message
@@ -123,7 +121,7 @@ export default function NotificationsPage(props) {
               <Button
                 variant="contained"
                 color="success"
-                onClick={() => handleNotificationCall("success")}
+                onClick={() => handleNotificationCall('success')}
                 className={classnames(classes.notificationCallButton)}
               >
                 Success Message
@@ -134,7 +132,7 @@ export default function NotificationsPage(props) {
         <Grid item xs={12} md={6} lg={4}>
           <Widget title="Usage" disableWidgetMenu>
             <Typography>
-              Notifications are created with the help of{" "}
+              Notifications are created with the help of{' '}
               <a href="https://github.com/fkhadra/react-toastify">
                 react-toastify
               </a>
@@ -313,20 +311,20 @@ export default function NotificationsPage(props) {
         {...componentProps}
         className={classes.notificationComponent}
       />,
-      options,
+      options
     );
   }
 
   function retryErrorNotification() {
     var componentProps = {
-      type: "message",
-      message: "Message was sent successfully!",
-      variant: "contained",
-      color: "success",
+      type: 'message',
+      message: 'Message was sent successfully!',
+      variant: 'contained',
+      color: 'success',
     };
     toast.update(errorToastId, {
       render: <Notification {...componentProps} />,
-      type: "success",
+      type: 'success',
     });
     setErrorToastId(null);
   }
@@ -334,33 +332,33 @@ export default function NotificationsPage(props) {
   function handleNotificationCall(notificationType) {
     var componentProps;
 
-    if (errorToastId && notificationType === "error") return;
+    if (errorToastId && notificationType === 'error') return;
 
     switch (notificationType) {
-      case "info":
+      case 'info':
         componentProps = {
-          type: "feedback",
-          message: "New user feedback received",
-          variant: "contained",
-          color: "primary",
+          type: 'feedback',
+          message: 'New user feedback received',
+          variant: 'contained',
+          color: 'primary',
         };
         break;
-      case "error":
+      case 'error':
         componentProps = {
-          type: "message",
-          message: "Message was not sent!",
-          variant: "contained",
-          color: "secondary",
-          extraButton: "Resend",
+          type: 'message',
+          message: 'Message was not sent!',
+          variant: 'contained',
+          color: 'secondary',
+          extraButton: 'Resend',
           extraButtonClick: retryErrorNotification,
         };
         break;
       default:
         componentProps = {
-          type: "shipped",
-          message: "The item was shipped",
-          variant: "contained",
-          color: "success",
+          type: 'shipped',
+          message: 'The item was shipped',
+          variant: 'contained',
+          color: 'success',
         };
     }
 
@@ -368,11 +366,11 @@ export default function NotificationsPage(props) {
       type: notificationType,
       position: positions[notificationsPosition],
       progressClassName: classes.progress,
-      onClose: notificationType === "error" && (() => setErrorToastId(null)),
+      onClose: notificationType === 'error' && (() => setErrorToastId(null)),
       className: classes.notification,
     });
 
-    if (notificationType === "error") setErrorToastId(toastId);
+    if (notificationType === 'error') setErrorToastId(toastId);
   }
 
   function changeNotificationPosition(positionId) {

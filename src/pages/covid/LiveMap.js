@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
-import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
-import useSupercluster from "use-supercluster";
-import Button from '@material-ui/core/Button';
-import useStyles from "./styles";
+import Button from '@mui/material/Button';
+import React, { useRef, useState } from 'react';
+import ReactMapGL, { FlyToInterpolator, Marker, Popup } from 'react-map-gl';
+import useSupercluster from 'use-supercluster';
+import useStyles from './styles';
 
 export default function LiveMap(props) {
   const classes = useStyles();
@@ -14,12 +14,12 @@ export default function LiveMap(props) {
   //console.log("zoom", data.map.zoom);
 
   const [viewport, setViewport] = useState({
-  	latitude: data.map.latitude,
-  	longitude: data.map.longitude,
-  	width: "100vw",
-  	height: "100vh",
-  	zoom: data.map.zoom
-  })
+    latitude: data.map.latitude,
+    longitude: data.map.longitude,
+    width: '100vw',
+    height: '100vh',
+    zoom: data.map.zoom,
+  });
   const [selectedEntity, setSelectedEntity] = useState(null);
 
   //console.log("viewport", viewport);
@@ -29,18 +29,14 @@ export default function LiveMap(props) {
   const points = data.points;
 
   const bounds = mapRef.current
-    ? mapRef.current
-        .getMap()
-        .getBounds()
-        .toArray()
-        .flat()
+    ? mapRef.current.getMap().getBounds().toArray().flat()
     : null;
 
   const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
     zoom: viewport.zoom,
-    options: { radius: 75, maxZoom: 20 }
+    options: { radius: 75, maxZoom: 20 },
   });
 
   const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
@@ -51,17 +47,26 @@ export default function LiveMap(props) {
 
   const pm = (id) => {
     //console.log("private message is called", id);
-    props.history.push({pathname: '/app/form/privateMessage', state: { data: { userId: id }}});
+    props.history.push({
+      pathname: '/app/form/privateMessage',
+      state: { data: { userId: id } },
+    });
   };
 
   const ps = (id) => {
     //console.log("peer status is called", id);
-    props.history.push({pathname: '/app/covid/peerStatus', state: { data: { userId: id }}});
+    props.history.push({
+      pathname: '/app/covid/peerStatus',
+      state: { data: { userId: id } },
+    });
   };
 
   const site = (id) => {
     //console.log("peer website is called", id);
-    props.history.push({pathname: '/app/website', state: { data: { userId: id }}});
+    props.history.push({
+      pathname: '/app/website',
+      state: { data: { userId: id } },
+    });
   };
 
   return (
@@ -70,18 +75,16 @@ export default function LiveMap(props) {
         {...viewport}
         maxZoom={25}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle='mapbox://styles/mapbox/streets-v11'
-        onViewportChange={newViewport => {
+        mapStyle="mapbox://styles/mapbox/streets-v11"
+        onViewportChange={(newViewport) => {
           setViewport({ ...newViewport });
         }}
         ref={mapRef}
       >
-        {clusters.map(cluster => {
+        {clusters.map((cluster) => {
           const [longitude, latitude] = cluster.geometry.coordinates;
-          const {
-            cluster: isCluster,
-            point_count: pointCount
-          } = cluster.properties;
+          const { cluster: isCluster, point_count: pointCount } =
+            cluster.properties;
 
           if (isCluster) {
             return (
@@ -94,7 +97,7 @@ export default function LiveMap(props) {
                   className={classes.clusterMarker}
                   style={{
                     width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`
+                    height: `${10 + (pointCount / points.length) * 20}px`,
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(
@@ -108,9 +111,9 @@ export default function LiveMap(props) {
                       longitude,
                       zoom: expansionZoom,
                       transitionInterpolator: new FlyToInterpolator({
-                        speed: 2
+                        speed: 2,
                       }),
-                      transitionDuration: "auto"
+                      transitionDuration: 'auto',
                     });
                   }}
                 >
@@ -133,9 +136,9 @@ export default function LiveMap(props) {
                   cursor: 'pointer',
                   fill: '#d00',
                   stroke: 'none',
-                  transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
+                  transform: `translate(${-SIZE / 2}px,${-SIZE}px)`,
                 }}
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   setSelectedEntity(cluster);
                 }}
@@ -156,28 +159,43 @@ export default function LiveMap(props) {
             }}
           >
             <div>
-              <h2>{selectedEntity.properties.id} - {selectedEntity.properties.category} - {selectedEntity.properties.subcategory}</h2>
+              <h2>
+                {selectedEntity.properties.id} -{' '}
+                {selectedEntity.properties.category} -{' '}
+                {selectedEntity.properties.subcategory}
+              </h2>
               <div className={classes.button}>
-                <Button variant="contained" color="primary" onClick={() => pm(selectedEntity.properties.id)}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => pm(selectedEntity.properties.id)}
+                >
                   Private Message
                 </Button>
-                { selectedEntity.properties.hasStatus ? (
-                <Button variant="contained" color="primary" onClick={() => ps(selectedEntity.properties.id)}>
-                  Peer Status
-                </Button>
-                ) : null }
-                { selectedEntity.properties.hasWebsite ? (
-                <Button variant="contained" color="primary" onClick={() => site(selectedEntity.properties.id)}>
-                  Peer Site
-                </Button>
-                ) : null }
-              </div>  
+                {selectedEntity.properties.hasStatus ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => ps(selectedEntity.properties.id)}
+                  >
+                    Peer Status
+                  </Button>
+                ) : null}
+                {selectedEntity.properties.hasWebsite ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => site(selectedEntity.properties.id)}
+                  >
+                    Peer Site
+                  </Button>
+                ) : null}
+              </div>
               <p>{selectedEntity.properties.introduction}</p>
             </div>
           </Popup>
-        ) : null}        
+        ) : null}
       </ReactMapGL>
     </div>
   );
-
 }

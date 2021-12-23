@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import {
-  Paper,
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@material-ui/core";
-import { MoreVert as MoreIcon } from "@material-ui/icons";
-import classnames from "classnames";
-
+import { MoreVert as MoreIcon } from '@mui/icons-material';
+import { IconButton, Menu, MenuItem, Paper, Typography } from '@mui/material';
+import classnames from 'classnames';
+import React, { useState } from 'react';
 // styles
-import useStyles from "./styles";
+import useStyles from './styles';
 
 export default function Widget({
   children,
@@ -45,7 +38,7 @@ export default function Widget({
                   aria-owns="widget-menu"
                   aria-haspopup="true"
                   onClick={() => setMoreMenuOpen(true)}
-                  buttonRef={setMoreButtonRef}
+                  ref={setMoreButtonRef}
                 >
                   <MoreIcon />
                 </IconButton>
