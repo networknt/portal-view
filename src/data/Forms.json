@@ -1888,8 +1888,10 @@
     "formId": "createService",
     "actions": [
       {
-        "path": "/oauth2/service",
-        "rest": true,
+        "host": "lightapi.net",
+        "service": "marketplace",
+        "action": "createService",
+        "version": "0.1.0",
         "title": "Create Service",
         "success": "/app/success",
         "failure": "/app/failure"
@@ -1899,40 +1901,63 @@
       "type": "object",
       "required": [
         "host",
+        "lob",
+        "style",
         "serviceId",
-        "serviceType",
-        "serviceName",
-        "serviceDesc"
+        "name",
+        "desc",
+        "tags",
+        "status"
       ],
       "properties": {
         "host": {
           "title": "Host",
           "type": "string"
         },
-        "serviceId": {
-          "type": "string",
-          "title": "Service Id"
+        "lob": {
+          "title": "Line of Business",
+          "type": "string"
         },
-        "serviceType": {
-          "title": "Service Type",
+        "style": {
+          "title": "API Style",
           "type": "string",
           "enum": [
-            "openapi",
-            "graphql",
-            "hybrid"
+            "Restful",
+            "GraphQL",
+            "Hybrid"
           ]
         },
-        "serviceName": {
+        "serviceId": {
+          "title": "Service Id",
+          "type": "string"
+        },
+        "buildNumber": {
+          "title": "Build Number",
+          "type": "string"
+        },
+        "name": {
           "title": "Service Name",
           "type": "string"
         },
-        "serviceDesc": {
+        "desc": {
           "title": "Service Description",
           "type": "string"
         },
-        "scope": {
-          "title": "Scopes Separate in space",
-          "type": "string"
+        "status": {
+          "title": "Service Status",
+          "type": "string",
+          "enum": [
+            "published",
+            "implemented",
+            "deployed",
+            "decommissioned"
+          ]
+        },
+        "tags": {
+          "title": "Tags",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10
         }
       }
     },
@@ -1945,23 +1970,44 @@
           "url": "/r/data?name=host"
         }
       },
-      "serviceId",
-      "serviceType",
-      "serviceName",
       {
-        "key": "serviceDesc",
+        "key": "lob",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=lob&rela=host-lob&from={0}",
+          "params": ["host"]
+        }
+      },
+      "style",
+      "serviceId",
+      "buildNumber",
+      "name",
+      {
+        "key": "desc",
         "type": "textarea"
       },
-      "scope"
+      "status",
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+          "url": "/r/data?name=tag"
+        }
+      }
     ]
   },
   "updateService": {
     "formId": "updateService",
     "actions": [
       {
-        "path": "/oauth2/service",
-        "rest": true,
-        "method": "put",
+        "host": "lightapi.net",
+        "service": "marketplace",
+        "action": "updateService",
+        "version": "0.1.0",
         "title": "Update Service",
         "success": "/app/success",
         "failure": "/app/failure"
@@ -1971,41 +2017,65 @@
       "type": "object",
       "required": [
         "host",
+        "lob",
+        "style",
         "serviceId",
-        "serviceType",
-        "serviceName",
-        "serviceDesc"
+        "name",
+        "desc",
+        "tags",
+        "status"
       ],
       "properties": {
         "host": {
           "title": "Host",
           "type": "string"
         },
+        "lob": {
+          "title": "Line of Business",
+          "type": "string"
+        },
+        "style": {
+          "title": "API Style",
+          "type": "string",
+          "enum": [
+            "Restful",
+            "GraphQL",
+            "Hybrid"
+          ]
+        },
         "serviceId": {
           "title": "Service Id",
           "type": "string",
           "readonly": true
         },
-        "serviceType": {
-          "title": "Service Type",
+        "buildNumber": {
+          "title": "Build Number",
           "type": "string",
-          "enum": [
-            "openapi",
-            "graphql",
-            "hybrid"
-          ]
+          "readonly": true
         },
-        "serviceName": {
+        "name": {
           "title": "Service Name",
           "type": "string"
         },
-        "serviceDesc": {
+        "desc": {
           "title": "Service Description",
           "type": "string"
         },
-        "scope": {
-          "title": "Scope",
-          "type": "string"
+        "status": {
+          "title": "Service Status",
+          "type": "string",
+          "enum": [
+            "published",
+            "implemented",
+            "deployed",
+            "decommissioned"
+          ]
+        },
+        "tags": {
+          "title": "Tags",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10
         }
       }
     },
@@ -2018,14 +2088,34 @@
           "url": "/r/data?name=host"
         }
       },
-      "serviceId",
-      "serviceType",
-      "serviceName",
       {
-        "key": "serviceDesc",
+        "key": "lob",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=lob&rela=host-lob&from={0}",
+          "params": ["host"]
+        }
+      },
+      "style",
+      "serviceId",
+      "buildNumber",
+      "name",
+      {
+        "key": "desc",
         "type": "textarea"
       },
-      "scope"
+      "status",
+      {
+        "key": "tags",
+        "type": "rc-select",
+        "multiple": true,
+        "tags": true,
+        "maxTagTextLength": 20,
+        "action": {
+          "url": "/r/data?name=tag"
+        }
+      }
     ]
   },
   "token": {
