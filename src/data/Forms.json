@@ -1931,10 +1931,6 @@
           "title": "Service Id",
           "type": "string"
         },
-        "buildNumber": {
-          "title": "Build Number",
-          "type": "string"
-        },
         "name": {
           "title": "Service Name",
           "type": "string"
@@ -1981,7 +1977,6 @@
       },
       "style",
       "serviceId",
-      "buildNumber",
       "name",
       {
         "key": "desc",
@@ -2048,11 +2043,6 @@
           "type": "string",
           "readonly": true
         },
-        "buildNumber": {
-          "title": "Build Number",
-          "type": "string",
-          "readonly": true
-        },
         "name": {
           "title": "Service Name",
           "type": "string"
@@ -2099,7 +2089,6 @@
       },
       "style",
       "serviceId",
-      "buildNumber",
       "name",
       {
         "key": "desc",
