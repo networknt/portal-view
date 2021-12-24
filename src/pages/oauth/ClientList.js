@@ -30,7 +30,7 @@ function Row(props) {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
-  
+
     const handleUpdate = (clientId) => {
         const cmd = {
             host: 'lightapi.net',

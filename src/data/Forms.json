@@ -1889,7 +1889,7 @@
     "actions": [
       {
         "host": "lightapi.net",
-        "service": "marketplace",
+        "service": "market",
         "action": "createService",
         "version": "0.1.0",
         "title": "Create Service",
@@ -1922,9 +1922,9 @@
           "title": "API Style",
           "type": "string",
           "enum": [
-            "Restful",
-            "GraphQL",
-            "Hybrid"
+            "openapi",
+            "graphql",
+            "hybrid"
           ]
         },
         "serviceId": {
@@ -2005,7 +2005,7 @@
     "actions": [
       {
         "host": "lightapi.net",
-        "service": "marketplace",
+        "service": "market",
         "action": "updateService",
         "version": "0.1.0",
         "title": "Update Service",
@@ -2038,9 +2038,9 @@
           "title": "API Style",
           "type": "string",
           "enum": [
-            "Restful",
-            "GraphQL",
-            "Hybrid"
+            "openapi",
+            "graphql",
+            "hybrid"
           ]
         },
         "serviceId": {
@@ -2151,7 +2151,7 @@
     "actions": [
       {
         "host": "lightapi.net",
-        "service": "marketplace",
+        "service": "market",
         "action": "uploadFiles",
         "version": "0.1.0",
         "title": "Upload Spec&Config",
@@ -2160,7 +2160,7 @@
       },
       {
         "host": "lightapi.net",
-        "service": "marketplace",
+        "service": "market",
         "action": "inputConfig",
         "version": "0.1.0",
         "title": "Input Config Form",
@@ -2271,7 +2271,7 @@
     "actions": [
       {
         "host": "lightapi.net",
-        "service": "marketplace",
+        "service": "market",
         "action": "upload",
         "version": "0.1.0",
         "title": "Upload Spec",

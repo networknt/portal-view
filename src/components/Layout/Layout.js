@@ -120,7 +120,10 @@ function Layout(props) {
               <Route path="/app/messages" component={Messages} />
               <Route path="/app/merchantOrders" component={MerchantOrders} />
               <Route path="/app/userOrders" component={UserOrders} />
+              
               <Route path="/app/publishApi" component={PublishApi} />
+
+              <Route path="/app/service/:style" component={Service} />
               <Route path="/app/client" component={Client} />
               <Route path="/app/refreshToken" component={RefreshToken} />
               <Route path="/app/deleteRefreshToken" component={RefreshTokenDelete} />

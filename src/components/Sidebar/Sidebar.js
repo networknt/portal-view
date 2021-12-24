@@ -58,9 +58,9 @@ const structure = [
   { id: 20, label: "Marketplace", link: "/app/marketplace", icon: <ShoppingBasketIcon />,
       children: [
         { label: "API Client", link: "/app/client" },
-        { label: "Restful API", link: "/app/restful" },
-        { label: "GraphQL API", link: "/app/graphql" },
-        { label: "Hybrid API", link: "/app/hybrid" },
+        { label: "OpenApi API", link: "/app/service/openapi" },
+        { label: "GraphQL API", link: "/app/service/graphql" },
+        { label: "Hybrid API", link: "/app/service/hybrid" },
         { label: "Schema Form", link: "/app/form/schemaFormFilter" },
         { label: "JSON Schema", link: "/app/schema/schemaList" },
         { label: "YAML Rule", link: "/app/rule/ruleList" },

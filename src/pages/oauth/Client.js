@@ -24,7 +24,7 @@ export default function Client(props) {
     version: '0.1.0',
     data: { host, offset: page * rowsPerPage, limit: rowsPerPage }
   }
-  
+
   const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const headers = {};
   const queryClients = async (url, headers) => {
@@ -89,7 +89,7 @@ export default function Client(props) {
             page={page}  
             onChangePage={handleChangePage}  
             onChangeRowsPerPage={handleChangeRowsPerPage}  
-          />          
+          />
           <AddBoxIcon onClick={() => handleCreate()} />
         </div>
     )
