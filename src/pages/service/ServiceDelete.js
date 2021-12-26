@@ -1,14 +1,23 @@
 import React from 'react';
-import { useApiDelete } from '../../hooks/useApiDelete';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useApiPost } from '../../hooks/useApiPost';
+import { useUserState } from '../../context/UserContext';
 
 
 export default function ServiceDelete(props) {
 	console.log(props.location.state.data);
 	const serviceId = props.location.state.data.serviceId;
-	const url = '/oauth2/service/' + serviceId;
+	const { host } = useUserState();
+	const body = {
+		host: 'lightapi.net',
+		service: 'market',
+		action: 'deleteService',
+		version: '0.1.0',
+		data: { serviceId, host }
+	};
+	const url = '/portal/command';
 	const headers = {};
-	const { isLoading, data, error } = useApiDelete({url, headers});
+	const { isLoading, data, error } = useApiPost({url, headers, body});
   	console.log(isLoading, data, error);
 	let wait;
 	if(isLoading) {

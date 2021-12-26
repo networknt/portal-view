@@ -10,6 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
 import SettingsIcon from '@material-ui/icons/Settings';
+import ImageAspectRatioIcon from '@material-ui/icons/ImageAspectRatio';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import InputIcon from '@material-ui/icons/Input';
+import BugReportIcon from '@material-ui/icons/BugReport';
 import Cookies from 'universal-cookie'
 import { useUserState } from "../../context/UserContext";
 
@@ -71,12 +75,28 @@ function Row(props) {
 
     const handleDelete = (serviceId) => {
         if (window.confirm("Are you sure you want to delete the service?")) {
-            history.push({pathname: '/app/oauth/deleteService', state: { data : { serviceId }}});
+            history.push({pathname: '/app/deleteService', state: { data : { serviceId }}});
         } 
     };
 
-    const handleDetail = (serviceId, style, name) => {
-      history.push({pathname: '/app/oauth/serviceDetail', state: { data : { serviceId, style, name }}});
+    const handleSpec = (serviceId, style, name) => {
+      history.push({pathname: '/app/serviceSpec', state: { data : { serviceId, style, name }}});
+    };
+
+    const handleEndpoint = (serviceId, style, name) => {
+      history.push({pathname: '/app/serviceEndpoint', state: { data : { serviceId, style, name }}});
+    };
+
+    const handleCodegen = (serviceId, style, name) => {
+      history.push({pathname: '/app/serviceCodegen', state: { data : { serviceId, style, name }}});
+    };
+
+    const handleDeploy = (serviceId, style, name) => {
+      history.push({pathname: '/app/serviceDeploy', state: { data : { serviceId, style, name }}});
+    };
+
+    const handleTest = (serviceId, style, name) => {
+      history.push({pathname: '/app/serviceTest', state: { data : { serviceId, style, name }}});
     };
 
     return (
@@ -92,7 +112,19 @@ function Row(props) {
               <DeleteForeverIcon onClick={() => handleDelete(serviceId)} />
           </TableCell>
           <TableCell align="right">
-              <SettingsIcon onClick={() => handleDetail(serviceId, serviceSytle, name)} />
+              <ImageAspectRatioIcon onClick={() => handleSpec(serviceId, serviceSytle, name)} />
+          </TableCell>
+          <TableCell align="right">
+              <FormatListBulletedIcon onClick={() => handleEndpoint(serviceId, serviceSytle, name)} />
+          </TableCell>
+          <TableCell align="right">
+              <InputIcon onClick={() => handleCodegen(serviceId, serviceSytle, name)} />
+          </TableCell>
+          <TableCell align="right">
+              <SettingsIcon onClick={() => handleDeploy(serviceId, serviceSytle, name)} />
+          </TableCell>
+          <TableCell align="right">
+              <BugReportIcon onClick={() => handleTest(serviceId, serviceSytle, name)} />
           </TableCell>
         </TableRow>
     );
@@ -113,7 +145,11 @@ export default function ServiceList(props) {
               <TableCell align="left">Host</TableCell>
               <TableCell align="right">Update</TableCell>
               <TableCell align="right">Delete</TableCell>
-              <TableCell align="right">Detail</TableCell>
+              <TableCell align="right">Spec</TableCell>
+              <TableCell align="right">Endpoint</TableCell>
+              <TableCell align="right">Codegen</TableCell>
+              <TableCell align="right">Deploy</TableCell>
+              <TableCell align="right">Test</TableCell>
           </TableRow>
           </TableHead>
           <TableBody>

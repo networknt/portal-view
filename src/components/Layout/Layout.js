@@ -58,8 +58,9 @@ import RefreshToken from "../../pages/oauth/RefreshToken";
 import RefreshTokenDelete from "../../pages/oauth/RefreshTokenDelete";
 import RefreshTokenDetail from "../../pages/oauth/RefreshTokenDetail";
 
-import Service from "../../pages/oauth/Service";
-import ServiceDelete from "../../pages/oauth/ServiceDelete";
+import Service from "../../pages/service/Service";
+import ServiceDelete from "../../pages/service/ServiceDelete";
+import ServiceDetail from "../../pages/service/ServiceDetail";
 import PublishApi from "../../pages/publish/PublishApi";
 
 import Category from "../../pages/category/Category";
@@ -124,6 +125,10 @@ function Layout(props) {
               <Route path="/app/publishApi" component={PublishApi} />
 
               <Route path="/app/service/:style" component={Service} />
+              <Route path="/app/service" component={Service} />
+              <Route path="/app/deleteService" component={ServiceDelete} />
+              <Route path="/app/serviceDetail" component={ServiceDetail} />
+
               <Route path="/app/client" component={Client} />
               <Route path="/app/refreshToken" component={RefreshToken} />
               <Route path="/app/deleteRefreshToken" component={RefreshTokenDelete} />
@@ -144,8 +149,6 @@ function Layout(props) {
 
               <Route path="/app/oauth/client" component={Client} />
               <Route path="/app/oauth/deleteClient" component={ClientDelete} />
-              <Route path="/app/oauth/service" component={Service} />
-              <Route path="/app/oauth/deleteService" component={ServiceDelete} />
 
               <Route path="/app/category/list" component={Category} />
               <Route path="/app/category/deleteCategory" component={CategoryDelete} />
