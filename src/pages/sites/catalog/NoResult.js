@@ -1,19 +1,19 @@
-import React from "react";
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/styles';
+import SearchIcon from '@mui/icons-material/Search';
+import { makeStyles } from '@mui/styles';
+import React from 'react';
 
 const useStyles = makeStyles({
   noResult: {
-    textAlign: "center"
-  },  
-})
+    textAlign: 'center',
+  },
+});
 
 const NoResult = () => {
   var classes = useStyles();
   return (
     <div>
       <div className={classes.noResult}>
-        <SearchIcon/>
+        <SearchIcon />
         <h2>Sorry, no products matched your search!</h2>
         <p>Enter a different keyword and try.</p>
       </div>

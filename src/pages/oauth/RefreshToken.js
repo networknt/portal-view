@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import TablePagination from '@material-ui/core/TablePagination';  
-import Cookies from 'universal-cookie'
-import { useUserState } from "../../context/UserContext";
-import useStyles from "./styles";
-import RefreshTokenList from "./RefreshTokenList";
+import CircularProgress from '@mui/material/CircularProgress';
+import TablePagination from '@mui/material/TablePagination';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
+import { useUserState } from '../../context/UserContext';
+import RefreshTokenList from './RefreshTokenList';
+import useStyles from './styles';
 
 export default function RefreshToken(props) {
   const classes = useStyles();
@@ -21,15 +21,15 @@ export default function RefreshToken(props) {
     service: 'market',
     action: 'getRefreshToken',
     version: '0.1.0',
-    data: { host, offset: page * rowsPerPage, limit: rowsPerPage }
-  }
-  
+    data: { host, offset: page * rowsPerPage, limit: rowsPerPage },
+  };
+
   const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const headers = {};
   const queryTokens = async (url, headers) => {
     try {
       setLoading(true);
-      const response = await fetch(url, { headers, credentials: 'include'});
+      const response = await fetch(url, { headers, credentials: 'include' });
       if (!response.ok) {
         const error = await response.json();
         setError(error.description);
@@ -37,7 +37,7 @@ export default function RefreshToken(props) {
       } else {
         const data = await response.json();
         setTokens(data.tokens);
-        setCount(data.total)
+        setCount(data.total);
       }
       setLoading(false);
     } catch (e) {
@@ -50,48 +50,48 @@ export default function RefreshToken(props) {
 
   useEffect(() => {
     const cookies = new Cookies();
-    const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     queryTokens(url, headers);
   }, [page, rowsPerPage]);
-  
-  const handleChangePage = (event, newPage) => {  
-    setPage(newPage);  
-  };  
 
-  const handleChangeRowsPerPage = event => {  
-    setRowsPerPage(+event.target.value);  
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
     setPage(0);
   };
 
   let wait;
-  if(loading) {
-    wait = <div><CircularProgress/></div>;
-  } else if(error) {
+  if (loading) {
     wait = (
-        <div>
-            <pre>{JSON.stringify(error, null, 2)}</pre>
-        </div>
-      )  
+      <div>
+        <CircularProgress />
+      </div>
+    );
+  } else if (error) {
+    wait = (
+      <div>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
   } else {
     wait = (
-        <div>
-          <RefreshTokenList {...props} tokens={tokens}/>
-          <TablePagination  
-            rowsPerPageOptions={[10, 25, 100]}  
-            component="div"  
-            count={count}  
-            rowsPerPage={rowsPerPage}  
-            page={page}  
-            onChangePage={handleChangePage}  
-            onChangeRowsPerPage={handleChangeRowsPerPage}  
-          />          
-        </div>
-    )
+      <div>
+        <RefreshTokenList {...props} tokens={tokens} />
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={count}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </div>
+    );
   }
 
-  return (
-    <div className="App">
-      {wait}
-    </div>
-  );
+  return <div className="App">{wait}</div>;
 }

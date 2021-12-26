@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import TablePagination from '@material-ui/core/TablePagination';  
-import Cookies from 'universal-cookie'
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import { useUserState } from "../../context/UserContext";
-import useStyles from "./styles";
-import TableList from "./TableList";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import CircularProgress from '@mui/material/CircularProgress';
+import TablePagination from '@mui/material/TablePagination';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
+import { useUserState } from '../../context/UserContext';
+import useStyles from './styles';
+import TableList from './TableList';
 
 export default function RefTable(props) {
   const classes = useStyles();
@@ -16,14 +16,14 @@ export default function RefTable(props) {
   const [error, setError] = useState();
   const [count, setCount] = useState(0);
   const [tables, setTables] = useState([]);
-  
+
   const cmd = {
     host: 'lightapi.net',
     service: 'ref',
     action: 'getTable',
     version: '0.1.0',
-    data: { email, offset: page * rowsPerPage, limit: rowsPerPage }
-  }
+    data: { email, offset: page * rowsPerPage, limit: rowsPerPage },
+  };
 
   const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const headers = {};
@@ -31,7 +31,7 @@ export default function RefTable(props) {
   const queryTables = async (url, headers) => {
     try {
       setLoading(true);
-      const response = await fetch(url, { headers, credentials: 'include'});
+      const response = await fetch(url, { headers, credentials: 'include' });
       if (!response.ok) {
         const error = await response.json();
         setError(error.description);
@@ -39,7 +39,7 @@ export default function RefTable(props) {
       } else {
         const data = await response.json();
         setTables(data.tables);
-        setCount(data.total)
+        setCount(data.total);
       }
       setLoading(false);
     } catch (e) {
@@ -52,53 +52,53 @@ export default function RefTable(props) {
 
   useEffect(() => {
     const cookies = new Cookies();
-    const headers = {'X-CSRF-TOKEN': cookies.get('csrf')};
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     queryTables(url, headers);
   }, [page, rowsPerPage]);
-  
-  const handleChangePage = (event, newPage) => {  
-    setPage(newPage);  
-  };  
 
-  const handleChangeRowsPerPage = event => {  
-    setRowsPerPage(+event.target.value);  
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
     setPage(0);
-  };      
+  };
 
   const handleCreate = () => {
-    props.history.push('/app/form/createRefTable');            
-  }
+    props.history.push('/app/form/createRefTable');
+  };
 
   let wait;
-  if(loading) {
-    wait = <div><CircularProgress/></div>;
-  } else if(error) {
+  if (loading) {
     wait = (
-        <div>
-            <pre>{JSON.stringify(error, null, 2)}</pre>
-        </div>
-      )  
+      <div>
+        <CircularProgress />
+      </div>
+    );
+  } else if (error) {
+    wait = (
+      <div>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
   } else {
     wait = (
-        <div>
-          <TableList {...props} tables={tables}/>
-          <TablePagination  
-            rowsPerPageOptions={[10, 25, 100]}  
-            component="div"  
-            count={count}  
-            rowsPerPage={rowsPerPage}  
-            page={page}  
-            onChangePage={handleChangePage}  
-            onChangeRowsPerPage={handleChangeRowsPerPage}  
-          />
-          <AddBoxIcon onClick={() => handleCreate()} />
-        </div>
-    )
+      <div>
+        <TableList {...props} tables={tables} />
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={count}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+        <AddBoxIcon onClick={() => handleCreate()} />
+      </div>
+    );
   }
 
-  return (
-    <div className="App">
-      {wait}
-    </div>
-  );
+  return <div className="App">{wait}</div>;
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useApiGet } from '../../hooks/useApiGet';
 //import useStyles from "./styles";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
+import React from 'react';
 import ComRender from '../../ComRender';
+import { useApiGet } from '../../hooks/useApiGet';
 
 export default function Website(props) {
   //const classes = useStyles();
@@ -12,36 +12,35 @@ export default function Website(props) {
     service: 'covid',
     action: 'getWebsiteByUserId',
     version: '0.1.0',
-    data: { userId: props.userId }
-  }
+    data: { userId: props.userId },
+  };
 
   const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const headers = {};
 
-  const { isLoading, data, error } = useApiGet({url, headers});
+  const { isLoading, data, error } = useApiGet({ url, headers });
   let site = data || {};
 
   let wait;
-  if(isLoading) {
-    wait = <div><CircularProgress/></div>;
-  } else if(error) {
-		wait = (
+  if (isLoading) {
+    wait = (
       <div>
-	    	<pre>{JSON.stringify(error, null, 2)}</pre>
+        <CircularProgress />
       </div>
-    )  
+    );
+  } else if (error) {
+    wait = (
+      <div>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    );
   } else {
     wait = (
       <div>
-	    	<ComRender {...props} site={site}/>
+        <ComRender {...props} site={site} />
       </div>
-    )
+    );
   }
 
-  return (
-    <div className="App">
-      {wait}
-    </div>
-  );
+  return <div className="App">{wait}</div>;
 }
-

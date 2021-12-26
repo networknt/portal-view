@@ -1,13 +1,11 @@
-import React from "react";
-import { Grid, Paper, Typography, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
-
-// styles
-import useStyles from "./styles";
-
+import { Button, Grid, Paper, Typography } from '@mui/material';
+import classnames from 'classnames';
+import React from 'react';
+import { Link } from 'react-router-dom';
 // logo
-import logo from "./logo.svg";
+import logo from './logo.svg';
+// styles
+import useStyles from './styles';
 
 export default function Error() {
   var classes = useStyles();

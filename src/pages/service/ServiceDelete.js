@@ -1,8 +1,7 @@
+import CircularProgress from '@mui/material/CircularProgress';
 import React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { useApiPost } from '../../hooks/useApiPost';
 import { useUserState } from '../../context/UserContext';
-
 
 export default function ServiceDelete(props) {
 	console.log(props.location.state.data);
@@ -29,10 +28,5 @@ export default function ServiceDelete(props) {
 		</div>
 		)  
 	}	
-
-	return (
-	<div>
-		{wait}
-	</div>
-	);
+  return <div>{wait}</div>;
 }

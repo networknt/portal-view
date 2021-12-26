@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { Inbox as InboxIcon } from '@mui/icons-material';
 import {
   Collapse,
   Divider,
@@ -7,16 +7,14 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@material-ui/core";
-import { Inbox as InboxIcon } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
-
-// styles
-import useStyles from "./styles";
-
+} from '@mui/material';
+import classnames from 'classnames';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // components
-import Dot from "../Dot";
+import Dot from '../Dot';
+// styles
+import useStyles from './styles';
 
 export default function SidebarLink({
   link,
@@ -36,7 +34,7 @@ export default function SidebarLink({
     link &&
     (location.pathname === link || location.pathname.indexOf(link) !== -1);
 
-  if (type === "title")
+  if (type === 'title')
     return (
       <Typography
         className={classnames(classes.linkText, classes.sectionTitle, {
@@ -47,7 +45,7 @@ export default function SidebarLink({
       </Typography>
     );
 
-  if (type === "divider") return <Divider className={classes.divider} />;
+  if (type === 'divider') return <Divider className={classes.divider} />;
 
   if (!children)
     return (
@@ -69,7 +67,7 @@ export default function SidebarLink({
             [classes.linkIconActive]: isLinkActive,
           })}
         >
-          {nested ? <Dot color={isLinkActive && "primary"} /> : icon}
+          {nested ? <Dot color={isLinkActive && 'primary'} /> : icon}
         </ListItemIcon>
         <ListItemText
           classes={{
@@ -118,7 +116,7 @@ export default function SidebarLink({
           className={classes.nestedList}
         >
           <List component="div" disablePadding>
-            {children.map(childrenLink => (
+            {children.map((childrenLink) => (
               <SidebarLink
                 key={childrenLink && childrenLink.link}
                 location={location}

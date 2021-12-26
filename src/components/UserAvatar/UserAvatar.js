@@ -1,20 +1,18 @@
-import React from "react";
-import { useTheme } from "@material-ui/styles";
-
-// styles
-import useStyles from "./styles";
-
+import { useTheme } from '@mui/styles';
+import React from 'react';
 // components
-import { Typography } from "../Wrappers";
+import { Typography } from '../Wrappers';
+// styles
+import useStyles from './styles';
 
-export default function UserAvatar({ color = "primary", ...props }) {
+export default function UserAvatar({ color = 'primary', ...props }) {
   var classes = useStyles();
   var theme = useTheme();
 
   var letters = props.name
-    .split(" ")
-    .map(word => word[0])
-    .join("");
+    .split(' ')
+    .map((word) => word[0])
+    .join('');
 
   return (
     <div
