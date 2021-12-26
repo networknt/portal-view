@@ -2,6 +2,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import CircularProgress from '@mui/material/CircularProgress';
 import TablePagination from '@mui/material/TablePagination';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { useUserState } from '../../context/UserContext';
 import ServiceList from './ServiceList';
@@ -16,24 +17,25 @@ export default function Service(props) {
   const [error, setError] = useState();
   const [count, setCount] = useState(0);
   const [services, setServices] = useState([]);
+  let { style } = useParams();
 
-  const url =
-    '/oauth2/service?page=' +
-    page +
-    '&pageSize=' +
-    rowsPerPage +
-    (host ? '&host=' + host : '');
-  console.log(url);
+  const cmd = {
+    host: 'lightapi.net',
+    service: 'market',
+    action: 'getService',
+    version: '0.1.0',
+    data: { host, style, offset: page * rowsPerPage, limit: rowsPerPage }
+  }
+  console.log("cmd = ", cmd);
+  const url = '/portal/query?cmd=' + encodeURIComponent(JSON.stringify(cmd));
   const headers = {};
-
   const queryServices = async (url, headers) => {
     try {
       setLoading(true);
       const response = await fetch(url, { headers, credentials: 'include' });
       if (!response.ok) {
         const error = await response.text();
-        console.log(response.status);
-        setError(error);
+        setError(error.description);
         setServices([]);
       } else {
         const data = await response.json();
