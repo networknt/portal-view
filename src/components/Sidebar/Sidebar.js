@@ -319,7 +319,7 @@ function Sidebar({ location }) {
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
+        <IconButton onClick={() => toggleSidebar(layoutDispatch)} size="large">
           <ArrowBackIcon
             classes={{
               root: classNames(classes.headerIcon, classes.headerIconCollapse),

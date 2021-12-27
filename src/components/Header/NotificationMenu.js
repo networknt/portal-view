@@ -57,7 +57,7 @@ export default function NotificationMenu(props) {
             setIsNotificationsUnread(false);
           }}
           className={classes.headerMenuButton}
-        >
+          size="large">
           <Badge
             badgeContent={isNotificationsUnread ? data.length : null}
             color="warning"

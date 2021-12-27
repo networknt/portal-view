@@ -41,7 +41,7 @@ export default function ProfileMenu(props) {
         className={classes.headerMenuButton}
         aria-controls="profile-menu"
         onClick={(e) => setProfileMenu(e.currentTarget)}
-      >
+        size="large">
         <AccountIcon classes={{ root: classes.headerIcon }} />
       </IconButton>
       <Menu

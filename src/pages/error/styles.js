@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     marginBottom: theme.spacing(12),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none',
     },
   },

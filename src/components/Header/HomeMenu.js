@@ -31,7 +31,7 @@ export default function HomeMenu(props) {
             className={classes.headerMenuButton}
             aria-controls="home-menu"
             onClick={(e) => setHomeMenu(e.currentTarget)}
-          >
+            size="large">
             <HomeIcon classes={{ root: classes.headerIcon }} />
           </IconButton>
           <Menu

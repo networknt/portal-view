@@ -39,7 +39,7 @@ export default function Widget({
                   aria-haspopup="true"
                   onClick={() => setMoreMenuOpen(true)}
                   ref={setMoreButtonRef}
-                >
+                  size="large">
                   <MoreIcon />
                 </IconButton>
               )}

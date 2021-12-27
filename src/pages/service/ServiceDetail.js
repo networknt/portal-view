@@ -4,8 +4,8 @@ import { useUserState } from "../../context/UserContext";
 import Widget from "../../components/Widget";
 import useStyles from "./styles";
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
 export default function ServiceDetail(props) {
   const serviceId = props.location.state.data.serviceId;

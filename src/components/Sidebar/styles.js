@@ -31,13 +31,13 @@ export default makeStyles((theme) => ({
     // width: theme.spacing(7) + 40,
     width: `${theme.spacing(11)} !important`,
 
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: drawerWidth,
     },
   },
   toolbar: {
     ...theme.mixins.toolbar,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none',
     },
   },

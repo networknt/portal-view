@@ -207,8 +207,8 @@ export default function SchemaAdmin(props) {
           count={count}
           rowsPerPage={rowsPerPage}
           page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
         />
         <AddBoxIcon onClick={() => handleCreate()} />
       </div>

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import SystemUpdateIcon from '@material-ui/icons/SystemUpdate';
-import SettingsIcon from '@material-ui/icons/Settings';
-import ImageAspectRatioIcon from '@material-ui/icons/ImageAspectRatio';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import InputIcon from '@material-ui/icons/Input';
-import BugReportIcon from '@material-ui/icons/BugReport';
+import makeStyles from '@mui/styles/makeStyles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ImageAspectRatioIcon from '@mui/icons-material/ImageAspectRatio';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import InputIcon from '@mui/icons-material/Input';
+import BugReportIcon from '@mui/icons-material/BugReport';
 import Cookies from 'universal-cookie'
 import { useUserState } from "../../context/UserContext";
 

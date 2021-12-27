@@ -13,7 +13,7 @@ export default makeStyles((theme) => {
       fontWeight: 500,
       fontSize: 18,
       whiteSpace: 'nowrap',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         display: 'none',
       },
     },

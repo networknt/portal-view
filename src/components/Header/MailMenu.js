@@ -103,7 +103,7 @@ export default function MailMenu(props) {
             setIsMailsUnread(false);
           }}
           className={classes.headerMenuButton}
-        >
+          size="large">
           <Badge
             badgeContent={isMailsUnread ? messages.length : null}
             color="secondary"

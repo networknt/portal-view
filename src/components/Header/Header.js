@@ -55,7 +55,7 @@ export default function Header(props) {
             classes.headerMenuButton,
             classes.headerMenuButtonCollapse
           )}
-        >
+          size="large">
           {layoutState.isSidebarOpened ? (
             <ArrowBackIcon
               classes={{

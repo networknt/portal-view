@@ -545,7 +545,7 @@ export default function CartMenu(props) {
               setCartMenu(e.currentTarget);
               setStep(1);
             }}
-          >
+            size="large">
             <Badge
               badgeContent={cart && cart.length > 0 ? cart.length : null}
               color="secondary"
