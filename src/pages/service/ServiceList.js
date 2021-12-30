@@ -80,7 +80,17 @@ function Row(props) {
     };
 
     const handleSpec = (serviceId, style, name) => {
-      history.push({pathname: '/app/serviceSpec', state: { data : { serviceId, style, name }}});
+      switch (style) {
+        case 'openapi':
+          history.push({pathname: '/app/openapiEditor', state: { data : { serviceId, style, name }}});
+          break;
+        case 'hybrid':
+          history.push({pathname: '/app/hybridEditor', state: { data : { serviceId, style, name }}});
+          break;
+        case 'graphql':
+          history.push({pathname: '/app/graphqlEditor', state: { data : { serviceId, style, name }}});
+          break;
+      }
     };
 
     const handleEndpoint = (serviceId, style, name) => {

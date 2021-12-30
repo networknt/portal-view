@@ -2107,6 +2107,158 @@
       }
     ]
   },
+  "updateServiceAccess": {
+    "formId": "updateServiceAccess",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateServiceAccess",
+        "version": "0.1.0",
+        "title": "Update Service Request Access",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "serviceId",
+        "endpoint",
+        "serviceId",
+        "accesses"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
+        "serviceId": {
+          "title": "Service Id",
+          "type": "string",
+          "readonly": true
+        },
+        "endpoint": {
+          "title": "Endpoint",
+          "type": "string",
+          "readonly": true
+        },
+        "accesses": {
+          "type": "array",
+          "title": "Accesses",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "properties": {
+              "ruleId":  {
+                "title": "Rule Id",
+                "type": "string"
+              },
+              "variables":  {
+                "title": "Variables",
+                "type": "string"
+              }
+            },
+            "required": ["ruleId"]
+          }
+        }
+      }
+    },
+    "form": [
+      "host",
+      "serviceId",
+      "endpoint",
+      {
+        "key": "accesses",
+        "add": "New",
+        "style": {
+          "add": "btn-success"
+        },
+        "items": [
+          "accesses[].ruleId",
+          "accesses[].variables"
+        ]
+      }
+    ]
+  },
+  "updateServiceFilter": {
+    "formId": "updateServiceFilter",
+    "actions": [
+      {
+        "host": "lightapi.net",
+        "service": "market",
+        "action": "updateServiceFilter",
+        "version": "0.1.0",
+        "title": "Update Service Response Filter",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "required": [
+        "host",
+        "serviceId",
+        "endpoint",
+        "serviceId",
+        "filters"
+      ],
+      "properties": {
+        "host": {
+          "title": "Host",
+          "type": "string",
+          "readonly": true
+        },
+        "serviceId": {
+          "title": "Service Id",
+          "type": "string",
+          "readonly": true
+        },
+        "endpoint": {
+          "title": "Endpoint",
+          "type": "string",
+          "readonly": true
+        },
+        "filters": {
+          "type": "array",
+          "title": "Filters",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "properties": {
+              "ruleId":  {
+                "title": "Rule Id",
+                "type": "string"
+              },
+              "variables":  {
+                "title": "Variables",
+                "type": "string"
+              }
+            },
+            "required": ["ruleId"]
+          }
+        }
+      }
+    },
+    "form": [
+      "host",
+      "serviceId",
+      "endpoint",
+      {
+        "key": "filters",
+        "add": "New",
+        "style": {
+          "add": "btn-success"
+        },
+        "items": [
+          "filters[].ruleId",
+          "filters[].variables"
+        ]
+      }
+    ]
+  },
   "token": {
     "schema": {
       "type": "object",
@@ -4269,6 +4421,10 @@
           "title": "Rule Id",
           "type": "string"
         },
+        "ruleType": {
+          "type": "string",
+          "description": "Rule Type"
+        },
         "desc": {
           "type": "string",
           "description": "Description"
@@ -4276,19 +4432,12 @@
         "value": {
           "type": "string",
           "description": "Rule Body"
-        },
-        "serviceId": {
-          "type": "string",
-          "description": "Default Rule Service Id"
-        },
-        "buildNumber": {
-          "type": "string",
-          "description": "Default Rule Service Build Number"
         }
       },
       "required": [
         "host",
         "ruleId",
+        "ruleType",
         "desc",
         "value"
     ]
@@ -4303,15 +4452,23 @@
         }
       },
       "ruleId",
+      {
+        "key": "ruleType",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=rule-type&rela=hostrtype&from={0}",
+          "params": ["host"]
+        }
+
+      },
       "desc",
       {
         "key": "value",
         "type": "textarea",
         "placeholder": "YAML Rule Definition",
         "rows": 10
-      },
-      "serviceId",
-      "buildNumber"
+      }
     ]
   },
   "updateRule": {
@@ -4341,6 +4498,10 @@
           "type": "string",
           "readonly": true
         },
+        "ruleType": {
+          "type": "string",
+          "description": "Rule Type"
+        },
         "desc": {
           "type": "string",
           "description": "Description"
@@ -4348,14 +4509,6 @@
         "value": {
           "type": "string",
           "description": "Rule Body"
-        },
-        "serviceId": {
-          "type": "string",
-          "description": "Default Rule Service Id"
-        },
-        "buildNumber": {
-          "type": "string",
-          "description": "Default Rule Service Build Number"
         },
         "owner": {
           "type": "string",
@@ -4366,6 +4519,7 @@
       "required": [
         "host",
         "ruleId",
+        "ruleType",
         "desc",
         "value"
       ]
@@ -4373,6 +4527,16 @@
     "form": [
       "host",
       "ruleId",
+      {
+        "key": "ruleType",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=rule-type&rela=hostrtype&from={0}",
+          "params": ["host"]
+        }
+
+      },
       "desc",
       {
         "key": "value",
@@ -4380,8 +4544,6 @@
         "placeholder": "YAML Rule Definition",
         "rows": 10
       },
-      "serviceId",
-      "buildNumber",
       "owner"
     ]
   },

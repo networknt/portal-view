@@ -37,6 +37,11 @@ import RefreshTokenDetail from '../../pages/oauth/RefreshTokenDetail';
 import Service from "../../pages/service/Service";
 import ServiceDelete from "../../pages/service/ServiceDelete";
 import ServiceDetail from "../../pages/service/ServiceDetail";
+import OpenapiEditor from "../../pages/service/OpenapiEditor";
+import HybridEditor from "../../pages/service/HybridEditor";
+import GraphqlEditor from "../../pages/service/GraphqlEditor";
+import SubmitSpec from "../../pages/service/SubmitSpec";
+import ServiceEndpoint from "../../pages/service/ServiceEndpoint";
 import Profile from '../../pages/profile';
 import DeletePayment from '../../pages/profile/DeletePayment';
 import DeleteProfile from '../../pages/profile/DeleteProfile';
@@ -115,6 +120,11 @@ function Layout(props) {
             <Route path="/app/service" component={Service} />
             <Route path="/app/deleteService" component={ServiceDelete} />
             <Route path="/app/serviceDetail" component={ServiceDetail} />
+            <Route path="/app/openapiEditor" component={OpenapiEditor} />
+            <Route path="/app/hybridEditor" component={HybridEditor} />
+            <Route path="/app/graphqlEditor" component={GraphqlEditor} />
+            <Route path="/app/submitSpec" component={SubmitSpec} />
+            <Route path="/app/serviceEndpoint" component={ServiceEndpoint} />
 
             <Route path="/app/client" component={Client} />
             <Route path="/app/refreshToken" component={RefreshToken} />
