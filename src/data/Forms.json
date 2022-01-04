@@ -2126,7 +2126,6 @@
         "host",
         "serviceId",
         "endpoint",
-        "serviceId",
         "accesses"
       ],
       "properties": {
@@ -2177,7 +2176,15 @@
           "add": "btn-success"
         },
         "items": [
-          "accesses[].ruleId",
+          {
+            "key": "accesses[].ruleId",
+            "type": "rc-select",
+            "filterOption": true,
+            "action": {
+              "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getRuleByType%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22{0}%22%2C%22ruleType%22%3A%22request-access%22%7D%7D",
+              "params": ["host"]
+            }
+          },
           "accesses[].variables"
         ]
       }
@@ -2202,7 +2209,6 @@
         "host",
         "serviceId",
         "endpoint",
-        "serviceId",
         "filters"
       ],
       "properties": {
@@ -2253,7 +2259,15 @@
           "add": "btn-success"
         },
         "items": [
-          "filters[].ruleId",
+          {
+            "key": "filters[].ruleId",
+            "type": "rc-select",
+            "filterOption": true,
+            "action": {
+              "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getRuleByType%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22{0}%22%2C%22ruleType%22%3A%22response-filter%22%7D%7D",
+              "params": ["host"]
+            }
+          },
           "filters[].variables"
         ]
       }
