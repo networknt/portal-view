@@ -84,9 +84,9 @@ const structure = [
     link: '/app/publish',
     icon: <PublishIcon />,
     children: [
-      { label: 'API Restful', link: '/app/publishApi?style=Restful' },
-      { label: 'API GraphQL', link: '/app/publishApi?style=GraphQL' },
-      { label: 'API Hybrid', link: '/app/publishApi?style=Hybrid' },
+      { label: 'OpenApi API', link: '/app/form/createService' },
+      { label: 'GraphQL API', link: '/app/form/createService' },
+      { label: 'Hybrid API', link: '/app/form/createService' },
       { label: 'Schema Form', link: '/app/form/createSchemaForm' },
       { label: 'JSON Schema', link: '/app/form/createJsonSchema' },
       { label: 'Error Code', link: '/app/form/createErrorCode' },

@@ -4425,6 +4425,18 @@
           "type": "string",
           "description": "Rule Type"
         },
+        "groupId": {
+          "type": "string",
+          "description": "Group Id"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private"
+          ],
+          "description": "Visibility, only public can be shared and subscribed by other hosts"
+        },
         "desc": {
           "type": "string",
           "description": "Description"
@@ -4438,6 +4450,7 @@
         "host",
         "ruleId",
         "ruleType",
+        "visibility",
         "desc",
         "value"
     ]
@@ -4460,8 +4473,9 @@
           "url": "/r/data?name=rule-type&rela=hostrtype&from={0}",
           "params": ["host"]
         }
-
       },
+      "groupId",
+      "visibility",
       "desc",
       {
         "key": "value",
@@ -4502,6 +4516,18 @@
           "type": "string",
           "description": "Rule Type"
         },
+        "groupId": {
+          "type": "string",
+          "description": "Group Id"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private"
+          ],
+          "description": "Visibility, only public can be shared and subscribed by other hosts"
+        },
         "desc": {
           "type": "string",
           "description": "Description"
@@ -4520,6 +4546,7 @@
         "host",
         "ruleId",
         "ruleType",
+        "visibility",
         "desc",
         "value"
       ]
@@ -4537,6 +4564,8 @@
         }
 
       },
+      "groupId",
+      "visibility",
       "desc",
       {
         "key": "value",
