@@ -24,23 +24,32 @@ const useRowStyles = makeStyles({
 });
 
 function Row(props) {
-    const { row, history, host, serviceId, endpoint } = props;
+    const { row, history, host, serviceId, endpoint, endpointRules } = props;
+    console.log(row, endpointRules);
     const classes = useRowStyles();
 
+    let endpointRule = endpointRules[endpoint];
+    let accesses = null;
+    let filters = null;
+    if(endpointRule) {
+        accesses = endpointRule['request-access'];
+        filters = endpointRule['response-filter'];
+    }
+
     let scopes = row.scopes ? JSON.stringify(row.scopes, null, 2) : 'N/A';
-    let access = row.access ? JSON.stringify(row.access, null, 2) : 'N/A';
-    let filter = row.filter ? JSON.stringify(row.filter, null, 2) : 'N/A';
+    let access = accesses ? JSON.stringify(accesses, null, 2) : 'N/A';
+    let filter = filters ? JSON.stringify(filters, null, 2) : 'N/A';
 
     const updateAccess = () => {
         history.push({ 
             pathname: '/app/form/updateServiceAccess', 
-            state: { data: { host, serviceId, endpoint, access: row.access ? access : null }}
+            state: { data: { host, serviceId, endpoint, access: row.access ? access : null, accesses }}
         });
     };
     const updateFilter = () => {
         history.push({ 
             pathname: '/app/form/updateServiceFilter', 
-            state: { data: { host, serviceId, endpoint, filter: row.filter ? filter : null }} 
+            state: { data: { host, serviceId, endpoint, filter: row.filter ? filter : null, filters }} 
         });
     };
 
@@ -101,7 +110,7 @@ export default function ServiceEndpoint(props) {
                     </TableHead>
                     <TableBody>
                         {Object.keys(endpoints).map(key => (
-                            <Row history={props.history} host={host} serviceId={serviceId} endpoint={key} key={key} row={endpoints[key]} />
+                            <Row history={props.history} host={host} serviceId={serviceId} endpoint={key} key={key} row={endpoints[key]} endpointRules={data.endpointRules}/>
                         ))}
                     </TableBody>
                 </Table>

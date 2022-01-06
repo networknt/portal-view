@@ -51,7 +51,7 @@ const structure = [
   {
     id: 7,
     label: 'Configuration',
-    link: '/app/configuration',
+    link: '/app/configDashboard',
     icon: <PermDataSettingIcon />,
   },
   {

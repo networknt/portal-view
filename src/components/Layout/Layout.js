@@ -10,7 +10,7 @@ import BlogItem from '../../pages/blog/BlogItem';
 import BlogList from '../../pages/blog/BlogList';
 import Category from '../../pages/category/Category';
 import CategoryDelete from '../../pages/category/CategoryDelete';
-import Configuration from '../../pages/config/Configuration';
+import ConfigDashboard from '../../pages/config/ConfigDashboard';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -191,7 +191,7 @@ function Layout(props) {
 
             <Route path="/app/website" component={Website} />
 
-            <Route path="/app/configuration" component={Configuration} />
+            <Route path="/app/configDashboard" component={ConfigDashboard} />
             <Route
               exact
               path="/app/ui"
