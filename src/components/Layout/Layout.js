@@ -13,6 +13,7 @@ import CategoryDelete from '../../pages/category/CategoryDelete';
 import ConfigDashboard from '../../pages/config/ConfigDashboard';
 import Properties from '../../pages/config/Properties';
 import Globals from '../../pages/config/Globals';
+import DeleteProperty from '../../pages/config/DeleteProperty';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -196,7 +197,7 @@ function Layout(props) {
             <Route path="/app/configDashboard" component={ConfigDashboard} />
             <Route path="/app/config/properties" component={Properties} />
             <Route path="/app/config/globals" component={Globals} />
-
+            <Route path="/app/config/deleteProperty" component={DeleteProperty} />
 
 
             <Route
