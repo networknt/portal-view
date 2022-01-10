@@ -157,7 +157,7 @@ const structure = [
     icon: <LibraryIcon />,
     children: [
       { label: 'Properties', link: '/app/form/propertiesRef' },
-      { label: 'Global Configs', link: '/app/config/globals' },
+      { label: 'Globals', link: '/app/form/globalsRef' },
     ],
   },
   {

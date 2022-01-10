@@ -5271,6 +5271,257 @@
       "order"
     ]
   },
+  "globalsRef": {
+    "formId": "globalsRef",
+    "actions": [
+      {
+        "path": "/config-server/configs/global/search",
+        "rest": true,
+        "title": "Globals Criteria",
+        "success": "/app/config/globals",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Globals Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      }
+    ]
+  },
+  "createConfigGlobal": {
+    "formId": "createConfigGlobal",
+    "actions": [
+      {
+        "path": "/config-server/configs/global",
+        "rest": true,
+        "method": "post",
+        "title": "Global Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      },
+      "key",
+      "value",
+      "order"
+    ]
+  },
+  "updateConfigGlobal": {
+    "formId": "updateConfigGlobal",
+    "actions": [
+      {
+        "path": "/config-server/configs/global",
+        "rest": true,
+        "method": "put",
+        "title": "Global Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "env",
+      "key",
+      "value",
+      "order"
+    ]
+  },
   "updateBlog": {
     "formId": "updateBlog",
     "actions": [

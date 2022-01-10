@@ -3,14 +3,16 @@ import React from 'react';
 import { useUserState } from '../../context/UserContext';
 import { useApiDelete } from '../../hooks/useApiDelete';
 
-export default function DeleteProperty(props) {
+export default function DeleteGlobal(props) {
   console.log(props.location.state.data);
-  const host = props.location.state.data.property.host;
-  const module = props.location.state.data.property.module;
-  const scope = props.location.state.data.property.scope;
-  const key = props.location.state.data.property.key;
+  const host = props.location.state.data.global.host;
+  const module = props.location.state.data.global.module;
+  const project = props.location.state.data.global.project;
+  const projver = props.location.state.data.global.projver;
+  const env = props.location.state.data.global.env;
+  const key = props.location.state.data.global.key;
 
-  const url = '/config-server/configs/property?host=' + host + "&module=" + module + "&scope=" + scope + "&key=" + key;
+  const url = '/config-server/configs/global?host=' + host + "&module=" + module + "&project=" + project + "&projver=" + projver + "&env=" + env + "&key=" + key;
   const headers = {};
   const { isLoading, data, error } = useApiDelete({ url, headers });
   console.log(isLoading, data, error);
