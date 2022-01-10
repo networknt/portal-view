@@ -4,9 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import GlobalProperties from './GlobalProperties';
-import ServiceConfigFiles from './ServiceConfigFiles';
-import ServiceProperties from './ServiceProperties';
+import GlobalProperties from './Properties';
+import ServiceConfigFiles from './ServiceConfig';
+import ServiceProperties from './Globals';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,9 +52,9 @@ export default function ConfigDashboard() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Global Properties" {...a11yProps(0)} />
-          <Tab label="Service Properties" {...a11yProps(1)} />
-          <Tab label="Service Config Files" {...a11yProps(2)} />
+          <Tab label="Properties" {...a11yProps(0)} />
+          <Tab label="Global Config" {...a11yProps(1)} />
+          <Tab label="Service Config" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

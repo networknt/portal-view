@@ -5090,6 +5090,187 @@
       }
     ]
   },
+  "propertiesRef": {
+    "formId": "propertiesRef",
+    "actions": [
+      {
+        "path": "/config-server/configs/property/search",
+        "rest": true,
+        "title": "Properties Criteria",
+        "success": "/app/config/properties",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Properties Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "scope",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=scope&module={0}",
+          "params": ["module"]
+        }
+      }
+    ]
+  },
+  "createConfigProperty": {
+    "formId": "createConfigProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/property",
+        "rest": true,
+        "method": "post",
+        "title": "Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope",
+        "key",
+        "order"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "scope",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=scope&module={0}",
+          "params": ["module"]
+        }
+      },
+      "key",
+      "order"
+    ]
+  },
+  "updateConfigProperty": {
+    "formId": "updateConfigProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/property",
+        "rest": true,
+        "method": "put",
+        "title": "Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "scope": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope",
+        "key",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "scope",
+      "key",
+      "order"
+    ]
+  },
   "updateBlog": {
     "formId": "updateBlog",
     "actions": [

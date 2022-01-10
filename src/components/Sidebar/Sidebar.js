@@ -135,12 +135,11 @@ const structure = [
   { id: 70, label: 'Support', link: '/app/support', icon: <HelpIcon /> },
   { id: 80, label: 'FAQ', link: '/app/faq', icon: <FAQIcon /> },
 
-  { id: 90, type: 'divider', role: 'orgadm' },
-  { id: 100, type: 'title', role: 'orgadm', label: 'ADMIN' },
+  { id: 90, type: 'divider', role: 'admin' },
   {
     id: 110,
     label: 'Client Admin',
-    role: 'orgadm',
+    role: 'admin',
     link: '/app/client/admin',
     icon: <LibraryIcon />,
     children: [
@@ -151,9 +150,20 @@ const structure = [
     ],
   },
   {
+    id: 115,
+    label: 'Config Admin',
+    role: 'admin',
+    link: '/app/config/admin',
+    icon: <LibraryIcon />,
+    children: [
+      { label: 'Properties', link: '/app/form/propertiesRef' },
+      { label: 'Global Configs', link: '/app/config/globals' },
+    ],
+  },
+  {
     id: 120,
     label: 'Service Admin',
-    role: 'orgadm',
+    role: 'admin',
     link: '/app/service/admin',
     icon: <LibraryIcon />,
     children: [
@@ -180,7 +190,7 @@ const structure = [
   {
     id: 130,
     label: 'News Admin',
-    role: 'orgadm',
+    role: 'admin',
     link: '/app/news/admin',
     icon: <LibraryIcon />,
     children: [
@@ -231,7 +241,7 @@ const structure = [
   {
     id: 150,
     label: 'Forum Admin',
-    role: 'orgadm',
+    role: 'admin',
     link: '/app/forum/admin',
     icon: <LibraryIcon />,
     children: [

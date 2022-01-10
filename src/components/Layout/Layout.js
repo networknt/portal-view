@@ -11,6 +11,8 @@ import BlogList from '../../pages/blog/BlogList';
 import Category from '../../pages/category/Category';
 import CategoryDelete from '../../pages/category/CategoryDelete';
 import ConfigDashboard from '../../pages/config/ConfigDashboard';
+import Properties from '../../pages/config/Properties';
+import Globals from '../../pages/config/Globals';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -192,6 +194,11 @@ function Layout(props) {
             <Route path="/app/website" component={Website} />
 
             <Route path="/app/configDashboard" component={ConfigDashboard} />
+            <Route path="/app/config/properties" component={Properties} />
+            <Route path="/app/config/globals" component={Globals} />
+
+
+
             <Route
               exact
               path="/app/ui"
