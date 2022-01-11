@@ -13,8 +13,10 @@ import CategoryDelete from '../../pages/category/CategoryDelete';
 import ConfigDashboard from '../../pages/config/ConfigDashboard';
 import Properties from '../../pages/config/Properties';
 import Globals from '../../pages/config/Globals';
+import Services from '../../pages/config/Services';
 import DeleteProperty from '../../pages/config/DeleteProperty';
 import DeleteGlobal from '../../pages/config/DeleteGlobal';
+import DeleteService from '../../pages/config/DeleteService';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -198,8 +200,10 @@ function Layout(props) {
             <Route path="/app/configDashboard" component={ConfigDashboard} />
             <Route path="/app/config/properties" component={Properties} />
             <Route path="/app/config/globals" component={Globals} />
+            <Route path="/app/config/services" component={Services} />
             <Route path="/app/config/deleteProperty" component={DeleteProperty} />
             <Route path="/app/config/deleteGlobal" component={DeleteGlobal} />
+            <Route path="/app/config/deleteService" component={DeleteService} />
 
 
             <Route
