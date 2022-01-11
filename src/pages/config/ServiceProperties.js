@@ -131,7 +131,7 @@ export default function ServiceProperties(props) {
     const { isLoading, data } = useApiGet({url, headers});
   
     const handleCreate = () => {
-        props.history.push({ pathname: '/app/form/createConfigServiceProperty', state: { data: { host } } });
+        props.history.push({ pathname: '/app/form/createConfigServiceProperty', state: { data: { ...service } } });
     };
 
     let wait;

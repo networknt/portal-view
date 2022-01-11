@@ -18,6 +18,7 @@ import ServiceProperties from '../../pages/config/ServiceProperties';
 import DeleteProperty from '../../pages/config/DeleteProperty';
 import DeleteGlobal from '../../pages/config/DeleteGlobal';
 import DeleteService from '../../pages/config/DeleteService';
+import DeleteServiceProperty from '../../pages/config/DeleteServiceProperty';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -206,6 +207,7 @@ function Layout(props) {
             <Route path="/app/config/deleteProperty" component={DeleteProperty} />
             <Route path="/app/config/deleteGlobal" component={DeleteGlobal} />
             <Route path="/app/config/deleteService" component={DeleteService} />
+            <Route path="/app/config/deleteServiceProperty" component={DeleteServiceProperty} />
 
 
             <Route
