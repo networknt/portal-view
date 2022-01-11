@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -28,6 +29,10 @@ function Row(props) {
         props.history.push({ pathname: '/app/form/updateConfigService', state: { data: service } });
     };
 
+    const handleDetail = () => {
+        props.history.push({ pathname: '/app/config/serviceProperties', state: { data: service } });
+    };
+
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete the service?')) {
             history.push({
@@ -52,6 +57,9 @@ function Row(props) {
             <TableCell align="right">
                 <DeleteForeverIcon onClick={handleDelete} />
             </TableCell>
+            <TableCell align="right">
+                <FormatListBulletedIcon onClick={handleDetail} />
+            </TableCell>
         </TableRow>
     );
 }
@@ -74,6 +82,7 @@ function ServicesList(props) {
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">Update</TableCell>
                         <TableCell align="right">Delete</TableCell>
+                        <TableCell align="right">Detail</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -93,7 +102,6 @@ function ServicesList(props) {
 
 export default function Services(props) {
     console.log(props);
-    let services = props.location.state.data;
     const { host } = useUserState();
 
     const handleCreate = () => {

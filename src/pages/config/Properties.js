@@ -10,7 +10,6 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { makeStyles } from '@mui/styles';
-import Cookies from 'universal-cookie';
 import { useUserState } from '../../context/UserContext';
 
 const useRowStyles = makeStyles({
