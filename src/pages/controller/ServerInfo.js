@@ -1,7 +1,7 @@
-import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
-export default function ControlPane(props) {
+export default function ServerInfo(props) {
   const node = props.location.state.data.node;
   const protocol = props.location.state.data.protocol;
   const address = props.location.state.data.address;
