@@ -19,6 +19,7 @@ import DeleteProperty from '../../pages/config/DeleteProperty';
 import DeleteGlobal from '../../pages/config/DeleteGlobal';
 import DeleteService from '../../pages/config/DeleteService';
 import DeleteServiceProperty from '../../pages/config/DeleteServiceProperty';
+import ControlPane from '../../pages/controller/ControlPane';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -42,14 +43,6 @@ import ClientDelete from '../../pages/oauth/ClientDelete';
 import RefreshToken from '../../pages/oauth/RefreshToken';
 import RefreshTokenDelete from '../../pages/oauth/RefreshTokenDelete';
 import RefreshTokenDetail from '../../pages/oauth/RefreshTokenDetail';
-import Service from "../../pages/service/Service";
-import ServiceDelete from "../../pages/service/ServiceDelete";
-import ServiceDetail from "../../pages/service/ServiceDetail";
-import OpenapiEditor from "../../pages/service/OpenapiEditor";
-import HybridEditor from "../../pages/service/HybridEditor";
-import GraphqlEditor from "../../pages/service/GraphqlEditor";
-import SubmitSpec from "../../pages/service/SubmitSpec";
-import ServiceEndpoint from "../../pages/service/ServiceEndpoint";
 import Profile from '../../pages/profile';
 import DeletePayment from '../../pages/profile/DeletePayment';
 import DeleteProfile from '../../pages/profile/DeleteProfile';
@@ -78,6 +71,14 @@ import SchemaAdmin from '../../pages/schema/SchemaAdmin';
 import SchemaDelete from '../../pages/schema/SchemaDelete';
 import SchemaItem from '../../pages/schema/SchemaItem';
 import SchemaList from '../../pages/schema/SchemaList';
+import GraphqlEditor from '../../pages/service/GraphqlEditor';
+import HybridEditor from '../../pages/service/HybridEditor';
+import OpenapiEditor from '../../pages/service/OpenapiEditor';
+import Service from '../../pages/service/Service';
+import ServiceDelete from '../../pages/service/ServiceDelete';
+import ServiceDetail from '../../pages/service/ServiceDetail';
+import ServiceEndpoint from '../../pages/service/ServiceEndpoint';
+import SubmitSpec from '../../pages/service/SubmitSpec';
 import Success from '../../pages/success';
 import Form from '../Form/Form';
 // components
@@ -208,8 +209,7 @@ function Layout(props) {
             <Route path="/app/config/deleteGlobal" component={DeleteGlobal} />
             <Route path="/app/config/deleteService" component={DeleteService} />
             <Route path="/app/config/deleteServiceProperty" component={DeleteServiceProperty} />
-
-
+            <Route path="/app/controller" component={ControlPane} />
             <Route
               exact
               path="/app/ui"
