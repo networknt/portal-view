@@ -4643,6 +4643,840 @@
       }
     ]
   },
+  "propertiesRef": {
+    "formId": "propertiesRef",
+    "actions": [
+      {
+        "path": "/config-server/configs/property/search",
+        "rest": true,
+        "title": "Properties Criteria",
+        "success": "/app/config/properties",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Properties Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "scope",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=scope&module={0}",
+          "params": ["module"]
+        }
+      }
+    ]
+  },
+  "createConfigProperty": {
+    "formId": "createConfigProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/property",
+        "rest": true,
+        "method": "post",
+        "title": "Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope",
+        "key",
+        "order"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      "module",
+      "scope",
+      "key",
+      "order"
+    ]
+  },
+  "updateConfigProperty": {
+    "formId": "updateConfigProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/property",
+        "rest": true,
+        "method": "put",
+        "title": "Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "scope": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "scope",
+        "key",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "scope",
+      "key",
+      "order"
+    ]
+  },
+  "globalsRef": {
+    "formId": "globalsRef",
+    "actions": [
+      {
+        "path": "/config-server/configs/global/search",
+        "rest": true,
+        "title": "Globals Criteria",
+        "success": "/app/config/globals",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Globals Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      }
+    ]
+  },
+  "createConfigGlobal": {
+    "formId": "createConfigGlobal",
+    "actions": [
+      {
+        "path": "/config-server/configs/global",
+        "rest": true,
+        "method": "post",
+        "title": "Global Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      "project",
+      "projver",
+      "env",
+      "key",
+      "value",
+      "order"
+    ]
+  },
+  "updateConfigGlobal": {
+    "formId": "updateConfigGlobal",
+    "actions": [
+      {
+        "path": "/config-server/configs/global",
+        "rest": true,
+        "method": "put",
+        "title": "Global Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "env",
+      "key",
+      "value",
+      "order"
+    ]
+  },
+  "servicesRef": {
+    "formId": "servicesRef",
+    "actions": [
+      {
+        "path": "/config-server/configs/service/search",
+        "rest": true,
+        "title": "Services Criteria",
+        "success": "/app/config/services",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Services Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "servver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "service",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=service&project={0}&projver={1}",
+          "params": ["project","projver"]
+        }
+      },
+      {
+        "key": "servver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=servver&project={0}&projver={1}&service={2}",
+          "params": ["project","projver","service"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=env&project={0}&projver={1}&service={2}&servver={3}",
+          "params": ["project","projver","service","servver"]
+        }
+      }
+    ]
+  },
+  "createConfigService": {
+    "formId": "createConfigService",
+    "actions": [
+      {
+        "path": "/config-server/configs/service",
+        "rest": true,
+        "method": "post",
+        "title": "Service Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "servver": {
+          "title": "service version",
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/r/data?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module"
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      "service",
+      "servver",
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=env&project={0}&projver={1}",
+          "params": ["project","projver"]
+        }
+      }
+    ]
+  },
+  "updateConfigService": {
+    "formId": "updateConfigSerice",
+    "actions": [
+      {
+        "path": "/config-server/configs/service",
+        "rest": true,
+        "method": "put",
+        "title": "Service Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "type": "string",
+          "readonly": true
+        },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "service",
+      "servver",
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/service/ref?name=env&project={0}&projver={1}",
+          "params": ["project","projver"]
+        }
+      }
+    ]
+  },
+  "createConfigServiceProperty": {
+    "formId": "createConfigServiceProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/service/property",
+        "rest": true,
+        "method": "post",
+        "title": "Service Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string",
+          "readonly": true
+        },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "title": "service version",
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "service",
+      "servver",
+      "env",
+      "key",
+      "value",
+      "order"
+    ]
+  },
+  "updateConfigServiceProperty": {
+    "formId": "updateConfigSericeProperty",
+    "actions": [
+      {
+        "path": "/config-server/configs/service/property",
+        "rest": true,
+        "method": "put",
+        "title": "Service Property Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service Property Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "type": "string",
+          "readonly": true
+        },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "key": {
+          "type": "string",
+          "readonly": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env",
+        "key",
+        "value",
+        "order"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "service",
+      "servver",
+      "env",
+      "key",
+      "value",
+      "order"
+    ]
+  },
+
   "updateBlog": {
     "formId": "updateBlog",
     "actions": [

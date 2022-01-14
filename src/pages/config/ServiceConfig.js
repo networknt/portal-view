@@ -10,7 +10,7 @@ import { Typography } from '../../components/Wrappers/Wrappers';
 import { useUserDispatch, useUserState } from '../../context/UserContext';
 import useStyles from './styles';
 
-export default function ServiceConfigFiles(props) {
+export default function ServiceConfig(props) {
   var classes = useStyles();
   const { email } = useUserState();
   const userDispatch = useUserDispatch();

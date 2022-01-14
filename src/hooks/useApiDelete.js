@@ -20,19 +20,24 @@ export const useApiDelete = ({ url, headers, callback }) => {
         const cookies = new Cookies();
         Object.assign(headers, {'X-CSRF-TOKEN': cookies.get('csrf')})
         const response = await fetch(url, { method: 'DELETE', headers, credentials: 'include', signal: abortController.signal });
-        if (!response.ok) {
-          const status = await response.json();
-          dispatch(requestFailure({ error: status }));
-        } else {
+        if (response.status === 200) {
+          // data is available
           const data = await response.json();
           console.log(data);
           if(callback) callback(data);
           dispatch(requestSuccess({ data }));  
+        } else if (response.status === 204) {
+          // no content. do nothing.
+          dispatch(requestSuccess({}));  
+        } else {
+          // consider error here.
+          const error = await response.json();
+          dispatch(requestFailure({ error }));
         }
       } catch (e) {
         // only call dispatch when we know the fetch was not aborted
         if (!abortController.signal.aborted) {
-          console.log(e.message);
+          console.log(e);
           dispatch(requestFailure({ error: e.message }));
         }        
       }
