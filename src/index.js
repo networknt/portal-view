@@ -3,6 +3,7 @@ import { ThemeProvider } from '@mui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { AppProvider } from './context/AppContext';
 import { LayoutProvider } from './context/LayoutContext';
 import { SiteProvider } from './context/SiteContext';
 import { UserProvider } from './context/UserContext';
@@ -14,8 +15,10 @@ ReactDOM.render(
     <ThemeProvider theme={Themes.default}>
       <UserProvider>
         <SiteProvider>
-          <CssBaseline />
-          <App />
+          <AppProvider>
+            <CssBaseline />
+            <App />
+          </AppProvider>
         </SiteProvider>
       </UserProvider>
     </ThemeProvider>

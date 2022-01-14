@@ -79,9 +79,7 @@
           }
         }
       },
-      "required": [
-        "email"
-      ]
+      "required": ["email"]
     },
     "form": [
       "email",
@@ -153,9 +151,7 @@
     "schema": {
       "type": "object",
       "title": "Host Request",
-      "required": [
-        "host"
-      ],
+      "required": ["host"],
       "properties": {
         "host": {
           "title": "Host name",
@@ -195,17 +191,12 @@
     "schema": {
       "type": "object",
       "title": "Delivery",
-      "required": [
-        "payment"
-      ],
+      "required": ["payment"],
       "properties": {
         "payment": {
           "title": "Payment Option",
           "type": "string",
-          "enum": [
-            "Pickup",
-            "Online"
-          ]
+          "enum": ["Pickup", "Online"]
         }
       }
     },
@@ -241,23 +232,12 @@
     "schema": {
       "type": "object",
       "title": "Delivery",
-      "required": [
-        "pickupTime"
-      ],
+      "required": ["pickupTime"],
       "properties": {
         "pickupTime": {
           "title": "Pick up Time",
           "type": "string",
-          "enum": [
-            "0",
-            "5",
-            "10",
-            "20",
-            "30",
-            "60",
-            "120",
-            "240"
-          ]
+          "enum": ["0", "5", "10", "20", "30", "60", "120", "240"]
         },
         "instruction": {
           "title": "Additional Instruction",
@@ -330,9 +310,7 @@
     ],
     "schema": {
       "type": "object",
-      "required": [
-        "co"
-      ],
+      "required": ["co"],
       "properties": {
         "co": {
           "title": "Component",
@@ -343,9 +321,7 @@
         "home": {
           "type": "object",
           "title": "Home",
-          "required": [
-            "render"
-          ],
+          "required": ["render"],
           "properties": {
             "render": {
               "type": "boolean",
@@ -388,10 +364,7 @@
                     "type": "string"
                   }
                 },
-                "required": [
-                  "label",
-                  "menu"
-                ]
+                "required": ["label", "menu"]
               }
             }
           }
@@ -399,9 +372,7 @@
         "about": {
           "type": "object",
           "title": "About",
-          "required": [
-            "render"
-          ],
+          "required": ["render"],
           "properties": {
             "render": {
               "type": "boolean",
@@ -439,9 +410,7 @@
         "catalog": {
           "type": "object",
           "title": "Online Order",
-          "required": [
-            "render"
-          ],
+          "required": ["render"],
           "properties": {
             "render": {
               "type": "boolean",
@@ -492,9 +461,7 @@
         "reservation": {
           "type": "object",
           "title": "Reservation",
-          "required": [
-            "render"
-          ],
+          "required": ["render"],
           "properties": {
             "render": {
               "type": "boolean",
@@ -509,9 +476,7 @@
         "contact": {
           "type": "object",
           "title": "Contact",
-          "required": [
-            "render"
-          ],
+          "required": ["render"],
           "properties": {
             "render": {
               "type": "boolean",
@@ -531,14 +496,7 @@
         }
       }
     },
-    "form": [
-      "co",
-      "home",
-      "about",
-      "catalog",
-      "reservation",
-      "contact"
-    ]
+    "form": ["co", "home", "about", "catalog", "reservation", "contact"]
   },
   "websiteForm": {
     "formId": "websiteForm",
@@ -595,9 +553,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "u"
-                  ]
+                  "required": ["u"]
                 }
               },
               "vs": {
@@ -612,17 +568,11 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "u"
-                  ]
+                  "required": ["u"]
                 }
               }
             },
-            "required": [
-              "t",
-              "s",
-              "d"
-            ]
+            "required": ["t", "s", "d"]
           }
         }
       }
@@ -651,9 +601,7 @@
             "style": {
               "add": "btn-success"
             },
-            "items": [
-              "ss[].is[].u"
-            ]
+            "items": ["ss[].is[].u"]
           },
           {
             "key": "ss[].vs",
@@ -661,9 +609,7 @@
             "style": {
               "add": "btn-success"
             },
-            "items": [
-              "ss[].vs[].u"
-            ]
+            "items": ["ss[].vs[].u"]
           }
         ]
       }
@@ -684,9 +630,7 @@
     ],
     "schema": {
       "type": "object",
-      "required": [
-        "client_id"
-      ],
+      "required": ["client_id"],
       "title": "JWT Claims",
       "properties": {
         "exp": {
@@ -714,9 +658,7 @@
         }
       }
     },
-    "form": [
-      "*"
-    ]
+    "form": ["*"]
   },
   "signupForm": {
     "formId": "signupForm",
@@ -750,9 +692,7 @@
         "language": {
           "type": "string",
           "default": "en",
-          "enum": [
-            "en"
-          ]
+          "enum": ["en"]
         },
         "password": {
           "type": "string"
@@ -768,10 +708,7 @@
         },
         "gender": {
           "type": "string",
-          "enum": [
-            "F",
-            "M"
-          ]
+          "enum": ["F", "M"]
         },
         "birthday": {
           "type": "string"
@@ -892,11 +829,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "oldPassword",
-        "newPassword",
-        "passwordConfirm"
-      ]
+      "required": ["oldPassword", "newPassword", "passwordConfirm"]
     },
     "form": [
       {
@@ -945,9 +878,7 @@
         },
         "language": {
           "type": "string",
-          "enum": [
-            "en"
-          ]
+          "enum": ["en"]
         },
         "firstName": {
           "type": "string"
@@ -957,10 +888,7 @@
         },
         "gender": {
           "type": "string",
-          "enum": [
-            "F",
-            "M"
-          ]
+          "enum": ["F", "M"]
         },
         "birthday": {
           "type": "string"
@@ -1078,12 +1006,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "country",
-        "province",
-        "city",
-        "category"
-      ]
+      "required": ["country", "province", "city", "category"]
     },
     "form": [
       {
@@ -1159,11 +1082,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "country",
-        "province",
-        "city"
-      ]
+      "required": ["country", "province", "city"]
     },
     "form": [
       {
@@ -1181,7 +1100,6 @@
         "action": {
           "url": "/r/data?name=province&rela=ctry-prov&from={0}",
           "params": ["country"]
-
         }
       },
       {
@@ -1326,14 +1244,7 @@
         "zoom"
       ]
     },
-    "form": [
-      "country",
-      "province",
-      "city",
-      "latitude",
-      "longitude",
-      "zoom"
-    ]
+    "form": ["country", "province", "city", "latitude", "longitude", "zoom"]
   },
   "createCovidEntity": {
     "formId": "createCovidEntity",
@@ -1496,11 +1407,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "userId",
-        "subject",
-        "content"
-      ]
+      "required": ["userId", "subject", "content"]
     },
     "form": [
       "userId",
@@ -1514,12 +1421,7 @@
   "service": {
     "schema": {
       "type": "object",
-      "required": [
-        "serviceId",
-        "serviceName",
-        "serviceType",
-        "scope"
-      ],
+      "required": ["serviceId", "serviceName", "serviceType", "scope"],
       "properties": {
         "serviceId": {
           "title": "Service ID",
@@ -1528,12 +1430,7 @@
         "serviceType": {
           "title": "Service Type",
           "type": "string",
-          "enum": [
-            "swagger",
-            "openapi",
-            "graphql",
-            "hybrid"
-          ]
+          "enum": ["swagger", "openapi", "graphql", "hybrid"]
         },
         "serviceName": {
           "title": "Serivce Name",
@@ -1557,13 +1454,7 @@
   "user": {
     "schema": {
       "type": "object",
-      "required": [
-        "userId",
-        "userType",
-        "firstName",
-        "lastName",
-        "email"
-      ],
+      "required": ["userId", "userType", "firstName", "lastName", "email"],
       "properties": {
         "userId": {
           "title": "User ID",
@@ -1572,12 +1463,7 @@
         "userType": {
           "title": "User Type",
           "type": "string",
-          "enum": [
-            "admin",
-            "employee",
-            "customer",
-            "partner"
-          ]
+          "enum": ["admin", "employee", "customer", "partner"]
         },
         "firstName": {
           "title": "First Name",
@@ -1608,11 +1494,7 @@
   "password": {
     "schema": {
       "type": "object",
-      "required": [
-        "password",
-        "newPassword",
-        "newPasswordConfirm"
-      ],
+      "required": ["password", "newPassword", "newPasswordConfirm"],
       "properties": {
         "password": {
           "title": "Password",
@@ -1667,23 +1549,12 @@
         "clientType": {
           "title": "Client Type",
           "type": "string",
-          "enum": [
-            "confidential",
-            "public",
-            "trusted",
-            "external"
-          ]
+          "enum": ["confidential", "public", "trusted", "external"]
         },
         "clientProfile": {
           "title": "Client Profile",
           "type": "string",
-          "enum": [
-            "webserver",
-            "browser",
-            "mobile",
-            "service",
-            "batch"
-          ]
+          "enum": ["webserver", "browser", "mobile", "service", "batch"]
         },
         "clientName": {
           "title": "Client Name",
@@ -1795,23 +1666,12 @@
         "clientType": {
           "title": "Client Type",
           "type": "string",
-          "enum": [
-            "confidential",
-            "public",
-            "trusted",
-            "external"
-          ]
+          "enum": ["confidential", "public", "trusted", "external"]
         },
         "clientProfile": {
           "title": "Client Profile",
           "type": "string",
-          "enum": [
-            "webserver",
-            "browser",
-            "mobile",
-            "service",
-            "batch"
-          ]
+          "enum": ["webserver", "browser", "mobile", "service", "batch"]
         },
         "clientName": {
           "title": "Client Name",
@@ -1921,11 +1781,7 @@
         "style": {
           "title": "API Style",
           "type": "string",
-          "enum": [
-            "openapi",
-            "graphql",
-            "hybrid"
-          ]
+          "enum": ["openapi", "graphql", "hybrid"]
         },
         "serviceId": {
           "title": "Service Id",
@@ -1942,12 +1798,7 @@
         "status": {
           "title": "Service Status",
           "type": "string",
-          "enum": [
-            "published",
-            "implemented",
-            "deployed",
-            "decommissioned"
-          ]
+          "enum": ["published", "implemented", "deployed", "decommissioned"]
         },
         "tags": {
           "title": "Tags",
@@ -2032,11 +1883,7 @@
         "style": {
           "title": "API Style",
           "type": "string",
-          "enum": [
-            "openapi",
-            "graphql",
-            "hybrid"
-          ]
+          "enum": ["openapi", "graphql", "hybrid"]
         },
         "serviceId": {
           "title": "Service Id",
@@ -2054,12 +1901,7 @@
         "status": {
           "title": "Service Status",
           "type": "string",
-          "enum": [
-            "published",
-            "implemented",
-            "deployed",
-            "decommissioned"
-          ]
+          "enum": ["published", "implemented", "deployed", "decommissioned"]
         },
         "tags": {
           "title": "Tags",
@@ -2122,12 +1964,7 @@
     ],
     "schema": {
       "type": "object",
-      "required": [
-        "host",
-        "serviceId",
-        "endpoint",
-        "accesses"
-      ],
+      "required": ["host", "serviceId", "endpoint", "accesses"],
       "properties": {
         "host": {
           "title": "Host",
@@ -2151,11 +1988,11 @@
           "items": {
             "type": "object",
             "properties": {
-              "ruleId":  {
+              "ruleId": {
                 "title": "Rule Id",
                 "type": "string"
               },
-              "variables":  {
+              "variables": {
                 "title": "Variables",
                 "type": "string"
               }
@@ -2205,12 +2042,7 @@
     ],
     "schema": {
       "type": "object",
-      "required": [
-        "host",
-        "serviceId",
-        "endpoint",
-        "filters"
-      ],
+      "required": ["host", "serviceId", "endpoint", "filters"],
       "properties": {
         "host": {
           "title": "Host",
@@ -2234,11 +2066,11 @@
           "items": {
             "type": "object",
             "properties": {
-              "ruleId":  {
+              "ruleId": {
                 "title": "Rule Id",
                 "type": "string"
               },
-              "variables":  {
+              "variables": {
                 "title": "Variables",
                 "type": "string"
               }
@@ -2276,11 +2108,7 @@
   "token": {
     "schema": {
       "type": "object",
-      "required": [
-        "client_id",
-        "client_secret",
-        "grant_type"
-      ],
+      "required": ["client_id", "client_secret", "grant_type"],
       "properties": {
         "client_id": {
           "title": "Client ID",
@@ -2293,10 +2121,7 @@
         "grant_type": {
           "title": "Grant Type",
           "type": "string",
-          "enum": [
-            "authorization_code",
-            "client_credentials"
-          ]
+          "enum": ["authorization_code", "client_credentials"]
         }
       }
     }
@@ -2347,11 +2172,7 @@
         "style": {
           "title": "API Style",
           "type": "string",
-          "enum": [
-            "Restful",
-            "GraphQL",
-            "Hybrid"
-          ]
+          "enum": ["Restful", "GraphQL", "Hybrid"]
         },
         "name": {
           "title": "API Name",
@@ -2368,12 +2189,7 @@
         "status": {
           "title": "API Status",
           "type": "string",
-          "enum": [
-            "published",
-            "implemented",
-            "deployed",
-            "decommissioned"
-          ]
+          "enum": ["published", "implemented", "deployed", "decommissioned"]
         },
         "tags": {
           "title": "Tags",
@@ -2636,24 +2452,15 @@
         },
         "active": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         },
         "editable": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         },
         "common": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
       "required": [
@@ -2715,24 +2522,15 @@
         },
         "active": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         },
         "editable": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         },
         "common": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
       "required": [
@@ -2794,27 +2592,12 @@
         },
         "active": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
-      "required": [
-        "tableId",
-        "valueId",
-        "valueCode",
-        "displayOrder",
-        "active"
-      ]
+      "required": ["tableId", "valueId", "valueCode", "displayOrder", "active"]
     },
-    "form": [
-      "tableId",
-      "valueId",
-      "valueCode",
-      "displayOrder",
-      "active"
-    ]
+    "form": ["tableId", "valueId", "valueCode", "displayOrder", "active"]
   },
   "updateRefValue": {
     "formId": "updateRefValue",
@@ -2849,27 +2632,12 @@
         },
         "active": {
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
-      "required": [
-        "tableId",
-        "valueId",
-        "valueCode",
-        "displayOrder",
-        "active"
-      ]
+      "required": ["tableId", "valueId", "valueCode", "displayOrder", "active"]
     },
-    "form": [
-      "tableId",
-      "valueId",
-      "valueCode",
-      "displayOrder",
-      "active"
-    ]
+    "form": ["tableId", "valueId", "valueCode", "displayOrder", "active"]
   },
   "createRefLocale": {
     "formId": "createRefLocale",
@@ -2899,11 +2667,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "valueId",
-        "language",
-        "valueDesc"
-      ]
+      "required": ["valueId", "language", "valueDesc"]
     },
     "form": [
       "valueId",
@@ -2947,17 +2711,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "valueId",
-        "language",
-        "valueDesc"
-      ]
+      "required": ["valueId", "language", "valueDesc"]
     },
-    "form": [
-      "valueId",
-      "language",
-      "valueDesc"
-    ]
+    "form": ["valueId", "language", "valueDesc"]
   },
   "createRefRelaType": {
     "formId": "createRefRelaType",
@@ -2986,17 +2742,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "relationId",
-        "relationName",
-        "relationDesc"
-      ]
+      "required": ["relationId", "relationName", "relationDesc"]
     },
-    "form": [
-      "relationId",
-      "relationName",
-      "relationDesc"
-    ]
+    "form": ["relationId", "relationName", "relationDesc"]
   },
   "updateRefRelaType": {
     "formId": "updateRefRelaType",
@@ -3026,26 +2774,14 @@
           "type": "string"
         }
       },
-      "required": [
-        "relatioId",
-        "relationName",
-        "relationDesc"
-      ]
+      "required": ["relatioId", "relationName", "relationDesc"]
     },
-    "form": [
-      "relationId",
-      "relationName",
-      "relationDesc"
-    ]
+    "form": ["relationId", "relationName", "relationDesc"]
   },
   "key": {
     "schema": {
       "type": "object",
-      "required": [
-        "client_id",
-        "client_secret",
-        "key_id"
-      ],
+      "required": ["client_id", "client_secret", "key_id"],
       "properties": {
         "client_id": {
           "title": "Client ID",
@@ -3094,25 +2830,12 @@
         "active": {
           "title": "Active",
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
-      "required": [
-        "relationId",
-        "valueIdFrom",
-        "valueIdTo",
-        "active"
-      ]
+      "required": ["relationId", "valueIdFrom", "valueIdTo", "active"]
     },
-    "form": [
-      "relationId",
-      "valueIdFrom",
-      "valueIdTo",
-      "active"
-    ]
+    "form": ["relationId", "valueIdFrom", "valueIdTo", "active"]
   },
   "updateRefRelation": {
     "formId": "updateRefRelation",
@@ -3146,25 +2869,12 @@
         "active": {
           "title": "Active",
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
-      "required": [
-        "relationId",
-        "valueIdFrom",
-        "valueIdTo",
-        "active"
-      ]
+      "required": ["relationId", "valueIdFrom", "valueIdTo", "active"]
     },
-    "form": [
-      "relationId",
-      "valueIdFrom",
-      "valueIdTo",
-      "active"
-    ]
+    "form": ["relationId", "valueIdFrom", "valueIdTo", "active"]
   },
   "deleteRefRelation": {
     "formId": "deleteRefRelation",
@@ -3196,17 +2906,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "relationId",
-        "valueIdFrom",
-        "valueIdTo"
-      ]
+      "required": ["relationId", "valueIdFrom", "valueIdTo"]
     },
-    "form": [
-      "relationId",
-      "valueIdFrom",
-      "valueIdTo"
-    ]
+    "form": ["relationId", "valueIdFrom", "valueIdTo"]
   },
   "listQuiz": {
     "formId": "listQuiz",
@@ -3240,25 +2942,12 @@
         "active": {
           "title": "Active",
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
-      "required": [
-        "quizType",
-        "category",
-        "subCategory",
-        "active"
-      ]
+      "required": ["quizType", "category", "subCategory", "active"]
     },
-    "form": [
-      "quizType",
-      "category",
-      "subCategory",
-      "active"
-    ]
+    "form": ["quizType", "category", "subCategory", "active"]
   },
   "createQuiz": {
     "formId": "createQuiz",
@@ -3309,14 +2998,7 @@
           "type": "string",
           "title": "Answer Type",
           "default": "single",
-          "enum": [
-            "single",
-            "multiple",
-            "text",
-            "image",
-            "audio",
-            "video"
-          ]
+          "enum": ["single", "multiple", "text", "image", "audio", "video"]
         },
         "answerOptions": {
           "type": "array",
@@ -3340,10 +3022,7 @@
         "active": {
           "title": "Active",
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
       "required": [
@@ -3442,14 +3121,7 @@
           "type": "string",
           "title": "Answer Type",
           "default": "single",
-          "enum": [
-            "single",
-            "multiple",
-            "text",
-            "image",
-            "audio",
-            "video"
-          ]
+          "enum": ["single", "multiple", "text", "image", "audio", "video"]
         },
         "answerOptions": {
           "type": "array",
@@ -3473,10 +3145,7 @@
         "active": {
           "title": "Active",
           "type": "string",
-          "enum": [
-            "Y",
-            "N"
-          ]
+          "enum": ["Y", "N"]
         }
       },
       "required": [
@@ -3544,13 +3213,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "quizId"
-      ]
+      "required": ["quizId"]
     },
-    "form": [
-      "quizId"
-    ]
+    "form": ["quizId"]
   },
   "schemaFormFilter": {
     "formId": "schemaFormFilter",
@@ -3579,10 +3244,7 @@
           "title": "Sub Category"
         }
       },
-      "required": [
-        "category",
-        "subcategory"
-      ]
+      "required": ["category", "subcategory"]
     },
     "form": [
       {
@@ -3811,15 +3473,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "host",
-        "id"
-      ]
+      "required": ["host", "id"]
     },
-    "form": [
-      "host",
-      "id"
-    ]
+    "form": ["host", "id"]
   },
   "createError": {
     "formId": "createError",
@@ -3877,12 +3533,7 @@
         "severity": {
           "type": "string",
           "description": "Severity Level",
-          "enum": [
-            "S0",
-            "S1",
-            "S2",
-            "S3"
-          ]
+          "enum": ["S0", "S1", "S2", "S3"]
         },
         "resolution": {
           "type": "string",
@@ -3897,7 +3548,7 @@
         "description",
         "components",
         "resolution"
-    ]
+      ]
     },
     "form": [
       {
@@ -3985,12 +3636,7 @@
         "severity": {
           "type": "string",
           "description": "Severity Level",
-          "enum": [
-            "S0",
-            "S1",
-            "S2",
-            "S3"
-          ]
+          "enum": ["S0", "S1", "S2", "S3"]
         },
         "resolution": {
           "type": "string",
@@ -4050,15 +3696,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "host",
-        "errorCode"
-      ]
+      "required": ["host", "errorCode"]
     },
-    "form": [
-      "host",
-      "errorCode"
-    ]
+    "form": ["host", "errorCode"]
   },
   "createJsonSchema": {
     "formId": "createJsonSchema",
@@ -4088,22 +3728,14 @@
         "status": {
           "type": "string",
           "description": "Status",
-          "enum": [
-            "draft",
-            "published"
-          ]
+          "enum": ["draft", "published"]
         },
         "version": {
           "title": "Schema Version",
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "v4",
-              "v6",
-              "v7",
-              "v2019-09"
-            ]
+            "enum": ["v4", "v6", "v7", "v2019-09"]
           }
         },
         "name": {
@@ -4146,10 +3778,7 @@
           "type": "string",
           "description": "Comment Open or Closed",
           "default": "O",
-          "enum": [
-            "O",
-            "C"
-          ]
+          "enum": ["O", "C"]
         }
       },
       "required": [
@@ -4264,22 +3893,14 @@
         "status": {
           "type": "string",
           "description": "Status",
-          "enum": [
-            "draft",
-            "published"
-          ]
+          "enum": ["draft", "published"]
         },
         "version": {
           "title": "Schema Version",
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "v4",
-              "v6",
-              "v7",
-              "v2019-09"
-            ]
+            "enum": ["v4", "v6", "v7", "v2019-09"]
           }
         },
         "name": {
@@ -4327,10 +3948,7 @@
           "type": "string",
           "description": "Comment Open or Closed",
           "default": "O",
-          "enum": [
-            "O",
-            "C"
-          ]
+          "enum": ["O", "C"]
         }
       },
       "required": [
@@ -4445,10 +4063,7 @@
         },
         "visibility": {
           "type": "string",
-          "enum": [
-            "public",
-            "private"
-          ],
+          "enum": ["public", "private"],
           "description": "Visibility, only public can be shared and subscribed by other hosts"
         },
         "desc": {
@@ -4460,14 +4075,7 @@
           "description": "Rule Body"
         }
       },
-      "required": [
-        "host",
-        "ruleId",
-        "ruleType",
-        "visibility",
-        "desc",
-        "value"
-    ]
+      "required": ["host", "ruleId", "ruleType", "visibility", "desc", "value"]
     },
     "form": [
       {
@@ -4536,10 +4144,7 @@
         },
         "visibility": {
           "type": "string",
-          "enum": [
-            "public",
-            "private"
-          ],
+          "enum": ["public", "private"],
           "description": "Visibility, only public can be shared and subscribed by other hosts"
         },
         "desc": {
@@ -4556,14 +4161,7 @@
           "readonly": true
         }
       },
-      "required": [
-        "host",
-        "ruleId",
-        "ruleType",
-        "visibility",
-        "desc",
-        "value"
-      ]
+      "required": ["host", "ruleId", "ruleType", "visibility", "desc", "value"]
     },
     "form": [
       "host",
@@ -4576,7 +4174,6 @@
           "url": "/r/data?name=rule-type&rela=hostrtype&from={0}",
           "params": ["host"]
         }
-
       },
       "groupId",
       "visibility",
@@ -4616,15 +4213,9 @@
           "type": "string"
         }
       },
-      "required": [
-        "host",
-        "ruleId"
-      ]
+      "required": ["host", "ruleId"]
     },
-    "form": [
-      "host",
-      "ruleId"
-    ]
+    "form": ["host", "ruleId"]
   },
   "createCategory": {
     "formId": "createCategory",
@@ -4642,11 +4233,7 @@
     "schema": {
       "type": "object",
       "title": "Category",
-      "required": [
-        "host",
-        "name",
-        "categories"
-      ],
+      "required": ["host", "name", "categories"],
       "properties": {
         "host": {
           "type": "string",
@@ -4715,31 +4302,19 @@
                                   "type": "string"
                                 }
                               },
-                              "required": [
-                                "label",
-                                "value"
-                              ]
+                              "required": ["label", "value"]
                             }
                           }
                         },
-                        "required": [
-                          "label",
-                          "value"
-                        ]
+                        "required": ["label", "value"]
                       }
                     }
                   },
-                  "required": [
-                    "label",
-                    "value"
-                  ]
+                  "required": ["label", "value"]
                 }
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           }
         }
       }
@@ -4811,11 +4386,7 @@
     "schema": {
       "type": "object",
       "title": "Category",
-      "required": [
-        "host",
-        "name",
-        "categories"
-      ],
+      "required": ["host", "name", "categories"],
       "properties": {
         "host": {
           "type": "string",
@@ -4886,31 +4457,19 @@
                                   "type": "string"
                                 }
                               },
-                              "required": [
-                                "label",
-                                "value"
-                              ]
+                              "required": ["label", "value"]
                             }
                           }
                         },
-                        "required": [
-                          "label",
-                          "value"
-                        ]
+                        "required": ["label", "value"]
                       }
                     }
                   },
-                  "required": [
-                    "label",
-                    "value"
-                  ]
+                  "required": ["label", "value"]
                 }
               }
             },
-            "required": [
-              "label",
-              "value"
-            ]
+            "required": ["label", "value"]
           }
         }
       }
@@ -4986,10 +4545,7 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "draft",
-            "published"
-          ]
+          "enum": ["draft", "published"]
         },
         "title": {
           "type": "string"
@@ -5023,10 +4579,7 @@
         "commentStatus": {
           "type": "string",
           "default": "O",
-          "enum":[
-            "O",
-            "C"
-          ]
+          "enum": ["O", "C"]
         }
       },
       "required": [
@@ -5084,9 +4637,9 @@
       {
         "key": "commentStatus",
         "titleMap": [
-          {"value": "O", "name": "Open"},
-          {"value": "C", "name": "Closed"}
-        ]            
+          { "value": "O", "name": "Open" },
+          { "value": "C", "name": "Closed" }
+        ]
       }
     ]
   },
@@ -5954,10 +5507,7 @@
         "status": {
           "type": "string",
           "title": "Status",
-          "enum": [
-            "draft",
-            "published"
-          ]
+          "enum": ["draft", "published"]
         },
         "title": {
           "type": "string",
@@ -6005,10 +5555,7 @@
           "type": "string",
           "title": "Comment Open or Closed",
           "default": "O",
-          "enum":[
-            "O",
-            "C"
-          ]
+          "enum": ["O", "C"]
         },
         "commentCount": {
           "type": "integer",
@@ -6068,10 +5615,77 @@
       {
         "key": "commentStatus",
         "titleMap": [
-          {"value": "O", "name": "Open"},
-          {"value": "C", "name": "Closed"}
-        ]            
+          { "value": "O", "name": "Open" },
+          { "value": "C", "name": "Closed" }
+        ]
       }
-   ]
+    ]
+  },
+  "loggerConfig": {
+    "formId": "loggerConfig",
+    "actions": [
+      {
+        "path": "/services/logger",
+        "rest": true,
+        "title": "Logger Config",
+        "success": "/success",
+        "failure": "/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Logger Config",
+      "required": ["protocol", "address", "port", "loggers"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "title": "Protocol",
+          "readonly": true
+        },
+        "address": {
+          "type": "string",
+          "title": "Address",
+          "readonly": true
+        },
+        "port": {
+          "type": "integer",
+          "title": "Port",
+          "readonly": true
+        },
+        "loggers": {
+          "type": "array",
+          "title": "Loggers",
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "level": {
+                "title": "Level",
+                "type": "string",
+                "enum": ["ERROR", "WARN", "INFO", "DEBUG", "TRACE"]
+              }
+            },
+            "required": ["name", "level"]
+          }
+        }
+      }
+    },
+    "form": [
+      "protocol",
+      "address",
+      "port",
+      {
+        "key": "loggers",
+        "add": "New",
+        "style": {
+          "add": "btn-success"
+        },
+        "items": ["loggers[].name", "loggers[].level"]
+      }
+    ]
   }
 }

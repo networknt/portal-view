@@ -11,6 +11,7 @@ import BlogList from '../../pages/blog/BlogList';
 import Category from '../../pages/category/Category';
 import CategoryDelete from '../../pages/category/CategoryDelete';
 import ConfigDashboard from '../../pages/config/ConfigDashboard';
+import CtrlPaneDashboard from '../../pages/controller/CtrlPaneDashboard';
 import Properties from '../../pages/config/Properties';
 import Globals from '../../pages/config/Globals';
 import Services from '../../pages/config/Services';
@@ -19,7 +20,6 @@ import DeleteProperty from '../../pages/config/DeleteProperty';
 import DeleteGlobal from '../../pages/config/DeleteGlobal';
 import DeleteService from '../../pages/config/DeleteService';
 import DeleteServiceProperty from '../../pages/config/DeleteServiceProperty';
-import ControlPane from '../../pages/controller/ControlPane';
 import CityProfile from '../../pages/covid/CityProfile';
 import CityRegistry from '../../pages/covid/CityRegistry';
 import DeleteCity from '../../pages/covid/DeleteCity';
@@ -201,6 +201,7 @@ function Layout(props) {
             <Route path="/app/website" component={Website} />
 
             <Route path="/app/configDashboard" component={ConfigDashboard} />
+            <Route path="/app/controller" component={CtrlPaneDashboard} />
             <Route path="/app/config/properties" component={Properties} />
             <Route path="/app/config/globals" component={Globals} />
             <Route path="/app/config/services" component={Services} />
@@ -209,7 +210,7 @@ function Layout(props) {
             <Route path="/app/config/deleteGlobal" component={DeleteGlobal} />
             <Route path="/app/config/deleteService" component={DeleteService} />
             <Route path="/app/config/deleteServiceProperty" component={DeleteServiceProperty} />
-            <Route path="/app/controller" component={ControlPane} />
+
             <Route
               exact
               path="/app/ui"
