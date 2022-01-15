@@ -45,7 +45,7 @@ const structure = [
   {
     id: 5,
     label: 'Controller',
-    link: '/app/controller',
+    link: '/app/controller/services',
     icon: <SportsEsportsIcon />,
   },
   {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ServerInfo(props) {
@@ -19,15 +20,15 @@ export default function ServerInfo(props) {
     url.searchParams.append(key, params[key])
   );
 
-  const headers = { Authorization: 'Basic ' + localStorage.getItem('user') };
-
   useEffect(() => {
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     const abortController = new AbortController();
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await fetch(url, {
-          headers,
+          headers, credentials: 'include',
           signal: abortController.signal,
         });
         if (!response.ok) {

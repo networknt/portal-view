@@ -5628,8 +5628,8 @@
         "path": "/services/logger",
         "rest": true,
         "title": "Logger Config",
-        "success": "/success",
-        "failure": "/failure"
+        "success": "/app/success",
+        "failure": "/app/failure"
       }
     ],
     "schema": {

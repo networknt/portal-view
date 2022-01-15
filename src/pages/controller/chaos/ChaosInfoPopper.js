@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Popper from '@mui/material/Popper';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
-import HelpIcon from '@mui/material/Help';
+import HelpIcon from '@mui/icons-material/Help';
 import IconButton from '@mui/material/IconButton';
 
 export default function ChaosInfoPopper(props) {

@@ -1,4 +1,5 @@
 import CircularProgress from '@mui/material/CircularProgress';
+import Cookies from 'universal-cookie';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -34,7 +35,6 @@ export default function ChaosMonkey(props) {
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const headers = { Authorization: 'Basic ' + localStorage.getItem('user') };
 
   /* build query params */
   console.log(baseUrl);
@@ -59,12 +59,14 @@ export default function ChaosMonkey(props) {
   };
 
   useEffect(() => {
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     const abortController = new AbortController();
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await fetch(url, {
-          headers,
+          headers, credentials: 'include',
           signal: abortController.signal,
         });
         if (!response.ok) {

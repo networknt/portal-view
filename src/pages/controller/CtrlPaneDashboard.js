@@ -16,6 +16,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Cookies from 'universal-cookie';
 import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { useAppState } from '../../context/AppContext';
@@ -40,15 +41,16 @@ function CtrlPaneDashboard(props) {
     (serviceId) => serviceId.toLowerCase().includes(filter) || !filter
   );
   const url = '/services';
-  const headers = { Authorization: 'Basic ' + localStorage.getItem('user') };
 
   useEffect(() => {
+    const cookies = new Cookies();
     const abortController = new AbortController();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await fetch(url, {
-          headers,
+          headers, credentials: 'include',
           signal: abortController.signal,
         });
         if (!response.ok) {
@@ -137,11 +139,12 @@ function Row(props) {
 
   const handleCheck = (node) => {
     const k = id + ':' + node.protocol + ':' + node.address + ':' + node.port;
-    history.push({ pathname: '/check', state: { data: { id: k } } });
+    console.log("pushing to the /app/controller/check with id = ", k);
+    history.push({ pathname: '/app/controller/check', state: { data: { id: k } } });
   };
 
   const handleLogger = (node) => {
-    history.push({ pathname: '/logger', state: { data: { node } } });
+    history.push({ pathname: '/app/controller/logger', state: { data: { node } } });
   };
 
   const handleInfo = (node) => {
@@ -151,7 +154,7 @@ function Row(props) {
         : 'null';
     const fullNode = node.address + ':' + node.port;
     history.push({
-      pathname: '/info',
+      pathname: '/app/controller/info',
       state: {
         data: {
           node: fullNode,
@@ -170,7 +173,7 @@ function Row(props) {
         ? window.location.protocol + '//' + window.location.host
         : 'null';
     history.push({
-      pathname: '/chaos',
+      pathname: '/app/controller/chaos',
       state: {
         data: {
           protocol: node.protocol,

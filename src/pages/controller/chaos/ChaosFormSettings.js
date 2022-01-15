@@ -3,7 +3,6 @@ import FormGroup from '@mui/material/FormGroup';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import MenuItem from '@mui/material/MenuItem';
 
 export default function ChaosFormSettings(props) {
   const label = props.label;
@@ -15,7 +14,7 @@ export default function ChaosFormSettings(props) {
 
   for (var i = 0; i < options.length; i++) {
     elementOptions.push(
-      <MenuItem value={options[i]}>{optionDisplays[i]}</MenuItem>
+      <MenuItem key={i} value={options[i]}>{optionDisplays[i]}</MenuItem>
     );
   }
 
@@ -29,7 +28,7 @@ export default function ChaosFormSettings(props) {
       <Select
         variant="outlined"
         fullWidth
-        margin="normal"
+        margin="none"
         value={value}
         label={label}
         onChange={handleChange}

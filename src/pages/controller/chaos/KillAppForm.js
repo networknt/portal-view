@@ -12,6 +12,7 @@ import ChaosInfoPopper from './ChaosInfoPopper';
 import Typography from '@mui/material/Typography';
 
 export default function KillAppForm(props) {
+  console.log(props);
   const classes = useStyles();
   const formType = props.formType;
   const address = props.address;
@@ -107,7 +108,7 @@ export default function KillAppForm(props) {
             onChange={handleEndpointChange}
             variant="outlined"
             label="endpoint"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={6}>
@@ -117,7 +118,7 @@ export default function KillAppForm(props) {
             fullWidth
             variant="outlined"
             label="requests"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -129,7 +130,7 @@ export default function KillAppForm(props) {
             disabled
             value={assaultType}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -141,7 +142,7 @@ export default function KillAppForm(props) {
             value={protocol}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -153,7 +154,7 @@ export default function KillAppForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -165,7 +166,7 @@ export default function KillAppForm(props) {
             disabled
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>
@@ -207,7 +208,7 @@ export default function KillAppForm(props) {
             defaultValue={props.config['level']}
             required
             label="Level"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -219,7 +220,7 @@ export default function KillAppForm(props) {
             value={assaultType}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -231,7 +232,7 @@ export default function KillAppForm(props) {
             disabled
             value={protocol}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -243,7 +244,7 @@ export default function KillAppForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -255,7 +256,7 @@ export default function KillAppForm(props) {
             fullWidth
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>

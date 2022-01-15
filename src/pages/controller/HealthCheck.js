@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function HealthCheck(props) {
@@ -10,14 +11,15 @@ export default function HealthCheck(props) {
   const [loading, setLoading] = useState(true);
 
   const url = '/services/check/' + id;
-  const headers = { Authorization: 'Basic ' + localStorage.getItem('user') };
   useEffect(() => {
+    const cookies = new Cookies();
+    const headers = { 'X-CSRF-TOKEN': cookies.get('csrf') };
     const abortController = new AbortController();
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await fetch(url, {
-          headers,
+          headers, credentials: 'include',
           signal: abortController.signal,
         });
         if (!response.ok) {

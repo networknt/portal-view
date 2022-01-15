@@ -144,7 +144,7 @@ export default function MemoryForm(props) {
             variant="outlined"
             label="endpoint"
             onChange={handleEndpointChange}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={6}>
@@ -154,7 +154,7 @@ export default function MemoryForm(props) {
             variant="outlined"
             label="requests"
             onChange={handleChangeRequests}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -166,7 +166,7 @@ export default function MemoryForm(props) {
             disabled
             value={assaultType}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -178,7 +178,7 @@ export default function MemoryForm(props) {
             value={protocol}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -190,7 +190,7 @@ export default function MemoryForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -202,7 +202,7 @@ export default function MemoryForm(props) {
             disabled
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>
@@ -244,7 +244,7 @@ export default function MemoryForm(props) {
             defaultValue={props.config['level']}
             onChange={handleLevelChange}
             label="Level"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -256,7 +256,7 @@ export default function MemoryForm(props) {
             onChange={handleMemoryMillisecondsHoldFilledMemoryChange}
             required
             label="MillisecondsHoldFilledMemory"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -268,7 +268,7 @@ export default function MemoryForm(props) {
             defaultValue={props.config['memoryMillisecondsWaitNextIncrease']}
             onChange={handleMemoryMillisecondsWaitNextIncreaseChange}
             label="MillisecondsWaitNextIncrease"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -280,7 +280,7 @@ export default function MemoryForm(props) {
             onChange={handleMemoryFillIncrementFractionChange}
             required
             label="FillIncrementFraction"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -292,7 +292,7 @@ export default function MemoryForm(props) {
             defaultValue={props.config['memoryFillTargetFraction']}
             required
             label="FillTargetFraction"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -304,7 +304,7 @@ export default function MemoryForm(props) {
             value={assaultType}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -316,7 +316,7 @@ export default function MemoryForm(props) {
             disabled
             value={protocol}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -328,7 +328,7 @@ export default function MemoryForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -340,7 +340,7 @@ export default function MemoryForm(props) {
             fullWidth
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>

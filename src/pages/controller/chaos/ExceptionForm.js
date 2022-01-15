@@ -107,7 +107,7 @@ export default function ExeptionForm(props) {
             onChange={handleEndpointChange}
             variant="outlined"
             label="endpoint"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={6}>
@@ -117,7 +117,7 @@ export default function ExeptionForm(props) {
             fullWidth
             variant="outlined"
             label="requests"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -129,7 +129,7 @@ export default function ExeptionForm(props) {
             disabled
             value={assaultType}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -141,7 +141,7 @@ export default function ExeptionForm(props) {
             value={protocol}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -153,7 +153,7 @@ export default function ExeptionForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -165,7 +165,7 @@ export default function ExeptionForm(props) {
             disabled
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>
@@ -207,7 +207,7 @@ export default function ExeptionForm(props) {
             fullWidth
             required
             label="Level"
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={12}>
@@ -219,7 +219,7 @@ export default function ExeptionForm(props) {
             value={assaultType}
             disabled
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -231,7 +231,7 @@ export default function ExeptionForm(props) {
             disabled
             value={protocol}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -243,7 +243,7 @@ export default function ExeptionForm(props) {
             disabled
             value={address}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
         <Grid item xs={4}>
@@ -255,7 +255,7 @@ export default function ExeptionForm(props) {
             fullWidth
             value={port}
             inputProps={{ readOnly: true }}
-            margin="normal"
+            margin="none"
           />
         </Grid>
       </React.Fragment>
