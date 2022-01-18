@@ -54,6 +54,8 @@ export default makeStyles((theme) => {
       [theme.breakpoints.up('md')]: {
         width: 250,
       },
+      border: '2px solid lightGrey',
+      borderRadius: 4,
     },
     searchIcon: {
       width: 36,
@@ -71,9 +73,12 @@ export default makeStyles((theme) => {
     searchIconOpened: {
       right: theme.spacing(1.25),
     },
+    searchBarClosed: {
+      display: 'none !important',
+    },
     inputRoot: {
       color: 'inherit',
-      width: '100%',
+      width: 'auto',
     },
     inputInput: {
       height: 36,

@@ -55,7 +55,8 @@ export default function Header(props) {
             classes.headerMenuButton,
             classes.headerMenuButtonCollapse
           )}
-          size="large">
+          size="large"
+        >
           {layoutState.isSidebarOpened ? (
             <ArrowBackIcon
               classes={{
@@ -102,6 +103,9 @@ export default function Header(props) {
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            className={classNames({
+              [classes.searchBarClosed]: !isSearchOpen,
+            })}
           />
         </div>
         {props.history.location.pathname.startsWith('/app/website') ? (
