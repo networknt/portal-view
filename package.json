@@ -42,7 +42,7 @@
     "react-router": "^5.2.1",
     "react-router-dom": "^5.2.1",
     "react-schema-form": "^1.0.2",
-    "react-schema-form-rc-select": "^1.0.1",
+    "react-schema-form-rc-select": "^1.0.2",
     "react-scripts": "4.0.3",
     "react-syntax-highlighter": "^15.4.5",
     "react-toastify": "^8.1.0",

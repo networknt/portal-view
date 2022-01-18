@@ -10657,10 +10657,10 @@ react-router@5.2.1, react-router@^5.2.1:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-schema-form-rc-select@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-schema-form-rc-select/-/react-schema-form-rc-select-1.0.1.tgz#9ee4a77f5c33ca9d886705a68410972cba72bbeb"
-  integrity sha512-Q3ww9FlzxfA94abjPOLHWVtPpEUPAIsS0NcYwXXKDwIz+mKr9gvfZ28DHs4I7Wo2IIOdNSd79Q3DD13sJsbjLQ==
+react-schema-form-rc-select@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-schema-form-rc-select/-/react-schema-form-rc-select-1.0.2.tgz#f9d28dd5ec21c740ddaad3a962a644cd93324177"
+  integrity sha512-WVDGnBvR9TzlAlzJMBOqILIdQ4/u3ZKOctPMNewoYYXDifDpKdshqzUvTn6/G/0hAuB+tdK0TDnEoVjdtdzbCg==
   dependencies:
     classnames "^2.3.1"
     lodash "^4.17.15"
