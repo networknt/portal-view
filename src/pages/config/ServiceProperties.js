@@ -86,8 +86,8 @@ function ServicePropertiesList(props) {
                     <TableRow>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">{service.env}</TableCell>
-                        <TableCell align="left"></TableCell>
-                        <TableCell align="right"></TableCell>
+                        <TableCell align="left">Sid</TableCell>
+                        <TableCell align="right">{service.sid}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

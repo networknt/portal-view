@@ -4659,13 +4659,13 @@
       "type": "object",
       "properties": {
         "host": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "module": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "scope": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       }
     },
@@ -4674,6 +4674,7 @@
         "key": "host",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/property/ref?name=host"
         }
@@ -4682,6 +4683,7 @@
         "key": "module",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/property/ref?name=module&host={0}",
           "params": ["host"]
@@ -4691,6 +4693,7 @@
         "key": "scope",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/property/ref?name=scope&host={0}&module={1}",
           "params": ["host","module"]
@@ -4743,12 +4746,31 @@
         "key": "host",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
-          "url": "/r/data?name=host"
+          "url": "/config-server/configs/property/ref?name=host"
         }
       },
-      "module",
-      "scope",
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=module&host={0}",
+          "params": ["host"]
+        }
+      },
+      {
+        "key": "scope",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=scope&host={0}&module={1}",
+          "params": ["host","module"]
+        }
+      },
       "key",
       "order"
     ]
@@ -4827,16 +4849,13 @@
           "type": "string"
         },
         "project": {
-          "type": "string",
-          "default": null
+          "type": "string"
         },
         "projver": {
-          "type": "string",
-          "default": null
+          "type": "string"
         },
         "env": {
-          "type": "string",
-          "default": null
+          "type": "string"
         }
       },
       "required": [
@@ -4858,13 +4877,15 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/config-server/configs/property/ref?name=module"
+          "url": "/config-server/configs/property/ref?name=module&host={0}",
+          "params": ["host"]
         }
       },
       {
         "key": "project",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/global/ref?name=project"
         }
@@ -4873,6 +4894,7 @@
         "key": "projver",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/global/ref?name=projver&project={0}",
           "params": ["project"]
@@ -4882,6 +4904,7 @@
         "key": "env",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/global/ref?name=env&project={0}",
           "params": ["project"]
@@ -4947,7 +4970,7 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=host"
+          "url": "/config-server/configs/property/ref?name=host"
         }
       },
       {
@@ -4955,12 +4978,39 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/config-server/configs/property/ref?name=module"
+          "url": "/config-server/configs/property/ref?name=module&host={0}",
+          "params": ["host"]
         }
       },
-      "project",
-      "projver",
-      "env",
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      },
       "key",
       "value",
       "order"
@@ -5082,7 +5132,7 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=host"
+          "url": "/config-server/configs/property/ref?name=host"
         }
       },
       {
@@ -5090,7 +5140,8 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/config-server/configs/property/ref?name=module"
+          "url": "/config-server/configs/property/ref?name=module&host={0}",
+          "params": ["host"]
         }
       },
       {
@@ -5200,7 +5251,7 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/r/data?name=host"
+          "url": "/config-server/configs/property/ref?name=host"
         }
       },
       {
@@ -5208,13 +5259,15 @@
         "type": "rc-select",
         "filterOption": true,
         "action": {
-          "url": "/config-server/configs/property/ref?name=module"
+          "url": "/config-server/configs/property/ref?name=module&host={0}",
+          "params": ["host"]
         }
       },
       {
         "key": "project",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/service/ref?name=project"
         }
@@ -5223,6 +5276,7 @@
         "key": "projver",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/service/ref?name=projver&project={0}",
           "params": ["project"]
@@ -5234,6 +5288,7 @@
         "key": "env",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/service/ref?name=env&project={0}&projver={1}",
           "params": ["project","projver"]
@@ -5305,6 +5360,7 @@
         "key": "env",
         "type": "rc-select",
         "filterOption": true,
+        "combobox": true,
         "action": {
           "url": "/config-server/configs/service/ref?name=env&project={0}&projver={1}",
           "params": ["project","projver"]
@@ -5358,6 +5414,10 @@
           "type": "string",
           "readonly": true
         },
+        "sid": {
+          "type": "integer",
+          "readonly": true
+        },
         "key": {
           "type": "string"
         },
@@ -5376,6 +5436,7 @@
         "service",
         "servver",
         "env",
+        "sid",
         "key",
         "value",
         "order"
@@ -5389,6 +5450,7 @@
       "service",
       "servver",
       "env",
+      "sid",
       "key",
       "value",
       "order"
