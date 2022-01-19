@@ -4,16 +4,10 @@ import { useApiDelete } from '../../hooks/useApiDelete';
 
 export default function DeleteServiceProperty(props) {
   console.log(props.location.state.data);
-  const host = props.location.state.data.service.host;
-  const module = props.location.state.data.service.module;
-  const project = props.location.state.data.service.project;
-  const projver = props.location.state.data.service.projver;
-  const service = props.location.state.data.service.service;
-  const servver = props.location.state.data.service.servver;
-  const env = props.location.state.data.service.env;
+  const sid = props.location.state.data.service.sid;
   const key = props.location.state.data.property.key;
 
-  const url = '/config-server/configs/service/property?host=' + host + "&module=" + module + "&project=" + project + "&projver=" + projver + "&service=" + service + "&servver=" + servver + "&env=" + env + "&key=" + key;
+  const url = '/config-server/configs/service/property?sid=' + sid + "&key=" + key;
   const headers = {};
   const { isLoading, data, error } = useApiDelete({ url, headers });
   console.log(isLoading, data, error);
