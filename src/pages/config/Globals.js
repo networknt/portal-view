@@ -46,7 +46,6 @@ function Row(props) {
             <TableCell align="left">{global.env}</TableCell>
             <TableCell align="left">{global.key}</TableCell>
             <TableCell align="left">{global.value}</TableCell>
-            <TableCell align="left">{global.order}</TableCell>
             <TableCell align="right">
                 <SystemUpdateIcon onClick={handleUpdate} />
             </TableCell>
@@ -73,7 +72,6 @@ function GlobalsList(props) {
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="left">Key</TableCell>
                         <TableCell align="left">Value</TableCell>
-                        <TableCell align="left">Order</TableCell>
                         <TableCell align="right">Update</TableCell>
                         <TableCell align="right">Delete</TableCell>
                     </TableRow>

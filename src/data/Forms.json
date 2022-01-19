@@ -4949,9 +4949,6 @@
         },
         "value": {
           "type": "string"
-        },
-        "order": {
-          "type": "integer"
         }
       },
       "required": [
@@ -4960,8 +4957,7 @@
         "project",
         "env",
         "key",
-        "value",
-        "order"
+        "value"
       ]
     },
     "form": [
@@ -5011,9 +5007,16 @@
           "params": ["project"]
         }
       },
-      "key",
-      "value",
-      "order"
+      {
+        "key": "key",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=key&host={0}&module={1}",
+          "params": ["host","module"]
+        }
+      },
+      "value"
     ]
   },
   "updateConfigGlobal": {
@@ -5058,9 +5061,6 @@
         },
         "value": {
           "type": "string"
-        },
-        "order": {
-          "type": "integer"
         }
       },
       "required": [
@@ -5069,8 +5069,7 @@
         "project",
         "env",
         "key",
-        "value",
-        "order"
+        "value"
       ]
     },
     "form": [
@@ -5080,8 +5079,7 @@
       "projver",
       "env",
       "key",
-      "value",
-      "order"
+      "value"
     ]
   },
   "servicesRef": {
@@ -5423,9 +5421,6 @@
         },
         "value": {
           "type": "string"
-        },
-        "order": {
-          "type": "integer"
         }
       },
       "required": [
@@ -5438,8 +5433,7 @@
         "env",
         "sid",
         "key",
-        "value",
-        "order"
+        "value"
       ]
     },
     "form": [
@@ -5451,9 +5445,16 @@
       "servver",
       "env",
       "sid",
-      "key",
-      "value",
-      "order"
+      {
+        "key": "key",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/configs/property/ref?name=key&host={0}&module={1}",
+          "params": ["host","module"]
+        }
+      },
+      "value"
     ]
   },
   "updateConfigServiceProperty": {
