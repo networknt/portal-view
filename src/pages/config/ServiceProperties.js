@@ -39,6 +39,19 @@ function Row(props) {
             });
         }
     };
+    let updateButton;
+    if(property.source === 'custom') {
+        updateButton = <SystemUpdateIcon onClick={handleUpdate} />;
+    } else {
+        updateButton = <div></div>;
+    }
+
+    let deleteButton;
+    if(property.source === 'custom') {
+        deleteButton = <DeleteForeverIcon onClick={handleDelete} />
+    } else {
+        deleteButton = <div></div>;
+    }
 
     return (
         <TableRow className={classes.root}>
@@ -49,10 +62,10 @@ function Row(props) {
             <TableCell align="left">{property.scope}</TableCell>
             <TableCell align="left">{property.source}</TableCell>
             <TableCell align="right">
-                <SystemUpdateIcon onClick={handleUpdate} />
+                {updateButton}
             </TableCell>
             <TableCell align="right">
-                <DeleteForeverIcon onClick={handleDelete} />
+                {deleteButton}
             </TableCell>
         </TableRow>
     );
