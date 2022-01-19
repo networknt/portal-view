@@ -42,6 +42,7 @@ function Row(props) {
 
     return (
         <TableRow className={classes.root}>
+            <TableCell align="left">{property.sid}</TableCell>
             <TableCell align="left">{property.key}</TableCell>
             <TableCell align="left">{property.value}</TableCell>
             <TableCell align="left">{property.order}</TableCell>
@@ -95,6 +96,7 @@ function ServicePropertiesList(props) {
             <Table aria-label="collapsible table">
                 <TableHead>
                     <TableRow>
+                        <TableCell align="left">Sid</TableCell>
                         <TableCell align="left">Key</TableCell>
                         <TableCell align="left">Value</TableCell>
                         <TableCell align="left">Order</TableCell>
@@ -125,7 +127,7 @@ export default function ServiceProperties(props) {
     let service = props.location.state.data;
     const { host } = useUserState();
 
-    const url = '/config-server/configs/service/property?host=' + service.host + "&module=" + service.module + "&project=" + service.project + "&projver=" + service.projver + "&service=" + service.service + "&servver=" + service.servver + "&env=" + service.env;
+    const url = '/config-server/configs/service/property?sid=' + service.sid;
     console.log(url);
     const headers = {};
     const { isLoading, data } = useApiGet({url, headers});
