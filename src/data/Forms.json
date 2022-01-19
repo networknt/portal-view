@@ -4954,8 +4954,6 @@
       "required": [
         "host",
         "module",
-        "project",
-        "env",
         "key",
         "value"
       ]
@@ -5066,8 +5064,6 @@
       "required": [
         "host",
         "module",
-        "project",
-        "env",
         "key",
         "value"
       ]
@@ -5507,10 +5503,7 @@
         },
         "value": {
           "type": "string"
-        },
-        "order": {
-          "type": "integer"
-        }
+        }     
       },
       "required": [
         "host",
@@ -5521,8 +5514,7 @@
         "servver",
         "env",
         "key",
-        "value",
-        "order"
+        "value"
       ]
     },
     "form": [
@@ -5534,8 +5526,7 @@
       "servver",
       "env",
       "key",
-      "value",
-      "order"
+      "value"
     ]
   },
 
