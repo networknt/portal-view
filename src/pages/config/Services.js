@@ -3,6 +3,8 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ApprovalIcon from '@mui/icons-material/Approval';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -29,8 +31,16 @@ function Row(props) {
         props.history.push({ pathname: '/app/form/updateConfigService', state: { data: service } });
     };
 
-    const handleDetail = () => {
+    const handleValues = () => {
         props.history.push({ pathname: '/app/config/serviceProperties', state: { data: service } });
+    };
+
+    const handleFiles = () => {
+        props.history.push({ pathname: '/app/config/serviceFiles', state: { data: service } });
+    };
+
+    const handleCerts = () => {
+        props.history.push({ pathname: '/app/config/serviceCerts', state: { data: service } });
     };
 
     const handleDelete = () => {
@@ -58,8 +68,15 @@ function Row(props) {
                 <DeleteForeverIcon onClick={handleDelete} />
             </TableCell>
             <TableCell align="right">
-                <FormatListBulletedIcon onClick={handleDetail} />
+                <FormatListBulletedIcon onClick={handleValues} />
             </TableCell>
+            <TableCell align="right">
+                <AttachFileIcon onClick={handleFiles} />
+            </TableCell>
+            <TableCell align="right">
+                <ApprovalIcon onClick={handleCerts} />
+            </TableCell>
+
         </TableRow>
     );
 }
@@ -82,7 +99,9 @@ function ServicesList(props) {
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">Update</TableCell>
                         <TableCell align="right">Delete</TableCell>
-                        <TableCell align="right">Detail</TableCell>
+                        <TableCell align="right">Values</TableCell>
+                        <TableCell align="right">Files</TableCell>
+                        <TableCell align="right">Certs</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
