@@ -10,9 +10,14 @@ import BlogItem from '../../pages/blog/BlogItem';
 import BlogList from '../../pages/blog/BlogList';
 import Category from '../../pages/category/Category';
 import CategoryDelete from '../../pages/category/CategoryDelete';
-import ConfigDashboard from '../../pages/config/ConfigDashboard';
 import Properties from '../../pages/config/Properties';
-import Globals from '../../pages/config/Globals';
+import GlobalValues from '../../pages/config/GlobalValues';
+import GlobalFiles from '../../pages/config/GlobalFiles';
+import GlobalFileUpload from '../../pages/config/GlobalFileUpload';
+import GlobalFileUpdate from '../../pages/config/GlobalFileUpdate';
+import GlobalCerts from '../../pages/config/GlobalCerts';
+import GlobalCertUpload from '../../pages/config/GlobalCertUpload';
+import GlobalCertUpdate from '../../pages/config/GlobalCertUpdate';
 import Services from '../../pages/config/Services';
 import ServiceProperties from '../../pages/config/ServiceProperties';
 import DeleteProperty from '../../pages/config/DeleteProperty';
@@ -205,9 +210,14 @@ function Layout(props) {
 
             <Route path="/app/website" component={Website} />
 
-            <Route path="/app/configDashboard" component={ConfigDashboard} />
             <Route path="/app/config/properties" component={Properties} />
-            <Route path="/app/config/globals" component={Globals} />
+            <Route path="/app/config/globalValues" component={GlobalValues} />
+            <Route path="/app/config/globalFiles" component={GlobalFiles} />
+            <Route path="/app/config/globalFileUpload" component={GlobalFileUpload} />
+            <Route path="/app/config/globalFileUpdate" component={GlobalFileUpdate} />
+            <Route path="/app/config/globalCerts" component={GlobalCerts} />
+            <Route path="/app/config/globalCertUpload" component={GlobalCertUpload} />
+            <Route path="/app/config/globalCertUpdate" component={GlobalCertUpdate} />
             <Route path="/app/config/services" component={Services} />
             <Route path="/app/config/serviceProperties" component={ServiceProperties} />
             <Route path="/app/config/deleteProperty" component={DeleteProperty} />

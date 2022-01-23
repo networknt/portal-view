@@ -91,13 +91,13 @@ function GlobalsList(props) {
 }
 
 
-export default function Globals(props) {
+export default function GlobalValues(props) {
     console.log(props);
     let globals = props.location.state.data;
     const { host } = useUserState();
 
     const handleCreate = () => {
-        props.history.push({ pathname: '/app/form/createConfigGlobal', state: { data: { host } } });
+        props.history.push({ pathname: '/app/form/createGlobal', state: { data: { host } } });
     };
 
     return <div><GlobalsList {...props} /><AddBoxIcon onClick={() => handleCreate()} /></div>

@@ -4834,7 +4834,7 @@
         "path": "/config-server/configs/global/search",
         "rest": true,
         "title": "Globals Criteria",
-        "success": "/app/config/globals",
+        "success": "/app/config/globalValues",
         "failure": "/app/failure"
       }
     ],
@@ -5076,6 +5076,445 @@
       "env",
       "key",
       "value"
+    ]
+  },
+  "globalsFileRef": {
+    "formId": "globalsFileRef",
+    "actions": [
+      {
+        "path": "/config-server/files/global/search",
+        "rest": true,
+        "title": "Globals Criteria",
+        "success": "/app/config/globalFiles",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Globals Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=module&host={0}",
+          "params": ["host"]
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      }
+    ]
+  },
+  "createGlobalFile": {
+    "formId": "createGlobalFile",
+    "actions": [
+      {
+        "path": "/config-server/files/global",
+        "rest": true,
+        "method": "post",
+        "title": "Global File Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global File Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "filename",
+        "content"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=module&host={0}",
+          "params": ["host"]
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/files/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      },
+      "filename",
+      {
+        "key": "content",
+        "type": "textarea",
+        "placeholder": "Paste config file content here",
+        "rows": 15
+      }
+    ]
+  },
+  "updateGlobalFile": {
+    "formId": "updateGlobalFile",
+    "actions": [
+      {
+        "path": "/config-server/files/global",
+        "rest": true,
+        "method": "put",
+        "title": "Global File Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global File Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "filename": {
+          "type": "string",
+          "readonly": true
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "filename",
+        "content"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "env",
+      "filename",
+      {
+        "key": "content",
+        "type": "textarea",
+        "placeholder": "Paste config file content here",
+        "rows": 15
+      }
+    ]
+  },
+  "globalsCertRef": {
+    "formId": "globalsCertRef",
+    "actions": [
+      {
+        "path": "/config-server/certs/global/search",
+        "rest": true,
+        "title": "Globals Criteria",
+        "success": "/app/config/globalCerts",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Globals Criteria",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module"
+      ]
+    },
+    "form": [
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=module&host={0}",
+          "params": ["host"]
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      }
+    ]
+  },
+  "createGlobalCert": {
+    "formId": "createGlobalCert",
+    "actions": [
+      {
+        "path": "/config-server/certs/global",
+        "rest": true,
+        "method": "post",
+        "title": "Global Cert Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Global Cert Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "filename"
+      ]
+    },
+    "form": [
+      {
+        "type": "help",
+        "description": "Create a global cert entry with file name and then your can upload the cert file from the list view",
+        "align": "left"
+      },
+      {
+        "key": "host",
+        "type": "rc-select",
+        "filterOption": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=host"
+        }
+      },
+      {
+        "key": "module",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=module&host={0}",
+          "params": ["host"]
+        }
+      },
+      {
+        "key": "project",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=project"
+        }
+      },
+      {
+        "key": "projver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=projver&project={0}",
+          "params": ["project"]
+        }
+      },
+      {
+        "key": "env",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/certs/global/ref?name=env&project={0}",
+          "params": ["project"]
+        }
+      },
+      "filename"
     ]
   },
   "servicesRef": {
