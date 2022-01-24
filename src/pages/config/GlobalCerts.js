@@ -57,7 +57,7 @@ function Row(props) {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete the global cert?')) {
             history.push({
-                pathname: '/app/config/deleteGlobalCert',
+                pathname: '/app/config/globalCertDelete',
                 state: { data: { cert } },
             });
         }

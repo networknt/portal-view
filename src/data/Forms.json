@@ -5198,16 +5198,12 @@
         },
         "filename": {
           "type": "string"
-        },
-        "content": {
-          "type": "string"
         }
       },
       "required": [
         "host",
         "module",
-        "filename",
-        "content"
+        "filename"
       ]
     },
     "form": [
@@ -5257,79 +5253,7 @@
           "params": ["project"]
         }
       },
-      "filename",
-      {
-        "key": "content",
-        "type": "textarea",
-        "placeholder": "Paste config file content here",
-        "rows": 15
-      }
-    ]
-  },
-  "updateGlobalFile": {
-    "formId": "updateGlobalFile",
-    "actions": [
-      {
-        "path": "/config-server/files/global",
-        "rest": true,
-        "method": "put",
-        "title": "Global File Detail",
-        "success": "/app/success",
-        "failure": "/app/failure"
-      }
-    ],
-    "schema": {
-      "title": "Global File Detail",
-      "type": "object",
-      "properties": {
-        "host": {
-          "type": "string",
-          "readonly": true
-        },
-        "module": {
-          "type": "string",
-          "readonly": true
-        },
-        "project": {
-          "type": "string",
-          "readonly": true
-        },
-        "projver": {
-          "type": "string",
-          "readonly": true
-        },
-        "env": {
-          "type": "string",
-          "readonly": true
-        },
-        "filename": {
-          "type": "string",
-          "readonly": true
-        },
-        "content": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "host",
-        "module",
-        "filename",
-        "content"
-      ]
-    },
-    "form": [
-      "host",
-      "module",
-      "project",
-      "projver",
-      "env",
-      "filename",
-      {
-        "key": "content",
-        "type": "textarea",
-        "placeholder": "Paste config file content here",
-        "rows": 15
-      }
+      "filename"
     ]
   },
   "globalsCertRef": {

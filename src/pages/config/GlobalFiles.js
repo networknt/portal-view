@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import PreviewIcon from '@mui/icons-material/Preview';
+import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
 import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 import TableContainer from '@mui/material/TableContainer';
@@ -26,10 +26,6 @@ function Row(props) {
     const { history, host, file } = props;
     const classes = useRowStyles();
 
-    const handleView = () => {
-        console.log("handleView is called");
-    };
-
     const handleDownload = () => {
         const element = document.createElement("a");
         const blob = new Blob([decodeURIComponent(escape(window.atob(file.content)))], {
@@ -48,7 +44,7 @@ function Row(props) {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete the global file?')) {
             history.push({
-                pathname: '/app/config/deleteGlobalFile',
+                pathname: '/app/config/globalFileDelete',
                 state: { data: { file } },
             });
         }
@@ -62,9 +58,6 @@ function Row(props) {
             <TableCell align="left">{file.projver}</TableCell>
             <TableCell align="left">{file.env}</TableCell>
             <TableCell align="left">{file.filename}</TableCell>
-            <TableCell align="right">
-                <PreviewIcon onClick={handleView} />
-            </TableCell>
             <TableCell align="right">
                 <DownloadIcon onClick={handleDownload} />
             </TableCell>
@@ -93,7 +86,6 @@ function GlobalFilesList(props) {
                         <TableCell align="left">Project Version</TableCell>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="left">Filename</TableCell>
-                        <TableCell align="right">View</TableCell>
                         <TableCell align="right">Download</TableCell>
                         <TableCell align="right">Upload</TableCell>
                         <TableCell align="right">Delete</TableCell>

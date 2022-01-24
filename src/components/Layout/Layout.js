@@ -15,9 +15,11 @@ import GlobalValues from '../../pages/config/GlobalValues';
 import GlobalFiles from '../../pages/config/GlobalFiles';
 import GlobalFileUpload from '../../pages/config/GlobalFileUpload';
 import GlobalFileUpdate from '../../pages/config/GlobalFileUpdate';
+import GlobalFileDelete from '../../pages/config/GlobalFileDelete';
 import GlobalCerts from '../../pages/config/GlobalCerts';
 import GlobalCertUpload from '../../pages/config/GlobalCertUpload';
 import GlobalCertUpdate from '../../pages/config/GlobalCertUpdate';
+import GlobalCertDelete from '../../pages/config/GlobalCertDelete';
 import Services from '../../pages/config/Services';
 import ServiceProperties from '../../pages/config/ServiceProperties';
 import DeleteProperty from '../../pages/config/DeleteProperty';
@@ -215,9 +217,11 @@ function Layout(props) {
             <Route path="/app/config/globalFiles" component={GlobalFiles} />
             <Route path="/app/config/globalFileUpload" component={GlobalFileUpload} />
             <Route path="/app/config/globalFileUpdate" component={GlobalFileUpdate} />
+            <Route path="/app/config/globalFileDelete" component={GlobalFileDelete} />
             <Route path="/app/config/globalCerts" component={GlobalCerts} />
             <Route path="/app/config/globalCertUpload" component={GlobalCertUpload} />
             <Route path="/app/config/globalCertUpdate" component={GlobalCertUpdate} />
+            <Route path="/app/config/globalCertDelete" component={GlobalCertDelete} />
             <Route path="/app/config/services" component={Services} />
             <Route path="/app/config/serviceProperties" component={ServiceProperties} />
             <Route path="/app/config/deleteProperty" component={DeleteProperty} />
