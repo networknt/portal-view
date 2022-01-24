@@ -50,6 +50,13 @@ function Row(props) {
         }
     };
 
+    let downloadButton;
+    if(file.content !== undefined) {
+        downloadButton = <DownloadIcon onClick={handleDownload} />;
+    } else {
+        downloadButton = <div></div>;
+    }
+
     return (
         <TableRow className={classes.root}>
             <TableCell align="left">{file.host}</TableCell>
@@ -59,7 +66,7 @@ function Row(props) {
             <TableCell align="left">{file.env}</TableCell>
             <TableCell align="left">{file.filename}</TableCell>
             <TableCell align="right">
-                <DownloadIcon onClick={handleDownload} />
+                {downloadButton}
             </TableCell>
             <TableCell align="right">
                 <UploadIcon onClick={handleUpload} />

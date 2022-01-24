@@ -63,6 +63,13 @@ function Row(props) {
         }
     };
 
+    let downloadButton;
+    if(cert.content !== undefined) {
+        downloadButton = <DownloadIcon onClick={handleDownload} />;
+    } else {
+        downloadButton = <div></div>;
+    }
+
     return (
         <TableRow className={classes.root}>
             <TableCell align="left">{cert.host}</TableCell>
@@ -72,7 +79,7 @@ function Row(props) {
             <TableCell align="left">{cert.env}</TableCell>
             <TableCell align="left">{cert.filename}</TableCell>
             <TableCell align="right">
-                <DownloadIcon onClick={handleDownload} />
+                {downloadButton}
             </TableCell>
             <TableCell align="right">
                 <UploadIcon onClick={handleUpload} />
