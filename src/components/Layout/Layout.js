@@ -21,9 +21,17 @@ import GlobalCertUpload from '../../pages/config/GlobalCertUpload';
 import GlobalCertUpdate from '../../pages/config/GlobalCertUpdate';
 import GlobalCertDelete from '../../pages/config/GlobalCertDelete';
 import Services from '../../pages/config/Services';
+import ServiceFiles from '../../pages/config/ServiceFiles';
+import ServiceFileUpload from '../../pages/config/ServiceFileUpload';
+import ServiceFileUpdate from '../../pages/config/ServiceFileUpdate';
+import ServiceFileDelete from '../../pages/config/ServiceFileDelete';
+import ServiceCerts from '../../pages/config/ServiceCerts';
+import ServiceCertUpload from '../../pages/config/ServiceCertUpload';
+import ServiceCertUpdate from '../../pages/config/ServiceCertUpdate';
+import ServiceCertDelete from '../../pages/config/ServiceCertDelete';
 import ServiceProperties from '../../pages/config/ServiceProperties';
 import DeleteProperty from '../../pages/config/DeleteProperty';
-import DeleteGlobal from '../../pages/config/DeleteGlobal';
+import GlobalValueDelete from '../../pages/config/GlobalValueDelete';
 import DeleteService from '../../pages/config/DeleteService';
 import DeleteServiceProperty from '../../pages/config/DeleteServiceProperty';
 import CtrlPaneDashboard from '../../pages/controller/CtrlPaneDashboard';
@@ -214,6 +222,7 @@ function Layout(props) {
 
             <Route path="/app/config/properties" component={Properties} />
             <Route path="/app/config/globalValues" component={GlobalValues} />
+            <Route path="/app/config/globalValueDelete" component={GlobalValueDelete} />
             <Route path="/app/config/globalFiles" component={GlobalFiles} />
             <Route path="/app/config/globalFileUpload" component={GlobalFileUpload} />
             <Route path="/app/config/globalFileUpdate" component={GlobalFileUpdate} />
@@ -223,12 +232,18 @@ function Layout(props) {
             <Route path="/app/config/globalCertUpdate" component={GlobalCertUpdate} />
             <Route path="/app/config/globalCertDelete" component={GlobalCertDelete} />
             <Route path="/app/config/services" component={Services} />
+            <Route path="/app/config/serviceFiles" component={ServiceFiles} />
+            <Route path="/app/config/serviceFileUpload" component={ServiceFileUpload} />
+            <Route path="/app/config/serviceFileUpdate" component={ServiceFileUpdate} />
+            <Route path="/app/config/serviceFileDelete" component={ServiceFileDelete} />
+            <Route path="/app/config/serviceCerts" component={ServiceCerts} />
+            <Route path="/app/config/serviceCertUpload" component={ServiceCertUpload} />
+            <Route path="/app/config/serviceCertUpdate" component={ServiceCertUpdate} />
+            <Route path="/app/config/serviceCertDelete" component={ServiceCertDelete} />
             <Route path="/app/config/serviceProperties" component={ServiceProperties} />
             <Route path="/app/config/deleteProperty" component={DeleteProperty} />
-            <Route path="/app/config/deleteGlobal" component={DeleteGlobal} />
             <Route path="/app/config/deleteService" component={DeleteService} />
             <Route path="/app/config/deleteServiceProperty" component={DeleteServiceProperty} />
-
             <Route path="/app/controller/services" component={CtrlPaneDashboard} />
             <Route path="/app/controller/check" component={HealthCheck} />
             <Route path="/app/controller/info" component={ServerInfo} />

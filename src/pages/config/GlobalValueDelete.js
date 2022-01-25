@@ -1,9 +1,8 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import React from 'react';
-import { useUserState } from '../../context/UserContext';
 import { useApiDelete } from '../../hooks/useApiDelete';
 
-export default function DeleteGlobal(props) {
+export default function GlobalValueDelete(props) {
   console.log(props.location.state.data);
   const host = props.location.state.data.global.host;
   const module = props.location.state.data.global.module;

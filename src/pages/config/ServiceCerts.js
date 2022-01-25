@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import UploadIcon from '@mui/icons-material/Upload';
+import DownloadIcon from '@mui/icons-material/Download';
 import TableContainer from '@mui/material/TableContainer';
 import CircularProgress from '@mui/material/CircularProgress';
 import Paper from '@mui/material/Paper';
@@ -22,6 +23,16 @@ const useRowStyles = makeStyles({
     },
 });
 
+function base64ToArrayBuffer(base64) {
+    var binary_string =  window.atob(base64);
+    var len = binary_string.length;
+    var bytes = new Uint8Array( len );
+    for (var i = 0; i < len; i++)        {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
 function Row(props) {
     const { history, cert, service } = props;
     const classes = useRowStyles();
@@ -34,16 +45,43 @@ function Row(props) {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete the service cert?')) {
             history.push({
-                pathname: '/app/config/deleteServiceCert',
+                pathname: '/app/config/serviceCertDelete',
                 state: { data: { cert, service } },
             });
         }
     };
-    let updateButton;
-    if(cert.source === 'custom') {
-        updateButton = <SystemUpdateIcon onClick={handleUpdate} />;
+
+    const handleDownload = () => {
+        const element = document.createElement("a");
+        console.log(cert.content);
+        var bytes = base64ToArrayBuffer(cert.content);
+        console.log(bytes);
+        const blob = new Blob([bytes], {
+          type: "application/octet-stream"
+        });
+        element.href = URL.createObjectURL(blob);
+        element.download = cert.filename;
+        document.body.appendChild(element);
+        element.click();
+    };
+
+    const handleUpload = () => {
+        props.history.push({ pathname: '/app/config/serviceCertUpload', state: { data: cert } });
+    };
+
+
+    let downloadButton;
+    if(cert.content !== undefined) {
+        downloadButton = <DownloadIcon onClick={handleDownload} />;
     } else {
-        updateButton = <div></div>;
+        downloadButton = <div></div>;
+    }
+
+    let uploadButton;
+    if(cert.source === 'custom') {
+        uploadButton = <UploadIcon onClick={handleUpload} />;
+    } else {
+        uploadButton = <div></div>;
     }
 
     let deleteButton;
@@ -56,13 +94,13 @@ function Row(props) {
     return (
         <TableRow className={classes.root}>
             <TableCell align="left">{cert.sid}</TableCell>
-            <TableCell align="left">{cert.name}</TableCell>
+            <TableCell align="left">{cert.filename}</TableCell>
             <TableCell align="left">{cert.source}</TableCell>
             <TableCell align="right">
                 {downloadButton}
             </TableCell>
             <TableCell align="right">
-                {updateButton}
+                {uploadButton}
             </TableCell>
             <TableCell align="right">
                 {deleteButton}
@@ -113,12 +151,12 @@ function ServiceCertsList(props) {
                         <TableCell align="left">Name</TableCell>
                         <TableCell align="left">Source</TableCell>
                         <TableCell align="right">Download</TableCell>
-                        <TableCell align="right">Update</TableCell>
+                        <TableCell align="right">Upload</TableCell>
                         <TableCell align="right">Delete</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {files.map((file, index) => (
+                    {certs.map((cert, index) => (
                         <Row
                             history={history}
                             key={index}
@@ -143,7 +181,7 @@ export default function ServiceCerts(props) {
     const { isLoading, data } = useApiGet({url, headers});
   
     const handleCreate = () => {
-        props.history.push({ pathname: '/app/config/uploadCert', state: { data: { ...service } } });
+        props.history.push({ pathname: '/app/form/createServiceCert', state: { data: { ...service } } });
     };
 
     let wait;

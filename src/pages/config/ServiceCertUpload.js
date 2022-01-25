@@ -3,9 +3,7 @@ import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Cookies from 'universal-cookie';
 import FileUpload from "../../components/Upload/FileUpload";
 
 function arrayBufferToBase64( buffer ) {
@@ -19,7 +17,7 @@ function arrayBufferToBase64( buffer ) {
 }
 
 
-export default function GlobalCertUpload(props) {
+export default function ServiceCertUpload(props) {
     console.log(props);
     const cert = props.location.state.data;
     const [content, setContent] = useState('');
@@ -34,10 +32,10 @@ export default function GlobalCertUpload(props) {
         })
     };
 
-    const submitGlobalCert = () => {
+    const submitServiceCert = () => {
         console.log(content);
         cert.content = content;
-        props.history.push({ pathname: '/app/config/globalCertUpdate', state: { data: cert } });
+        props.history.push({ pathname: '/app/config/serviceCertUpdate', state: { data: cert } });
     };
 
     return (
@@ -71,7 +69,7 @@ export default function GlobalCertUpload(props) {
                 </TableBody>
             </Table>
 
-            <Button variant="contained" color="primary" onClick={submitGlobalCert}>
+            <Button variant="contained" color="primary" onClick={submitServiceCert}>
                 SUBMIT
             </Button>
             <FileUpload

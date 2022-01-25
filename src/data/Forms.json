@@ -4912,20 +4912,20 @@
       }
     ]
   },
-  "createConfigGlobal": {
-    "formId": "createConfigGlobal",
+  "createGlobalValue": {
+    "formId": "createGlobalValue",
     "actions": [
       {
         "path": "/config-server/configs/global",
         "rest": true,
         "method": "post",
-        "title": "Global Detail",
+        "title": "Global Value Detail",
         "success": "/app/success",
         "failure": "/app/failure"
       }
     ],
     "schema": {
-      "title": "Global Detail",
+      "title": "Global Value Detail",
       "type": "object",
       "properties": {
         "host": {
@@ -5017,20 +5017,20 @@
       "value"
     ]
   },
-  "updateConfigGlobal": {
-    "formId": "updateConfigGlobal",
+  "updateGlobalValue": {
+    "formId": "updateGlobalValue",
     "actions": [
       {
         "path": "/config-server/configs/global",
         "rest": true,
         "method": "put",
-        "title": "Global Detail",
+        "title": "Global Value Detail",
         "success": "/app/success",
         "failure": "/app/failure"
       }
     ],
     "schema": {
-      "title": "Global Detail",
+      "title": "Global Value Detail",
       "type": "object",
       "properties": {
         "host": {
@@ -5892,7 +5892,162 @@
       "value"
     ]
   },
-
+  "createServiceFile": {
+    "formId": "createServiceFile",
+    "actions": [
+      {
+        "path": "/config-server/configs/service/file",
+        "rest": true,
+        "method": "post",
+        "title": "Service File Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service File Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string",
+          "readonly": true
+        },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "title": "service version",
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "sid": {
+          "type": "integer",
+          "readonly": true
+        },
+        "filename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env",
+        "sid",
+        "filename"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "service",
+      "servver",
+      "env",
+      "sid",
+      "filename"
+    ]
+  },
+  "createServiceCert": {
+    "formId": "createServiceCert",
+    "actions": [
+      {
+        "path": "/config-server/configs/service/cert",
+        "rest": true,
+        "method": "post",
+        "title": "Service Cert Detail",
+        "success": "/app/success",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "title": "Service Cert Detail",
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "readonly": true
+        },
+        "module": {
+          "type": "string",
+          "readonly": true
+        },
+        "project": {
+          "type": "string",
+          "readonly": true
+        },
+        "projver": {
+          "title": "project version",
+          "type": "string",
+          "readonly": true
+        },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "title": "service version",
+          "type": "string",
+          "readonly": true
+        },
+        "env": {
+          "type": "string",
+          "readonly": true
+        },
+        "sid": {
+          "type": "integer",
+          "readonly": true
+        },
+        "filename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "module",
+        "project",
+        "projver",
+        "service",
+        "servver",
+        "env",
+        "sid",
+        "filename"
+      ]
+    },
+    "form": [
+      "host",
+      "module",
+      "project",
+      "projver",
+      "service",
+      "servver",
+      "env",
+      "sid",
+      "filename"
+    ]
+  },
   "updateBlog": {
     "formId": "updateBlog",
     "actions": [

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import SystemUpdateIcon from '@mui/icons-material/SystemUpdate';
+import UploadIcon from '@mui/icons-material/Upload';
+import DownloadIcon from '@mui/icons-material/Download';
 import TableContainer from '@mui/material/TableContainer';
 import CircularProgress from '@mui/material/CircularProgress';
 import Paper from '@mui/material/Paper';
@@ -11,7 +12,6 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { makeStyles } from '@mui/styles';
-import { useUserState } from '../../context/UserContext';
 import { useApiGet } from '../../hooks/useApiGet';
 
 const useRowStyles = makeStyles({
@@ -26,24 +26,42 @@ function Row(props) {
     const { history, file, service } = props;
     const classes = useRowStyles();
 
-    const handleUpdate = () => {
-        const combined = {...file, ...service};
-        props.history.push({ pathname: '/app/form/updateConfigServiceProperty', state: { data: combined } });
+    const handleDownload = () => {
+        const element = document.createElement("a");
+        const blob = new Blob([decodeURIComponent(escape(window.atob(file.content)))], {
+          type: "text/plain"
+        });
+        element.href = URL.createObjectURL(blob);
+        element.download = file.filename;
+        document.body.appendChild(element);
+        element.click();
+    };
+
+    const handleUpload = () => {
+        props.history.push({ pathname: '/app/config/serviceFileUpload', state: { data: file } });
     };
 
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete the service file?')) {
             history.push({
-                pathname: '/app/config/deleteServiceFile',
+                pathname: '/app/config/serviceFileDelete',
                 state: { data: { file, service } },
             });
         }
     };
-    let updateButton;
-    if(file.source === 'custom') {
-        updateButton = <SystemUpdateIcon onClick={handleUpdate} />;
+
+    let downloadButton;
+    if(file.content !== undefined) {
+        downloadButton = <DownloadIcon onClick={handleDownload} />;
     } else {
-        updateButton = <div></div>;
+        downloadButton = <div></div>;
+    }
+
+    let uploadButton;
+    if(file.source === 'custom') {
+        uploadButton = <UploadIcon onClick={handleUpload} />;
+    } else {
+        uploadButton = <div></div>;
     }
 
     let deleteButton;
@@ -53,19 +71,17 @@ function Row(props) {
         deleteButton = <div></div>;
     }
 
+
     return (
         <TableRow className={classes.root}>
             <TableCell align="left">{file.sid}</TableCell>
-            <TableCell align="left">{file.name}</TableCell>
+            <TableCell align="left">{file.filename}</TableCell>
             <TableCell align="left">{file.source}</TableCell>
-            <TableCell align="right">
-                {viewButton}
-            </TableCell>
             <TableCell align="right">
                 {downloadButton}
             </TableCell>
             <TableCell align="right">
-                {updateButton}
+                {uploadButton}
             </TableCell>
             <TableCell align="right">
                 {deleteButton}
@@ -115,9 +131,8 @@ function ServiceFilesList(props) {
                         <TableCell align="left">Sid</TableCell>
                         <TableCell align="left">Name</TableCell>
                         <TableCell align="left">Source</TableCell>
-                        <TableCell align="right">View</TableCell>
                         <TableCell align="right">Download</TableCell>
-                        <TableCell align="right">Update</TableCell>
+                        <TableCell align="right">Upload</TableCell>
                         <TableCell align="right">Delete</TableCell>
                     </TableRow>
                 </TableHead>
@@ -147,7 +162,7 @@ export default function ServiceFiles(props) {
     const { isLoading, data } = useApiGet({url, headers});
   
     const handleCreate = () => {
-        props.history.push({ pathname: '/app/config/uploadFile', state: { data: { ...service } } });
+        props.history.push({ pathname: '/app/form/createServiceFile', state: { data: { ...service } } });
     };
 
     let wait;

@@ -25,13 +25,13 @@ function Row(props) {
     const classes = useRowStyles();
 
     const handleUpdate = () => {
-        props.history.push({ pathname: '/app/form/updateConfigGlobal', state: { data: global } });
+        props.history.push({ pathname: '/app/form/updateGlobalValue', state: { data: global } });
     };
 
     const handleDelete = () => {
-        if (window.confirm('Are you sure you want to delete the global definition?')) {
+        if (window.confirm('Are you sure you want to delete the global value?')) {
             history.push({
-                pathname: '/app/config/deleteGlobal',
+                pathname: '/app/config/globalValueDelete',
                 state: { data: { global } },
             });
         }
@@ -97,7 +97,7 @@ export default function GlobalValues(props) {
     const { host } = useUserState();
 
     const handleCreate = () => {
-        props.history.push({ pathname: '/app/form/createGlobal', state: { data: { host } } });
+        props.history.push({ pathname: '/app/form/createGlobalValue', state: { data: { host } } });
     };
 
     return <div><GlobalsList {...props} /><AddBoxIcon onClick={() => handleCreate()} /></div>
