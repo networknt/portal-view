@@ -57,7 +57,7 @@ function Row(props) {
         <TableRow className={classes.root}>
             <TableCell align="left">{property.sid}</TableCell>
             <TableCell align="left">{property.key}</TableCell>
-            <TableCell align="left">{property.value}</TableCell>
+            <TableCell align="left">{property.value !== undefined ? property.value : ''}</TableCell>
             <TableCell align="left">{property.order}</TableCell>
             <TableCell align="left">{property.scope}</TableCell>
             <TableCell align="left">{property.source}</TableCell>
