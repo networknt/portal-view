@@ -28,10 +28,10 @@ function Row(props) {
     console.log(row, endpointRules);
     const classes = useRowStyles();
 
-    let endpointRule = endpointRules[endpoint];
     let accesses = null;
     let filters = null;
-    if(endpointRule) {
+    if(endpointRules) {
+        let endpointRule = endpointRules[endpoint];
         accesses = endpointRule['request-access'];
         filters = endpointRule['response-filter'];
     }
