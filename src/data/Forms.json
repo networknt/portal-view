@@ -6192,6 +6192,77 @@
       }
     ]
   },
+  "logRetrieval": {
+    "formId": "logRetrieval",
+    "actions": [
+      {
+        "path": "/services/logger/content",
+        "rest": true,
+        "title": "Log Retrieval",
+        "success": "/app/controller/logContent",
+        "failure": "/app/failure"
+      }
+    ],
+    "schema": {
+      "type": "object",
+      "title": "Log Retrieval",
+      "properties": {
+        "protocol": {
+          "title": "Protocol",
+          "type": "string",
+          "readonly": true
+        },
+        "address": {
+          "title": "Address",
+          "type": "string",
+          "readonly": true
+        },
+        "port": {
+          "title": "Port",
+          "type": "integer",
+          "readonly": true
+        },
+        "loggerName": {
+          "title": "Logger Name",
+          "type": "string"
+        },
+        "loggerLevel": {
+          "title": "Logger Level",
+          "type": "string",
+          "enum": ["ERROR", "WARN", "INFO", "DEBUG", "TRACE"]
+        },
+        "startTime": {
+          "type": "string",
+          "title": "Start Time"
+        },
+        "endTime": {
+          "type": "string",
+          "title": "End Time"
+        }
+      },
+      "required": [
+        "protocol",
+        "address",
+        "port",
+        "loggerLevel"
+      ]
+    },
+    "form": [
+      "protocol",
+      "address",
+      "port",
+      "loggerName",
+      "loggerLevel",
+      {
+        "key": "startTime",
+        "type": "timestamp"
+      },
+      {
+        "key": "endTime",
+        "type": "timestamp"
+      }
+    ]
+  },
   "loggerConfig": {
     "formId": "loggerConfig",
     "actions": [
