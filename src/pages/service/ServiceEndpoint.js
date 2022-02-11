@@ -32,8 +32,10 @@ function Row(props) {
     let filters = null;
     if(endpointRules) {
         let endpointRule = endpointRules[endpoint];
-        accesses = endpointRule['request-access'];
-        filters = endpointRule['response-filter'];
+        if(endpointRule) {
+            accesses = endpointRule['request-access'];
+            filters = endpointRule['response-filter'];
+        }
     }
 
     let scopes = row.scopes ? JSON.stringify(row.scopes, null, 2) : 'N/A';
