@@ -1992,6 +1992,14 @@
                 "title": "Rule Id",
                 "type": "string"
               },
+              "roles": {
+                "type": "array",
+                "title": "Roles",
+                "maxItems": 10,
+                "items": {
+                  "type": "string"
+                }
+              },
               "variables": {
                 "title": "Variables",
                 "type": "string"
@@ -2020,6 +2028,17 @@
             "action": {
               "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getRuleByType%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22host%22%3A%22{0}%22%2C%22ruleType%22%3A%22request-access%22%7D%7D",
               "params": ["host"]
+            }
+          },
+          {
+            "key": "accesses[].roles",
+            "type": "rc-select",
+            "multiple": true,
+            "tags": true,
+            "maxTagTextLength": 20,
+            "action": {
+              "url": "/portal/query?cmd=%7B%22host%22%3A%22lightapi.net%22%2C%22service%22%3A%22market%22%2C%22action%22%3A%22getServiceRoleById%22%2C%22version%22%3A%220.1.0%22%2C%22data%22%3A%7B%22serviceId%22%3A%22{0}%22%7D%7D",
+              "params": ["serviceId"]
             }
           },
           "accesses[].variables"
