@@ -73,6 +73,7 @@ function Row(props) {
         <TableRow className={classes.root}>
             <TableCell align="left">{cert.host}</TableCell>
             <TableCell align="left">{cert.module}</TableCell>
+            <TableCell align="left">{cert.cfgtype}</TableCell>
             <TableCell align="left">{cert.project}</TableCell>
             <TableCell align="left">{cert.projver}</TableCell>
             <TableCell align="left">{cert.env}</TableCell>
@@ -101,6 +102,7 @@ function GlobalCertsList(props) {
                     <TableRow>
                         <TableCell align="left">Host</TableCell>
                         <TableCell align="left">Module</TableCell>
+                        <TableCell align="left">Config Type</TableCell>
                         <TableCell align="left">Project</TableCell>
                         <TableCell align="left">Project Version</TableCell>
                         <TableCell align="left">Environment</TableCell>

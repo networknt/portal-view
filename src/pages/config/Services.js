@@ -56,6 +56,7 @@ function Row(props) {
         <TableRow className={classes.root}>
             <TableCell align="left">{service.host}</TableCell>
             <TableCell align="left">{service.module}</TableCell>
+            <TableCell align="left">{service.cfgtype}</TableCell>
             <TableCell align="left">{service.project}</TableCell>
             <TableCell align="left">{service.projver}</TableCell>
             <TableCell align="left">{service.service}</TableCell>
@@ -92,6 +93,7 @@ function ServicesList(props) {
                     <TableRow>
                         <TableCell align="left">Host</TableCell>
                         <TableCell align="left">Module</TableCell>
+                        <TableCell align="left">Config Type</TableCell>
                         <TableCell align="left">Project</TableCell>
                         <TableCell align="left">Project Version</TableCell>
                         <TableCell align="left">Service</TableCell>

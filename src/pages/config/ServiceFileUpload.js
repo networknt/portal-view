@@ -49,10 +49,16 @@ export default function ServiceFileUpload(props) {
                         <TableCell align="right">{file.servver}</TableCell>
                     </TableRow>
                     <TableRow>
+                        <TableCell align="left">Config Type</TableCell>
+                        <TableCell align="right">{file.cfgtype}</TableCell>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">{file.env}</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell align="left">Filename</TableCell>
                         <TableCell align="right">{file.filename}</TableCell>
+                        <TableCell align="left"></TableCell>
+                        <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

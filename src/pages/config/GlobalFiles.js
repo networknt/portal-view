@@ -61,6 +61,7 @@ function Row(props) {
         <TableRow className={classes.root}>
             <TableCell align="left">{file.host}</TableCell>
             <TableCell align="left">{file.module}</TableCell>
+            <TableCell align="left">{file.cfgtype}</TableCell>
             <TableCell align="left">{file.project}</TableCell>
             <TableCell align="left">{file.projver}</TableCell>
             <TableCell align="left">{file.env}</TableCell>
@@ -89,6 +90,7 @@ function GlobalFilesList(props) {
                     <TableRow>
                         <TableCell align="left">Host</TableCell>
                         <TableCell align="left">Module</TableCell>
+                        <TableCell align="left">Config Type</TableCell>
                         <TableCell align="left">Project</TableCell>
                         <TableCell align="left">Project Version</TableCell>
                         <TableCell align="left">Environment</TableCell>

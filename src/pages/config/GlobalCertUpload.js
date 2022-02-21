@@ -3,9 +3,7 @@ import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Cookies from 'universal-cookie';
 import FileUpload from "../../components/Upload/FileUpload";
 
 function arrayBufferToBase64( buffer ) {
@@ -63,10 +61,16 @@ export default function GlobalCertUpload(props) {
                         <TableCell align="right">{cert.servver}</TableCell>
                     </TableRow>
                     <TableRow>
+                        <TableCell align="left">Config Type</TableCell>
+                        <TableCell align="right">{cert.cfgtype}</TableCell>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">{cert.env}</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell align="left">Filename</TableCell>
                         <TableCell align="right">{cert.filename}</TableCell>
+                        <TableCell align="left"></TableCell>
+                        <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

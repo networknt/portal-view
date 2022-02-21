@@ -61,10 +61,16 @@ export default function ServiceCertUpload(props) {
                         <TableCell align="right">{cert.servver}</TableCell>
                     </TableRow>
                     <TableRow>
+                        <TableCell align="left">Config Type</TableCell>
+                        <TableCell align="right">{cert.cfgtype}</TableCell>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">{cert.env}</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell align="left">Filename</TableCell>
                         <TableCell align="right">{cert.filename}</TableCell>
+                        <TableCell align="left"></TableCell>
+                        <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

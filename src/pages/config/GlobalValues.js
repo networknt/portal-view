@@ -41,6 +41,7 @@ function Row(props) {
         <TableRow className={classes.root}>
             <TableCell align="left">{global.host}</TableCell>
             <TableCell align="left">{global.module}</TableCell>
+            <TableCell align="left">{global.cfgtype}</TableCell>
             <TableCell align="left">{global.project}</TableCell>
             <TableCell align="left">{global.projver}</TableCell>
             <TableCell align="left">{global.env}</TableCell>
@@ -67,6 +68,7 @@ function GlobalsList(props) {
                     <TableRow>
                         <TableCell align="left">Host</TableCell>
                         <TableCell align="left">Module</TableCell>
+                        <TableCell align="left">Config Type</TableCell>
                         <TableCell align="left">Project</TableCell>
                         <TableCell align="left">Project Version</TableCell>
                         <TableCell align="left">Environment</TableCell>

@@ -42,6 +42,7 @@ function Row(props) {
       <TableRow className={classes.root}>
         <TableCell align="left">{property.host}</TableCell>
         <TableCell align="left">{property.module}</TableCell>
+        <TableCell align="left">{property.cfgtype}</TableCell>
         <TableCell align="left">{property.scope}</TableCell>
         <TableCell align="left">{property.key}</TableCell>
         <TableCell align="left">{property.order}</TableCell>
@@ -66,6 +67,7 @@ function PropertiesList(props) {
               <TableRow>
                 <TableCell align="left">Host</TableCell>
                 <TableCell align="left">Module</TableCell>
+                <TableCell align="left">Config Type</TableCell>
                 <TableCell align="left">Scope</TableCell>
                 <TableCell align="left">Key</TableCell>
                 <TableCell align="left">Order</TableCell>

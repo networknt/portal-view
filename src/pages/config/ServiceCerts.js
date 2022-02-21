@@ -136,10 +136,16 @@ function ServiceCertsList(props) {
                         <TableCell align="right">{service.servver}</TableCell>
                     </TableRow>
                     <TableRow>
+                        <TableCell align="left">Config Type</TableCell>
+                        <TableCell align="right">{service.cfgtype}</TableCell>
                         <TableCell align="left">Environment</TableCell>
                         <TableCell align="right">{service.env}</TableCell>
+                    </TableRow>
+                    <TableRow>
                         <TableCell align="left">Sid</TableCell>
                         <TableCell align="right">{service.sid}</TableCell>
+                        <TableCell align="left"></TableCell>
+                        <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
