@@ -5000,6 +5000,7 @@
           "type": "string"
         },
         "cfgtype": {
+          "title": "config type",
           "type": "string"
         },
         "project": {
@@ -5007,6 +5008,13 @@
         },
         "projver": {
           "title": "project version",
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "servver": {
+          "title": "service version",
           "type": "string"
         },
         "env": {
@@ -5074,6 +5082,25 @@
         }
       },
       {
+        "key": "service",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=service"
+        }
+      },
+      {
+        "key": "servver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=servver&service={0}",
+          "params": ["service"]
+        }
+      },
+      {
         "key": "env",
         "type": "rc-select",
         "filterOption": true,
@@ -5131,6 +5158,14 @@
           "type": "string",
           "readonly": true
         },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "type": "string",
+          "readonly": true
+        },
         "env": {
           "type": "string",
           "readonly": true
@@ -5157,6 +5192,8 @@
       "cfgtype",
       "project",
       "projver",
+      "service",
+      "servver",
       "env",
       "key",
       "value"
