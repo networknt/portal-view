@@ -4960,6 +4960,13 @@
           "title": "project version",
           "type": "string"
         },
+        "service": {
+          "type": "string"
+        },
+        "servver": {
+          "title": "service version",
+          "type": "string"
+        },
         "env": {
           "type": "string"
         },
@@ -5012,6 +5019,25 @@
         "action": {
           "url": "/config-server/configs/global/ref?name=projver&project={0}",
           "params": ["project"]
+        }
+      },
+      {
+        "key": "service",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=service"
+        }
+      },
+      {
+        "key": "servver",
+        "type": "rc-select",
+        "filterOption": true,
+        "combobox": true,
+        "action": {
+          "url": "/config-server/configs/global/ref?name=servver&service={0}",
+          "params": ["service"]
         }
       },
       {
@@ -5068,6 +5094,14 @@
           "type": "string",
           "readonly": true
         },
+        "service": {
+          "type": "string",
+          "readonly": true
+        },
+        "servver": {
+          "type": "string",
+          "readonly": true
+        },
         "env": {
           "type": "string",
           "readonly": true
@@ -5092,6 +5126,8 @@
       "module",
       "project",
       "projver",
+      "service",
+      "servver",
       "env",
       "key",
       "value"
