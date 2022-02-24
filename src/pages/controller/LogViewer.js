@@ -327,6 +327,7 @@ class LogViewer extends React.Component {
                     onGridReady={this.onGridReady}
                     rowData={this.state.logData}
                     tooltipShowDelay={0}
+                    enableCellTextSelection={true}
                   />
                 </div>
               </CardContent>
