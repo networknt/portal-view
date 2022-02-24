@@ -213,6 +213,7 @@ class LogViewer extends React.Component {
                       id='log-name-id'
                       value={this.state.logName}
                       onChange={this.onChangeLogName}
+                      label='Log Name'
                     >
                       <MenuItem key={0} value={'All'}>All</MenuItem>  
                       {this.state.logNames.map((l, i) => (
@@ -229,6 +230,7 @@ class LogViewer extends React.Component {
                       id='log-level-id'
                       value={this.state.logLevel}
                       onChange={this.onChangeLogLevel}
+                      label='Log Level'
                     >
                       {this.logLevels.map((logLevel, i) => (
                         <MenuItem key={i} value={logLevel}>{logLevel}</MenuItem>  
