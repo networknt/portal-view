@@ -14,56 +14,8 @@ import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
 
-const mockBackendLogs = {
-  "ROOT": {
-    "total": 1,
-    "logs": [
-      {
-        "timestamp": "2022-02-16T19:46:09.722+0000",
-        "thread": "XNIO-1 I/O-8",
-        "level": "DEBUG",
-        "logger": "com.networknt.logging.handler.LoggerGetLogContentsHandler",
-        "correlationId": "",
-        "serviceId": "",
-        "class": "LoggerGetLogContentsHandler.java",
-        "lineNumber": "com.networknt.logging.handler.LoggerGetLogContentsHandler:65",
-        "method": "handleRequest",
-        "logMessage": "startTime = 1645040169710 endTime = 1645040769711 loggerName = null loggerLevel = DEBUG offset = 0 limit = 100"
-      }
-    ]
-  },
-  "com.networknt": {
-    "total": 1,
-    "logs": [
-      {
-        "timestamp": "2022-02-16T19:46:09.722+0000",
-        "thread": "XNIO-1 I/O-8",
-        "level": "DEBUG",
-        "logger": "com.networknt.logging.handler.LoggerGetLogContentsHandler",
-        "correlationId": "",
-        "serviceId": "",
-        "class": "LoggerGetLogContentsHandler.java",
-        "lineNumber": "com.networknt.logging.handler.LoggerGetLogContentsHandler:65",
-        "method": "handleRequest",
-        "logMessage": "startTime = 1645040169710 endTime = 1645040769711 loggerName = null loggerLevel = DEBUG offset = 0 limit = 100"
-      },
-      {
-        "timestamp": "2022-02-16T19:46:09.722+0000",
-        "thread": "XNIO-1 I/O-8",
-        "level": "DEBUG",
-        "logger": "com.networknt.logging.handler.LoggerGetLogContentsHandler",
-        "correlationId": "",
-        "serviceId": "",
-        "class": "LoggerGetLogContentsHandler.java",
-        "lineNumber": "com.networknt.logging.handler.LoggerGetLogContentsHandler:65",
-        "method": "handleRequest",
-        "logMessage": "startTime = 1645040169710 endTime = 1645040769711 loggerName = null loggerLevel = DEBUG offset = 0 limit = 100"
-      }
-    ]
-  }
-};
-
-const mockLogs = mockBackendLogs['com.networknt'].logs;
+// Todo: Put in a library for reuse
+const getCookieValue = (name) => document?.cookie?.split('; ')?.find(a => a.startsWith(`${name}=`))?.split('=')?.[1] || undefined;
 
 class LogViewer extends React.Component {
   constructor(props) {
@@ -161,10 +113,14 @@ class LogViewer extends React.Component {
   };
 
   componentDidMount = async () => {
-    console.log('node=====', this.node)
     try {
       const { protocol, address, port } = this.node;
-      const response = await fetch(`/services/logger?protocol=${protocol}&address=${address}&port=${port}`);
+      const response = await fetch(`/services/logger?protocol=${protocol}&address=${address}&port=${port}`, {
+        method: 'GET',
+        headers: {
+          'X-CSRF-TOKEN': getCookieValue('csrf'),
+        },
+      });
       console.log('result=', response)
       if (!response.ok) throw new Error(response);
       const logNames = await response.json();
@@ -207,11 +163,12 @@ class LogViewer extends React.Component {
     const startTime = this.state.preset ? Date.now() - 1000 * this.state.preset : this.state.from;
     const endTime = this.state.preset ? Date.now() : this.state.to;
 
+    // console.log('cookie, CSRF=', document.cookie, getCookieValue('csrf'));
     try {
       const response = await fetch(this.logUrl, {
         method: 'POST',
         headers: {
-          'X-CSRF-TOKEN': '',
+          'X-CSRF-TOKEN': getCookieValue('csrf'),
           'Content-Type': 'application/json',
         },
         credentials: 'include',
@@ -242,7 +199,6 @@ class LogViewer extends React.Component {
   render = () => {
     return (
       <LocalizationProvider dateAdapter={AdapterMoment}>
-        <h1>New Log Viewer...</h1>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Card elevation={2} style={{backgroundColor: this.props.theme?.palette?.tertiary?.light, width: '100%'}}>
