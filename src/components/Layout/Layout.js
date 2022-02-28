@@ -38,6 +38,7 @@ import CtrlPaneDashboard from '../../pages/controller/CtrlPaneDashboard';
 import HealthCheck from '../../pages/controller/HealthCheck';
 import ServerInfo from '../../pages/controller/ServerInfo';
 import Logger from '../../pages/controller/Logger';
+import LogViewer from '../../pages/controller/LogViewer';
 import LoggerConfig from '../../pages/controller/LoggerConfig';
 import LogContent from '../../pages/controller/LogContent';
 import ChaosMonkey from '../../pages/controller/ChaosMonkey';
@@ -248,7 +249,8 @@ function Layout(props) {
             <Route path="/app/controller/services" component={CtrlPaneDashboard} />
             <Route path="/app/controller/check" component={HealthCheck} />
             <Route path="/app/controller/info" component={ServerInfo} />
-            <Route path="/app/controller/logger" component={Logger} />
+            <Route path="/app/controller/logger" component={LogViewer} />
+            <Route path="/app/controller/logViewer" component={LogViewer} />
             <Route path="/app/controller/loggerConfig" component={LoggerConfig} />
             <Route path="/app/controller/logContent" component={LogContent} />
             <Route path="/app/controller/chaos" component={ChaosMonkey} />

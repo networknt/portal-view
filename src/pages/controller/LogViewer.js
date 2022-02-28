@@ -26,7 +26,7 @@ class LogViewer extends React.Component {
     this.node = props?.location?.state?.data?.node || {};
     console.log('ctor: props=', props)
 
-    this.logLevels = ['ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'];
+    this.logLevels = ['All','ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'];
     this.timePresets = [
       {label: '1m', seconds: 60},
       {label: '5m', seconds: 300},
@@ -40,7 +40,7 @@ class LogViewer extends React.Component {
     this.state = {
       logNames: [],
       logName: 'All',
-      logLevel: 'DEBUG',
+      logLevel: 'All',
       from: Date.now(),
       to: Date.now(),
       preset: null,
@@ -179,7 +179,7 @@ class LogViewer extends React.Component {
           startTime: startTime.toString(),
           endTime: endTime.toString(),
           loggerName: this.state.logName === 'All' ? undefined : this.state.logName,
-          loggerLevel: this.state.logLevel,
+          loggerLevel: this.state.logLevel === 'All' ? 'TRACE' : this.state.logLevel,
         })
       });
       if (!response.ok) throw new Error(response);
