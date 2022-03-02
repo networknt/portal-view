@@ -1,41 +1,16 @@
-import tinycolor from 'tinycolor2';
-
-const primary = '#10427D';
-const secondary = '#EA6168';
-const warning = '#FFC260';
-const success = '#3CD4A0';
-const info = '#9013FE';
-
-const lightenRate = 7.5;
-const darkenRate = 15;
-
 export default {
   palette: {
     primary: {
-      main: primary,
-      light: tinycolor(primary).lighten(lightenRate).toHexString(),
-      dark: tinycolor(primary).darken(darkenRate).toHexString(),
+      main: '#FFCB05',
+      light: '#ffffee',
     },
     secondary: {
-      main: secondary,
-      light: tinycolor(secondary).lighten(lightenRate).toHexString(),
-      dark: tinycolor(secondary).darken(darkenRate).toHexString(),
-      contrastText: '#FFFFFF',
+      main: '#004C6C',
+      light: '#f5fcff',
     },
-    warning: {
-      main: warning,
-      light: tinycolor(warning).lighten(lightenRate).toHexString(),
-      dark: tinycolor(warning).darken(darkenRate).toHexString(),
-    },
-    success: {
-      main: success,
-      light: tinycolor(success).lighten(lightenRate).toHexString(),
-      dark: tinycolor(success).darken(darkenRate).toHexString(),
-    },
-    info: {
-      main: info,
-      light: tinycolor(info).lighten(lightenRate).toHexString(),
-      dark: tinycolor(info).darken(darkenRate).toHexString(),
+    tertiary: {
+      main: '#ffd0d7',
+      light: '#fffefe',
     },
     text: {
       primary: '#212121',

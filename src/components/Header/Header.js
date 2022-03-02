@@ -108,16 +108,6 @@ export default function Header(props) {
             })}
           />
         </div>
-        {props.history.location.pathname.startsWith('/app/website') ? (
-          <HomeMenu {...props} classes={classes} />
-        ) : null}
-        {props.history.location.pathname.startsWith('/app/website') ? (
-          <CartMenu {...props} classes={classes} />
-        ) : null}
-        {isAuthenticated ? (
-          <NotificationMenu {...props} classes={classes} />
-        ) : null}
-        {isAuthenticated ? <MailMenu {...props} classes={classes} /> : null}
         <ProfileMenu classes={classes} history={props.history} />
       </Toolbar>
     </AppBar>

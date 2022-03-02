@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTheme } from '@mui/styles'
 
 import {
   Grid, Card, CardHeader, CardContent, Typography, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio,
@@ -24,7 +25,7 @@ class LogViewer extends React.Component {
     this.logUrl = '/services/logger/content';
 
     this.node = props?.location?.state?.data?.node || {};
-    console.log('ctor: props=', props)
+    // console.log('LogViewer ctor: props=', props)
 
     this.logLevels = ['All','ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'];
     this.timePresets = [
@@ -121,10 +122,10 @@ class LogViewer extends React.Component {
           'X-CSRF-TOKEN': getCookieValue('csrf'),
         },
       });
-      console.log('result=', response)
+      // console.log('result=', response)
       if (!response.ok) throw new Error(response);
       const logNames = await response.json();
-      console.log('logNames=', logNames)
+      // console.log('logNames=', logNames)
       this.setState({logNames});
     } catch (error) {
       this.setState({logNames: []});
@@ -133,28 +134,23 @@ class LogViewer extends React.Component {
   };
 
   onChangeLogName = event => {
-    console.log('onChangeLogName:params=', event.target.value)
     this.setState({logName: event.target.value});
   };
 
   onChangeLogLevel = event => {
-    console.log('onChangeLogLevel:params=', event.target.value)
     this.setState({logLevel: event.target.value});
   };
 
   onChangeFrom = moment => {
-    console.log('change From:params=', moment)
     this.setState({from: moment.valueOf(), preset: null});
   };
 
   onChangeTo = moment => {
-    console.log('change To:params=', moment)
     this.setState({to: moment.valueOf(), preset: null});
   };
 
   onChangePreset = event => {
     const seconds = event.target.value;
-    console.log('onChangePreset: seconds', seconds)
     this.setState({preset: seconds});
   };
 
@@ -187,7 +183,7 @@ class LogViewer extends React.Component {
 
       const logData = Object.entries(data).reduce((a, [k, v]) => a.concat((v.logs || []).map(l => ({ ...l, logName: k }))), []);
       this.setState({logData});
-      console.log('logData=', logData)
+      // console.log('logData=', logData)
 
     } catch (error) {
       // console.log('Refresh: error=', error)
@@ -196,7 +192,8 @@ class LogViewer extends React.Component {
     }
   };
 
-  render = () => {
+  render = (props) => {
+    console.log('LogViewer render: props=', this.props)
     return (
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <Grid container spacing={3}>
@@ -339,4 +336,4 @@ class LogViewer extends React.Component {
   }
 }
 
-export default LogViewer;
+export default withTheme(LogViewer);
