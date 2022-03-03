@@ -196,7 +196,14 @@ class LogViewer extends React.Component {
     console.log('LogViewer render: props=', this.props)
     return (
       <LocalizationProvider dateAdapter={AdapterMoment}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
+          <Grid item xs={4} />
+          <Grid item xs={4}>
+          <Card elevation={2} style={{backgroundColor: this.props.theme?.palette?.tertiary?.light, width: '100%'}}>
+            <CardHeader title={<Typography variant='h6' style={{textAlign: 'center'}}>{this.node?.apiName}</Typography>} />
+          </Card>
+          </Grid>
+          <Grid item xs={4} />
           <Grid item xs={12}>
             <Card elevation={2} style={{backgroundColor: this.props.theme?.palette?.tertiary?.light, width: '100%'}}>
               <CardHeader title={<Typography variant='h6'>Filters</Typography>} />

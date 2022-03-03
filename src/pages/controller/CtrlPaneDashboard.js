@@ -241,7 +241,7 @@ function Row(props) {
                         </IconButton>
                       </TableCell>
                       <TableCell align="right">
-                        <IconButton onClick={() => handleLogger(node)}>
+                        <IconButton onClick={() => handleLogger({ ...node, apiName: serviceId })}>
                           <PermDataSettingIcon />
                         </IconButton>
                       </TableCell>
