@@ -17,15 +17,6 @@ export default makeStyles((theme) => {
         display: 'none',
       },
     },
-    appBar: {
-      width: '100vw',
-      zIndex: `${theme.zIndex.drawer + 1} !important`,
-      transition: theme.transitions.create(['margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      backgroundColor: `${theme.palette.custom.lightGrey} !important`,
-    },
     toolbar: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),

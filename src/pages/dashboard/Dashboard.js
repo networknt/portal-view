@@ -68,10 +68,8 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <Box className={classes.mainHeader}>
-        <Typography className={classes.mainTitle}>Light Portal</Typography>
-      </Box>
-      <PageTitle title="Bring the API producers and consumers together." />
+      <Typography variant='h2' style={{textAlign: 'center', padding: 10}}>Light Portal</Typography>
+      <Typography variant='h3' style={{textAlign: 'center', padding: 10}}>Bring the API producers and consumers together.</Typography>
 
       <Grid container spacing={4}>
         <Grid item lg={3} md={8} sm={6} xs={12}>

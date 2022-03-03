@@ -275,6 +275,10 @@ class LogViewer extends React.Component {
                           name="controlled-radio-buttons-group"
                           value={this.state.preset}
                           onChange={this.onChangePreset}
+                          sx={{
+                            paddingTop: 1,
+                            paddingBottom: 1,
+                          }}
                         >
                           {this.timePresets.map((p, i) => (
                             <FormControlLabel
@@ -285,6 +289,7 @@ class LogViewer extends React.Component {
                                   '& .MuiSvgIcon-root': {
                                     fontSize: 14,
                                   },
+                                  padding: .5,
                                 }}
                                   />}
                               label={<Typography variant='body2'>{p.label}</Typography>}
