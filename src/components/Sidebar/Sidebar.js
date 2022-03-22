@@ -22,6 +22,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 import SecurityIcon from '@mui/icons-material/Security';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import GiteIcon from '@mui/icons-material/Gite';
 import { Drawer, IconButton, List } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import classNames from 'classnames';
@@ -93,7 +94,12 @@ const structure = [
       { label: 'YAML Rule', link: '/app/form/createRule' },
     ],
   },
-
+  {
+    id: 24,
+    label: 'Host',
+    link: '/app/host/dashboard',
+    icon: <GiteIcon />,
+  },
   {
     id: 25,
     label: 'Reference',
