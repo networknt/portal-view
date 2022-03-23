@@ -22,6 +22,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 import SecurityIcon from '@mui/icons-material/Security';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import GiteIcon from '@mui/icons-material/Gite';
 import { Drawer, IconButton, List } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import classNames from 'classnames';
@@ -54,6 +55,91 @@ const structure = [
     link: '/app/form/servicesRef',
     icon: <PermDataSettingIcon />,
   },
+  {
+    id: 10,
+    label: 'OAuth 2.0',
+    role: 'user',
+    link: '/app/oauth',
+    icon: <SecurityIcon />,
+    children: [{ label: 'Refresh Token', link: '/app/refreshToken' }],
+  },
+  {
+    id: 20,
+    label: 'Marketplace',
+    link: '/app/marketplace',
+    icon: <ShoppingBasketIcon />,
+    children: [
+      { label: 'API Client', link: '/app/client' },
+      { label: "OpenApi API", link: "/app/service/openapi" },
+      { label: "GraphQL API", link: "/app/service/graphql" },
+      { label: "Hybrid API", link: "/app/service/hybrid" },
+      { label: 'Schema Form', link: '/app/form/schemaFormFilter' },
+      { label: 'JSON Schema', link: '/app/schema/schemaList' },
+      { label: 'YAML Rule', link: '/app/rule/ruleList' },
+    ],
+  },
+  {
+    id: 23,
+    label: 'Publish',
+    role: 'user',
+    link: '/app/publish',
+    icon: <PublishIcon />,
+    children: [
+      { label: 'OpenApi API', link: '/app/form/createService' },
+      { label: 'GraphQL API', link: '/app/form/createService' },
+      { label: 'Hybrid API', link: '/app/form/createService' },
+      { label: 'Schema Form', link: '/app/form/createSchemaForm' },
+      { label: 'JSON Schema', link: '/app/form/createJsonSchema' },
+      { label: 'Error Code', link: '/app/form/createErrorCode' },
+      { label: 'YAML Rule', link: '/app/form/createRule' },
+    ],
+  },
+  {
+    id: 24,
+    label: 'Host',
+    link: '/app/host/dashboard',
+    icon: <GiteIcon />,
+  },
+  {
+    id: 25,
+    label: 'Reference',
+    role: 'admin',
+    link: '/app/reference',
+    icon: <TableIcon />,
+    children: [
+      { label: 'Table', link: '/app/ref/table' },
+      { label: 'Value', link: '/app/ref/tableForm' },
+      { label: 'Locale', link: '/app/ref/valueForm' },
+      { label: 'RelaType', link: '/app/ref/relatype' },
+      { label: 'Relation', link: '/app/ref/relationForm' },
+    ],
+  },
+
+  {
+    id: 30,
+    label: 'Notifications',
+    role: 'user',
+    link: '/app/notifications',
+    icon: <NotificationsIcon />,
+  },
+  { id: 40, label: 'News', link: '/app/news', icon: <AnnouncementIcon /> },
+  { id: 50, label: 'Blog', link: '/app/blog/blogList', icon: <BookIcon /> },
+  { id: 60, label: 'Forum', link: '/app/forum', icon: <ForumIcon /> },
+  {
+    id: 65,
+    label: 'Training',
+    role: 'user',
+    link: '/app/training',
+    icon: <CastForEducationIcon />,
+    children: [
+      { label: 'Course', link: '/app/edu/course' },
+      { label: 'Quiz', link: '/app/edu/quiz' },
+      { label: 'Progress', link: '/app/edu/progress' },
+      { label: 'Certificate', link: '/app/edu/certificate' },
+    ],
+  },
+  { id: 70, label: 'Support', link: '/app/support', icon: <HelpIcon /> },
+  { id: 80, label: 'FAQ', link: '/app/faq', icon: <FAQIcon /> },
   { id: 90, type: 'divider', role: 'admin' },
   {
     id: 110,

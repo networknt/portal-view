@@ -56,18 +56,7 @@ function CtrlPaneDashboard(props) {
         if (!response.ok) {
           const data = await response.json();
           setLoading(false);
-          if (
-            data.code === 'ERR10002' ||
-            data.code === 'ERR10046' ||
-            data.code === 'ERR10047'
-          ) {
-            history.push({
-              pathname: '/login',
-              state: { from: props.location },
-            });
-          } else {
-            setError(data);
-          }
+          setError(data);
         } else {
           const data = await response.json();
           setServices(data);

@@ -101,6 +101,10 @@ import ServiceDelete from '../../pages/service/ServiceDelete';
 import ServiceDetail from '../../pages/service/ServiceDetail';
 import ServiceEndpoint from '../../pages/service/ServiceEndpoint';
 import SubmitSpec from '../../pages/service/SubmitSpec';
+
+// host
+import HostDashboard from '../../pages/host/HostDashboard';
+
 import Success from '../../pages/success';
 import Form from '../Form/Form';
 // components
@@ -254,6 +258,8 @@ function Layout(props) {
             <Route path="/app/controller/loggerConfig" component={LoggerConfig} />
             <Route path="/app/controller/logContent" component={LogContent} />
             <Route path="/app/controller/chaos" component={ChaosMonkey} />
+
+            <Route path="/app/host/dashboard" component={HostDashboard} />
 
             <Route
               exact

@@ -1763,6 +1763,7 @@
         "host",
         "lob",
         "style",
+        "apiId",
         "serviceId",
         "name",
         "desc",
@@ -1782,6 +1783,11 @@
           "title": "API Style",
           "type": "string",
           "enum": ["openapi", "graphql", "hybrid"]
+        },
+        "apiId": {
+          "title": "Api Id - four digit unique number",
+          "type": "string",
+          "pattern": "\\b\\d{4}\\b"
         },
         "serviceId": {
           "title": "Service Id",
@@ -1827,6 +1833,7 @@
         }
       },
       "style",
+      "apiId",
       "serviceId",
       "name",
       {
@@ -1865,6 +1872,7 @@
         "host",
         "lob",
         "style",
+        "apiId",
         "serviceId",
         "name",
         "desc",
@@ -1884,6 +1892,11 @@
           "title": "API Style",
           "type": "string",
           "enum": ["openapi", "graphql", "hybrid"]
+        },
+        "apiId": {
+          "title": "Api Id - four digit unique number",
+          "type": "string",
+          "pattern": "\\b\\d{4}\\b"
         },
         "serviceId": {
           "title": "Service Id",
@@ -1930,6 +1943,7 @@
         }
       },
       "style",
+      "apiId",
       "serviceId",
       "name",
       {
