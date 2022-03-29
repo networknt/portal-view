@@ -41,9 +41,13 @@ function Row(props) {
     return (
       <TableRow className={classes.root}>
         <TableCell align="left">{property.host}</TableCell>
-        <TableCell align="left">{property.module}</TableCell>
+        <TableCell align="left">{property.cap}</TableCell>
+        <TableCell align="left">{property.project}</TableCell>
+        <TableCell align="left">{property.projver}</TableCell>
         <TableCell align="left">{property.scope}</TableCell>
         <TableCell align="left">{property.key}</TableCell>
+        <TableCell align="left">{property.module}</TableCell>
+        <TableCell align="left">{property.type}</TableCell>
         <TableCell align="left">{property.order}</TableCell>
         <TableCell align="right">
           <SystemUpdateIcon onClick={handleUpdate} />
@@ -65,9 +69,13 @@ function PropertiesList(props) {
             <TableHead>
               <TableRow>
                 <TableCell align="left">Host</TableCell>
-                <TableCell align="left">Module</TableCell>
+                <TableCell align="left">Capability</TableCell>
+                <TableCell align="left">Project</TableCell>
+                <TableCell align="left">Project Version</TableCell>
                 <TableCell align="left">Scope</TableCell>
                 <TableCell align="left">Key</TableCell>
+                <TableCell align="left">Module</TableCell>
+                <TableCell align="left">Value Type</TableCell>
                 <TableCell align="left">Order</TableCell>
                 <TableCell align="right">Update</TableCell>
                 <TableCell align="right">Delete</TableCell>
