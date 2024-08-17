@@ -10,13 +10,7 @@ module.exports = function(app) {
   app.use(cors(corsOptions));
   app.use(createProxyMiddleware('/portal/command', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/portal/query', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/client', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/code', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/key', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/refresh_token', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/service', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/token', { target: 'https://local.lightapi.net', secure: false }));
-  app.use(createProxyMiddleware('/oauth2/user', { target: 'https://local.lightapi.net', secure: false }));
+  app.use(createProxyMiddleware('/oauth2', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/r/data', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/authorization', { target: 'https://local.lightapi.net', secure: false }));
   app.use(createProxyMiddleware('/logout', { target: 'https://local.lightapi.net', secure: false }));

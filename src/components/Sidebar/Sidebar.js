@@ -7,6 +7,7 @@ import {
   LibraryBooks as LibraryIcon,
   NotificationsNone as NotificationsIcon,
   Toc as OrderIcon,
+  Handyman as HandymanIcon,
 } from '@mui/icons-material';
 import AccountBox from '@mui/icons-material/AccountBox';
 import AddAlert from '@mui/icons-material/AddAlert';
@@ -140,7 +141,18 @@ const structure = [
   },
   { id: 70, label: 'Support', link: '/app/support', icon: <HelpIcon /> },
   { id: 80, label: 'FAQ', link: '/app/faq', icon: <FAQIcon /> },
-
+  // { 
+  //   id: 85, 
+  //   label: 'Tool', 
+  //   link: '/app/tool', 
+  //   icon: <HandymanIcon />,
+  //   children: [
+  //     { label: 'JSON Compare', link: '/app/tool/jsonCompare' },
+  //     { label: 'YAML Compare', link: '/app/tool/yamlCompare' },
+  //     { label: 'JSON Normalize', link: '/app/tool/jsonNormalize' },
+  //     { label: 'YAML Normalize', link: '/app/tool/yamlNormalize' },
+  //   ],
+  // },  
   { id: 90, type: 'divider', role: 'admin' },
   {
     id: 110,
