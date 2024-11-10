@@ -33,6 +33,7 @@
     "braintree-web-drop-in-react": "^1.2.1",
     "classnames": "^2.5.1",
     "codemirror": "^6.0.1",
+    "mapbox-gl": "^3.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.3.3",

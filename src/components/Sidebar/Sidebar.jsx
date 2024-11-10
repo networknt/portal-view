@@ -28,7 +28,6 @@ import { Drawer, IconButton, List } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 // context
 import {
   toggleSidebar,

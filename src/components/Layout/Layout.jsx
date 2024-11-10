@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import NotificationDetail from '../../components/Notification/NotificationDetail';
 import { useLayoutState } from '../../contexts/LayoutContext';
 import BlogAdmin from '../../pages/blog/BlogAdmin';
@@ -115,6 +115,7 @@ import useStyles from './styles';
 
 function Layout(props) {
   var classes = useStyles();
+  const location = useLocation();
 
   // global
   var layoutState = useLayoutState();
@@ -123,7 +124,7 @@ function Layout(props) {
     <div className={classes.root}>
       <>
         <Header history={props.history} />
-        <Sidebar />
+        <Sidebar location = {location}/>
         <div
           className={classnames(classes.content, {
             [classes.contentShift]: layoutState.isSidebarOpened,

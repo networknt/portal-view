@@ -7,7 +7,7 @@ import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 // router
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 // context
 import {
   toggleSidebar,
@@ -35,6 +35,8 @@ export default function Header(props) {
   // global
   var layoutState = useLayoutState();
   var layoutDispatch = useLayoutDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // local
   var [isSearchOpen, setSearchOpen] = useState(false);
@@ -108,17 +110,17 @@ export default function Header(props) {
             })}
           />
         </div>
-        {props.history.location.pathname.startsWith('/app/website') ? (
+        {location.pathname.startsWith('/app/website') ? (
           <HomeMenu {...props} classes={classes} />
         ) : null}
-        {props.history.location.pathname.startsWith('/app/website') ? (
+        {location.pathname.startsWith('/app/website') ? (
           <CartMenu {...props} classes={classes} />
         ) : null}
         {isAuthenticated ? (
           <NotificationMenu {...props} classes={classes} />
         ) : null}
         {isAuthenticated ? <MailMenu {...props} classes={classes} /> : null}
-        <ProfileMenu classes={classes} history={props.history} />
+        <ProfileMenu classes={classes} navigate={navigate} />
       </Toolbar>
     </AppBar>
   );

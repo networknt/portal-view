@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import classnames from 'classnames';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 // components
 import Dot from '../Dot';
 // styles
