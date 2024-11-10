@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Button from '@mui/material/Button';
 import Cookies from 'universal-cookie';
-import AceEditor from "react-ace";
+import CodeMirror from '@uiw/react-codemirror';
+import { yaml } from '@codemirror/lang-yaml';
+import { githubLight } from '@uiw/codemirror-theme-github';
 import YAML from 'yaml';
 import CircularProgress from '@mui/material/CircularProgress';
-import "ace-builds/src-noconflict/mode-yaml";
-import "ace-builds/src-noconflict/theme-github";
 import SwaggerUI from "swagger-ui-react"
 import "swagger-ui-react/swagger-ui.css"
 import FileUpload from "../../components/Upload/FileUpload";
@@ -94,13 +94,13 @@ export default function OpenapiEditor(props) {
                     multiple={false}
                     updateFilesCb={onUpload}
                 />
-                <AceEditor
-                    mode="yaml"
-                    theme="github"
-                    value={spec}
+                <CodeMirror 
+                    value={spec} 
+                    height="300px" 
+                    width="800px" 
+                    theme={githubLight} 
+                    extensions={[yaml()]} 
                     onChange={onChange}
-                    name="UNIQUE_ID_OF_DIV"
-                    editorProps={{ $blockScrolling: true }}
                 />
                 <SwaggerUI
                     spec={spec.length > 0 ? YAML.parse(spec) : ''}
