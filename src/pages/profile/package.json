@@ -2,5 +2,5 @@
   "name": "Profile",
   "version": "1.0.0",
   "private": true,
-  "main": "Profile.js"
+  "main": "Profile.jsx"
 }
