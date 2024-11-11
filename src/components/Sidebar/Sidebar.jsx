@@ -311,7 +311,7 @@ const structure = [
   },
 ];
 
-function Sidebar({ location }) {
+function Sidebar() {
   var classes = useStyles();
   var theme = useTheme();
 
@@ -362,7 +362,6 @@ function Sidebar({ location }) {
           .map((link) => (
             <SidebarLink
               key={link.id}
-              location={location}
               isSidebarOpened={isSidebarOpened}
               {...link}
             />

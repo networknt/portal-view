@@ -17,6 +17,7 @@ import BlogListItem from './BlogListItem';
 import useStyles from './styles';
 
 export default function BlogList(props) {
+  console.log('BlogList props', props);
   const classes = useStyles();
   const { email, roles, host } = useUserState();
   const [page, setPage] = useState(0);

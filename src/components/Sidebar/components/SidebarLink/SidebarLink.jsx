@@ -4,13 +4,14 @@ import {
   Divider,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
   Typography,
 } from '@mui/material';
 import classnames from 'classnames';
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // components
 import Dot from '../Dot';
 // styles
@@ -21,12 +22,12 @@ export default function SidebarLink({
   icon,
   label,
   children,
-  location,
   isSidebarOpened,
   nested,
   type,
 }) {
   var classes = useStyles();
+  const location = useLocation();
 
   // local
   var [isOpen, setIsOpen] = useState(false);
@@ -49,64 +50,70 @@ export default function SidebarLink({
 
   if (!children)
     return (
-      <ListItem
-        button
-        component={link && Link}
-        to={link}
-        className={classes.link}
-        classes={{
-          root: classnames(classes.linkRoot, {
-            [classes.linkActive]: isLinkActive && !nested,
-            [classes.linkNested]: nested,
-          }),
-        }}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive,
-          })}
-        >
-          {nested ? <Dot color={isLinkActive && 'primary'} /> : icon}
-        </ListItemIcon>
-        <ListItemText
-          classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened,
+      <ListItem disablePadding>
+        <ListItemButton
+          component={link ? Link : 'div'}
+          to={link}
+          sx={{
+            root: classnames(classes.linkRoot, {
+              [classes.linkActive]: isLinkActive && !nested,
+              [classes.linkNested]: nested,
             }),
           }}
-          primary={label}
-        />
+          disableRipple
+        >
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive,
+            })}
+          >
+            {nested ? <Dot color={isLinkActive && 'primary'} /> : icon}
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classnames(classes.linkText, {
+                [classes.linkTextActive]: isLinkActive,
+                [classes.linkTextHidden]: !isSidebarOpened,
+              }),
+            }}
+            primary={label}
+          />
+        </ListItemButton>
       </ListItem>
     );
 
   return (
     <>
-      <ListItem
-        button
-        component={link && Link}
-        onClick={toggleCollapse}
-        className={classes.link}
-        to={link}
-        disableRipple
-      >
-        <ListItemIcon
-          className={classnames(classes.linkIcon, {
-            [classes.linkIconActive]: isLinkActive,
-          })}
-        >
-          {icon ? icon : <InboxIcon />}
-        </ListItemIcon>
-        <ListItemText
-          classes={{
-            primary: classnames(classes.linkText, {
-              [classes.linkTextActive]: isLinkActive,
-              [classes.linkTextHidden]: !isSidebarOpened,
+      <ListItem disablePadding>
+        <ListItemButton
+          component={link ? Link : 'div'}
+          onClick={toggleCollapse}
+          to={link}
+          sx={{
+            root: classnames(classes.linkRoot, {
+              [classes.linkActive]: isLinkActive && !nested,
+              [classes.linkNested]: nested,
             }),
           }}
-          primary={label}
-        />
+          disableRipple
+        >
+          <ListItemIcon
+            className={classnames(classes.linkIcon, {
+              [classes.linkIconActive]: isLinkActive,
+            })}
+          >
+            {icon ? icon : <InboxIcon />}
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classnames(classes.linkText, {
+                [classes.linkTextActive]: isLinkActive,
+                [classes.linkTextHidden]: !isSidebarOpened,
+              }),
+            }}
+            primary={label}
+          />
+        </ListItemButton>
       </ListItem>
       {children && (
         <Collapse
@@ -119,9 +126,7 @@ export default function SidebarLink({
             {children.map((childrenLink) => (
               <SidebarLink
                 key={childrenLink && childrenLink.link}
-                location={location}
                 isSidebarOpened={isSidebarOpened}
-                classes={classes}
                 nested
                 {...childrenLink}
               />
@@ -131,8 +136,6 @@ export default function SidebarLink({
       )}
     </>
   );
-
-  // ###########################################################
 
   function toggleCollapse(e) {
     if (isSidebarOpened) {
