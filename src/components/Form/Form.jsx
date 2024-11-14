@@ -1,12 +1,13 @@
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import { withStyles } from '@mui/styles';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { SchemaForm, utils } from 'react-schema-form';
 import Cookies from 'universal-cookie';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import forms from '../../data/Forms';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -24,31 +25,35 @@ const styles = (theme) => ({
   button: {
     margin: theme.spacing(1),
   },
-});
+}));
 
-function Form(props) {
+function Form() {
+  const params = useParams();
+  const formId = params.formId;
+  const location = useLocation();
+  const navigate = useNavigate();  
   const [fetching, setFetching] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const [schema, setSchema] = useState(null);
   const [form, setForm] = useState(null);
   const [actions, setActions] = useState(null);
   const [model, setModel] = useState({});
-  const { classes } = props;
+  const classes = useStyles();
 
   useEffect(() => {
-    console.log(props.match.params.formId);
-    let formData = forms[props.match.params.formId];
+    console.log(formId);
+    let formData = forms[formId];
     setSchema(formData.schema);
     setForm(formData.form);
     setActions(formData.actions);
-    console.log('state = ', props.location.state);
+    console.log('state = ', location.state);
     // must ensure that the model is an empty object to the cascade dropdown
     setModel(
-      props.location.state
-        ? props.location.state.data || {}
+      location.state
+        ? location.state.data || {}
         : formData.model || {}
     );
-  }, [props.match.params.formId, props.location.state]);
+  }, [formId, location.state]);
 
   const onModelChange = (key, val, type) => {
     utils.selectOrSet(key, model, val, type);
@@ -94,19 +99,19 @@ function Form(props) {
       setFetching(false);
       if (!response.ok) {
         // code is not OK.
-        props.history.push({
-          pathname: action.failure,
-          state: { error: data },
-        });
+        navigate(
+          action.failure,
+          {state: { error: data }}
+        );
       } else {
-        props.history.push({ pathname: action.success, state: { data } });
+        navigate(action.success, {state: { data } });
       }
     } catch (e) {
       // network error here.
       console.log(e);
       // convert it to json as the failure component can only deal with JSON.
       const error = { error: e };
-      props.history.push({ pathname: action.failure, state: { error } });
+      navigate(action.failure, {state: { error } });
     }
   };
 
@@ -146,7 +151,6 @@ function Form(props) {
           schema={schema}
           form={form}
           model={model}
-          mapper={mapper}
           showErrors={showErrors}
           onModelChange={onModelChange}
         />
@@ -158,4 +162,4 @@ function Form(props) {
   }
 }
 
-export default withStyles(styles)(Form);
+export default Form;

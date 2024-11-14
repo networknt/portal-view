@@ -1,7 +1,5 @@
 import { makeStyles } from '@mui/styles';
-
 export default makeStyles((theme) => {
-  console.log('In header style.js 000 in makeStyles, theme: ', theme);
   return {
     link: {
       textDecoration: 'none',
