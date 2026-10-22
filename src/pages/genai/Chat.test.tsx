@@ -58,7 +58,7 @@ it('uses the authenticated Gateway route and sends a typed coding payload only a
   expect(new URL(socket.url).host).toBe(window.location.host);
   expect(new URL(socket.url).protocol).toBe(window.location.protocol === 'https:' ? 'wss:' : 'ws:');
   expect(new URL(socket.url).searchParams.get('serviceId')).toBe('com.networknt.agent.codex-personal-1.0.0');
-  expect(socket.protocols).toEqual(['csrf.csrf-test']);
+  expect(socket.protocols).toEqual(['light-spa-v1', 'csrf.csrf-test']);
   expect(new URL(socket.url).searchParams.get('envTag')).toBe('test');
   expect(new URL(socket.url).searchParams.get('protocol')).toBe('http');
   fireEvent.change(screen.getByPlaceholderText('Type your message here...'), { target: { value: 'Change README' } });
