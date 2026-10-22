@@ -175,7 +175,7 @@ export default function Chat() {
         }
 
         // Use Sec-WebSocket-Protocol header for CSRF to avoid URL logging
-        const protocols = csrfToken ? [`csrf.${csrfToken}`] : [];
+        const protocols = csrfToken ? ['light-spa-v1', `csrf.${csrfToken}`] : [];
         let socket: WebSocket;
         try {
             socket = new WebSocket(url.toString(), protocols);

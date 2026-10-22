@@ -141,7 +141,7 @@ export function ControllerProvider({ children }: { children: React.ReactNode }) 
     runtimeCapabilitiesRef.current = clientCapabilities;
     const mcpClient = new McpClient(mcpUrl, () => {
       const token = cookies.get('csrf');
-      return token ? [`csrf.${token}`] : [];
+      return token ? ['light-spa-v1', `csrf.${token}`] : [];
     });
     mcpClientRef.current = mcpClient;
     readyMcpClientRef.current = null;
